@@ -21,7 +21,7 @@
       <a href="partner.html">Partner</a>
     </nav>
     <div class="nav-actions">
-      <a href="partner.html#enquire" class="btn btn-white">Lets Talk</a>
+      <a href="#contact" data-panel-open="contact" class="btn btn-white">Lets Talk</a>
     </div>
   </div>
 </header>
@@ -231,7 +231,7 @@
           <li><a href="architecture.html">Portfolio</a></li>
           <li><a href="shop.html">Shop</a></li>
           <li><a href="partner.html">Partners</a></li>
-          <li><a href="partner.html#enquire">Contact</a></li>
+          <li><a href="#contact" data-panel-open="contact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -247,6 +247,75 @@
   </div>
 </footer>
 
+<!-- Contact side panel (slide-out drawer) -->
+<div class="panel" id="contact" data-panel data-panel-state="closed">
+  <a class="panel-backdrop" data-panel-backdrop data-panel-close href="#" aria-label="Close"></a>
+  <div class="panel-dialog" data-panel-dialog>
+    <div class="panel-bg">
+      <div class="panel-bg-sheet is--first" data-panel-bg></div>
+      <div class="panel-bg-sheet is--second" data-panel-bg></div>
+      <div class="panel-bg-sheet" data-panel-bg></div>
+    </div>
+    <button type="button" class="panel-close" data-panel-close aria-label="Close">&times;</button>
+    <div class="panel-inner" data-panel-inner>
+
+      <div class="panel-form-header">
+        <h2>Start a project</h2>
+      </div>
+
+      <div class="panel-form">
+        <div class="panel-form-step">
+          <h3>Contact details</h3>
+          <span class="step-number">01</span>
+        </div>
+        <p class="panel-form-note">How can we contact you?</p>
+
+        <form class="form" action="#" method="post">
+          <div class="form-row">
+            <div class="field">
+              <label class="visually-hidden" for="panel-name">Your name</label>
+              <input id="panel-name" name="name" type="text" placeholder="Your name*" required>
+            </div>
+            <div class="field">
+              <label class="visually-hidden" for="panel-company">Company name</label>
+              <input id="panel-company" name="company" type="text" placeholder="Company name*" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="visually-hidden" for="panel-email">Email address</label>
+              <input id="panel-email" name="email" type="email" placeholder="Email address*" required>
+            </div>
+            <div class="field">
+              <label class="visually-hidden" for="panel-mobile">Mobile number</label>
+              <input id="panel-mobile" name="mobile" type="tel" placeholder="Mobile number*" required>
+            </div>
+          </div>
+
+          <div class="panel-form-step">
+            <h3>Project information</h3>
+            <span class="step-number">02</span>
+          </div>
+          <p class="panel-form-note">Tell us more about your project.</p>
+
+          <div class="field">
+            <label class="visually-hidden" for="panel-message">Project details</label>
+            <textarea id="panel-message" name="message" rows="8" placeholder="Tell us more about your project...*" required></textarea>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-black">Submit Enquiry</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/CustomEase.min.js"></script>
+<script src="sidepanel.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.2.3/dist/lenis.min.js"></script>
 <script>
   // Lenis
