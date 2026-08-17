@@ -205,7 +205,7 @@
       <div class="panel-bg-sheet" data-panel-bg></div>
     </div>
     <button type="button" class="panel-close" data-panel-close aria-label="Close">&times;</button>
-    <div class="panel-inner" data-panel-inner>
+    <div class="panel-inner" data-panel-inner data-lenis-prevent>
 
       <div class="panel-form-header">
         <h2>Start a project</h2>
@@ -270,6 +270,7 @@
   const lenis = new Lenis({
     autoRaf: true,
   });
+  window.lenis = lenis;
 </script>
 
 </body>

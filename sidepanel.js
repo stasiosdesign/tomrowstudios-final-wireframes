@@ -14,6 +14,23 @@ function initSidePanels() {
   var hasGsap = !!window.gsap;
   var openPanel = null;
 
+  // Lenis hijacks the wheel for the whole document, so pause it while a panel
+  // is open — otherwise the page behind scrolls instead of the panel.
+  function getLenis() {
+    if (window.lenis) return window.lenis;
+    try { return lenis; } catch (e) { return null; }
+  }
+  function pausePageScroll() {
+    var l = getLenis();
+    if (l && l.stop) l.stop();
+    document.body.style.overflow = "hidden";
+  }
+  function resumePageScroll() {
+    var l = getLenis();
+    if (l && l.start) l.start();
+    document.body.style.overflow = "";
+  }
+
   panels.forEach(function (panel) {
     var dialog = panel.querySelector("[data-panel-dialog]");
     var overlay = panel.querySelector("[data-panel-backdrop]");
@@ -25,7 +42,8 @@ function initSidePanels() {
       if (openPanel && openPanel !== panel) openPanel.close();
       openPanel = panel;
       panel.setAttribute("data-panel-state", "open");
-      document.body.style.overflow = "hidden";
+      pausePageScroll();
+      if (content) content.scrollTop = 0;
 
       if (!hasGsap) {
         panel.style.display = "block";
@@ -42,7 +60,7 @@ function initSidePanels() {
 
     panel.close = function () {
       panel.setAttribute("data-panel-state", "closed");
-      document.body.style.overflow = "";
+      resumePageScroll();
       if (openPanel === panel) openPanel = null;
 
       if (!hasGsap) {

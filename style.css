@@ -424,6 +424,8 @@ h3 {
   z-index: 1;
   height: 100%;
   overflow-y: auto;
+  overscroll-behavior: contain; /* don't chain the scroll back to the page */
+  -webkit-overflow-scrolling: touch;
 }
 .panel-close {
   position: absolute;
