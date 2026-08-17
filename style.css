@@ -373,6 +373,8 @@ h3 {
 }
 
 /* ---------- Page transition overlay + persistent vertical lines ---------- */
+:root { --grid-gutter: 40px; }
+
 .transition {
   z-index: 200;
   pointer-events: none;
@@ -417,6 +419,13 @@ h3 {
 
 .transition__line.is--last {
   border-right-style: none;
+}
+
+/* Narrow margin columns at either edge of the grid */
+.transition__panel.is--gutter,
+.transition__line.is--gutter {
+  flex: 0 0 var(--grid-gutter);
+  width: var(--grid-gutter);
 }
 
 .visually-hidden {
@@ -802,6 +811,7 @@ h3 {
 
 /* ---------- Basic responsive fallback ---------- */
 @media (max-width: 991px) {
+  :root { --grid-gutter: 20px; }
   .section, .footer { padding-left: 24px; padding-right: 24px; }
   .navbar { padding: 0 24px; }
   .hero { padding: 112px 24px; }
