@@ -898,22 +898,24 @@ h3 {
   inset: 0%;
   z-index: 999;
   pointer-events: none;
-  background: url("https://osmo.b-cdn.net/resource-media/noise.avif") 50% 50% / 7.8125em repeat;
+  /* Smaller tile = finer, denser grain */
+  background: url("https://osmo.b-cdn.net/resource-media/noise.avif") 50% 50% / 3.5em repeat;
   opacity: 0.5;
   filter: contrast(125%) brightness(60%);
 }
 
 /* Optional: Animated Film Grain Effect */
 .grain[data-grain-animate="true"] {
-  animation: grain 0.6s steps(1, end) infinite;
+  /* Slower steps and much smaller offsets — texture, not flicker */
+  animation: grain 2s steps(1, end) infinite;
 }
 
 @keyframes grain {
   0%   { background-position: 0em 0em; }
-  20%  { background-position: -0.5em 0.3em;}
-  40%  { background-position: 0.4em -0.2em;}
-  60%  { background-position: -0.3em -0.4em;}
-  80%  { background-position: 0.2em 0.5em;}
+  20%  { background-position: -0.12em 0.08em;}
+  40%  { background-position: 0.1em -0.06em;}
+  60%  { background-position: -0.08em -0.1em;}
+  80%  { background-position: 0.06em 0.12em;}
 }
 
 /* Respect a reduced-motion preference: keep the texture, drop the flicker */
