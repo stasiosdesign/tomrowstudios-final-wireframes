@@ -92,7 +92,7 @@ function runPageLeaveAnimation(current, next) {
   tl.fromTo(transitionColumns, {
     yPercent: 0
   },{
-    yPercent: 100,
+    yPercent: -100,
     duration: 0.6,
     stagger: {
       each: 0.06,
@@ -131,7 +131,7 @@ function runPageEnterAnimation(next){
   }, "startEnter");
 
   tl.to(transitionColumns, {
-    yPercent: 200,
+    yPercent: -200,
     duration: 0.6,
     stagger: 0.06,
     overwrite: "auto",
