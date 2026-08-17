@@ -7,12 +7,20 @@ function setNavStatus(status) {
   if (!navStatusEl) return;
   navStatusEl.setAttribute("data-navigation-status", status);
 
-  // Freeze page scrolling while the menu is open
+  var group = document.querySelector(".hamburger-nav__group");
+  var groupLenis = typeof createNestedLenis === "function" ? createNestedLenis(group) : null;
+
+  // Freeze page scrolling while the menu is open, and hand scrolling to the menu
   var l = window.lenis;
   if (status === "active") {
     if (l && l.stop) l.stop();
-  } else if (l && l.start) {
-    l.start();
+    if (groupLenis) {
+      groupLenis.resize();
+      groupLenis.start();
+    }
+  } else {
+    if (groupLenis && groupLenis.stop) groupLenis.stop();
+    if (l && l.start) l.start();
   }
 }
 

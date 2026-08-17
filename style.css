@@ -1067,3 +1067,23 @@ h3 {
 @media (max-width: 991px) {
   .hamburger-nav__p { font-size: 1.5em; }
 }
+
+/* ---------- Open-menu backdrop blur + scrollable menu ---------- */
+.panel-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+[data-navigation-status="active"] .navigation__dark-bg {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* The menu scrolls on its own so Lenis can drive it */
+.hamburger-nav__group {
+  max-height: calc(100vh - 4em);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+.hamburger-nav__group::-webkit-scrollbar { width: 0; height: 0; }

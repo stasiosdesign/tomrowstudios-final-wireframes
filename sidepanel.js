@@ -7,6 +7,24 @@ if (window.gsap && window.CustomEase) {
   gsap.defaults({ ease: "main", duration: 0.7 });
 }
 
+/* Smooth scrolling inside an element that scrolls on its own (a panel, the
+   menu). Lenis measures the viewport from the wrapper's client size and the
+   content from its scroll size, so the same element can serve as both. */
+function createNestedLenis(el) {
+  if (!el || typeof window.Lenis === "undefined") return null;
+  if (el.__lenis) return el.__lenis;
+
+  el.__lenis = new Lenis({
+    wrapper: el,
+    content: el,
+    lerp: 0.165,
+    wheelMultiplier: 1.25,
+    autoRaf: true
+  });
+
+  return el.__lenis;
+}
+
 function initSidePanels() {
   var panels = document.querySelectorAll("[data-panel]");
   if (!panels.length) return;
@@ -52,7 +70,16 @@ function initSidePanels() {
       openPanel = panel;
       panel.setAttribute("data-panel-state", "open");
       pausePageScroll();
-      if (content) content.scrollTop = 0;
+
+      // Smooth scrolling for the panel's own scroll area
+      var panelLenis = createNestedLenis(content);
+      if (panelLenis) {
+        panelLenis.scrollTo(0, { immediate: true });
+        panelLenis.resize();
+        panelLenis.start();
+      } else if (content) {
+        content.scrollTop = 0;
+      }
 
       if (!hasGsap) {
         panel.style.display = "block";
@@ -74,6 +101,7 @@ function initSidePanels() {
     panel.close = function () {
       panel.setAttribute("data-panel-state", "closed");
       resumePageScroll();
+      if (content && content.__lenis) content.__lenis.stop();
       if (openPanel === panel) openPanel = null;
 
       if (!hasGsap) {
