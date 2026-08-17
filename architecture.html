@@ -37,6 +37,65 @@
 
 <main data-barba="container" data-barba-namespace="architecture" data-page-name="Architecture">
 
+<!-- Scaling hamburger navigation -->
+<nav data-navigation-status="not-active" class="navigation">
+  <div data-navigation-toggle="close" class="navigation__dark-bg"></div>
+  <div class="hamburger-nav">
+    <div class="hamburger-nav__bg"></div>
+    <div class="hamburger-nav__group">
+      <p class="hamburger-nav__menu-p">Menu</p>
+      <ul class="hamburger-nav__ul">
+        <li class="hamburger-nav__li">
+          <a href="index.html" class="hamburger-nav__a">
+            <p class="hamburger-nav__p">Home</p>
+            <div class="hamburger-nav__dot"></div>
+          </a>
+        </li>
+        <li class="hamburger-nav__li">
+          <a href="influence.html" class="hamburger-nav__a">
+            <p class="hamburger-nav__p">Influence</p>
+            <div class="hamburger-nav__dot"></div>
+          </a>
+        </li>
+        <li class="hamburger-nav__li">
+          <a href="architecture.html" class="hamburger-nav__a">
+            <p class="hamburger-nav__p">Architecture</p>
+            <div class="hamburger-nav__dot"></div>
+          </a>
+        </li>
+        <li class="hamburger-nav__li">
+          <a href="shop.html" class="hamburger-nav__a">
+            <p class="hamburger-nav__p">Shop</p>
+            <div class="hamburger-nav__dot"></div>
+          </a>
+        </li>
+        <li class="hamburger-nav__li">
+          <a href="partner.html" class="hamburger-nav__a">
+            <p class="hamburger-nav__p">Partners</p>
+            <div class="hamburger-nav__dot"></div>
+          </a>
+        </li>
+        <li class="hamburger-nav__li">
+          <a href="partners-archive.html" class="hamburger-nav__a">
+            <p class="hamburger-nav__p">Archive</p>
+            <div class="hamburger-nav__dot"></div>
+          </a>
+        </li>
+        <li class="hamburger-nav__li">
+          <a href="#contact" data-panel-open="contact" data-barba-prevent="self" data-navigation-toggle="close" class="hamburger-nav__a">
+            <p class="hamburger-nav__p">Contact</p>
+            <div class="hamburger-nav__dot"></div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div data-navigation-toggle="toggle" class="hamburger-nav__toggle">
+      <div class="hamburger-nav__toggle-bar"></div>
+      <div class="hamburger-nav__toggle-bar"></div>
+    </div>
+  </div>
+</nav>
+
 <!-- Navbar -->
 <header class="navbar navbar-static">
   <div class="navbar-inner">
@@ -266,6 +325,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/CustomEase.min.js"></script>
+<script src="nav.js"></script>
 <script src="sidepanel.js"></script>
 <script src="transitions.js"></script>
 

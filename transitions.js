@@ -43,8 +43,9 @@ function initBeforeEnterFunctions(next) {
 function initAfterEnterFunctions(next) {
   nextPage = next || document;
 
-  // The incoming container carries its own panels and triggers, so rebind them
+  // The incoming container carries its own nav, panels and triggers — rebind them
   if (typeof initSidePanels === "function") initSidePanels();
+  if (typeof initScalingHamburgerNavigation === "function") initScalingHamburgerNavigation();
 
   if (hasLenis) {
     lenis.resize();

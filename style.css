@@ -869,3 +869,201 @@ h3 {
   h3 { font-size: 24px; }
   .footer-bottom { flex-direction: column; gap: 16px; }
 }
+
+/* ---------- Scaling hamburger navigation ---------- */
+.navigation {
+  z-index: 90;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+}
+
+.navigation__dark-bg {
+  transition: all 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+  opacity: 0;
+  pointer-events: auto;
+  visibility: hidden;
+  background-color: #000;
+  position: absolute;
+  inset: 0;
+}
+
+[data-navigation-status="active"] .navigation__dark-bg {
+  opacity: 0.33;
+  visibility: visible;
+}
+
+.hamburger-nav {
+  border-radius: 1.5em;
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+}
+
+.hamburger-nav__bg {
+  transition: all 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+  background-color: #ffffff;
+  border-radius: 1.75em;
+  width: 3.5em;
+  height: 3.5em;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+[data-navigation-status="active"] .hamburger-nav__bg {
+  width: 100%;
+  height: 100%;
+}
+
+.hamburger-nav__group {
+  transition: all 0.5s cubic-bezier(0.5, 0.5, 0, 1), transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  pointer-events: auto;
+  transform-origin: 100% 0;
+  flex-flow: column;
+  padding: 2.25em 2.5em 2em 2em;
+  display: flex;
+  position: relative;
+  transform: scale(0.15) rotate(0.001deg);
+  opacity: 0;
+  visibility: hidden;
+}
+
+[data-navigation-status="active"] .hamburger-nav__group {
+  transform: scale(1) rotate(0.001deg);
+  opacity: 1;
+  visibility: visible;
+}
+
+.hamburger-nav__menu-p {
+  opacity: .5;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #000509;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.hamburger-nav__ul {
+  grid-column-gap: .375em;
+  grid-row-gap: .375em;
+  flex-flow: column;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  display: flex;
+  position: relative;
+}
+
+.hamburger-nav__li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hamburger-nav__a {
+  color: #131313;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+}
+
+.hamburger-nav__a[aria-current] .hamburger-nav__p {
+  opacity: 0.33;
+}
+
+.hamburger-nav__p {
+  white-space: nowrap;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-right: 1.25em;
+  font-size: 2em;
+  line-height: 1.2;
+}
+
+.hamburger-nav__dot {
+  transition: all 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+  background-color: currentColor;
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: .5em;
+  height: .5em;
+  transform: scale(0) rotate(0.001deg);
+  opacity: 0.5;
+}
+
+.hamburger-nav__a[aria-current] .hamburger-nav__dot {
+  transform: scale(1) rotate(0.001deg);
+  opacity: 1;
+}
+
+.hamburger-nav:has(.hamburger-nav__a:hover) .hamburger-nav__dot {
+  transform: scale(0) rotate(0.001deg);
+}
+
+.hamburger-nav .hamburger-nav__a:hover .hamburger-nav__dot {
+  transform: scale(1) rotate(0.001deg);
+  opacity: 0.25;
+}
+
+.hamburger-nav__toggle {
+  transition: transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+  pointer-events: auto;
+  cursor: pointer;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 3.5em;
+  height: 3.5em;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(0em, 0em) rotate(0.001deg);
+}
+
+[data-navigation-status="active"] .hamburger-nav__toggle {
+  transform: translate(-1em, 1em) rotate(0.001deg);
+}
+
+.hamburger-nav__toggle-bar {
+  transition: transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+  background-color: #131313;
+  width: 40%;
+  height: .125em;
+  position: absolute;
+  transform: translateY(-0.15em) rotate(0.001deg);
+}
+
+.hamburger-nav__toggle:hover .hamburger-nav__toggle-bar {
+  transform: translateY(0.15em) rotate(0.001deg);
+}
+
+[data-navigation-status="active"] .hamburger-nav__toggle .hamburger-nav__toggle-bar {
+  transform: translateY(0em) rotate(45deg);
+}
+
+.hamburger-nav__toggle .hamburger-nav__toggle-bar:nth-child(2) {
+  transition: transform 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+  transform: translateY(0.15em) rotate(0.001deg);
+}
+
+.hamburger-nav__toggle:hover .hamburger-nav__toggle-bar:nth-child(2) {
+  transform: translateY(-0.15em) rotate(0.001deg);
+}
+
+[data-navigation-status="active"] .hamburger-nav__toggle .hamburger-nav__toggle-bar:nth-child(2) {
+  transform: translateY(0em) rotate(-45deg);
+}
+
+/* The toggle sits in the top-right corner, so keep the navbar clear of it */
+.nav-actions { padding-right: 72px; }
+
+@media (max-width: 991px) {
+  .hamburger-nav__p { font-size: 1.5em; }
+}
