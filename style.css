@@ -421,6 +421,24 @@ h3 {
   border-right-style: none;
 }
 
+/* Name of the page being transitioned to, centred over the panels */
+.transition__label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  visibility: hidden;
+  display: flex;
+  gap: 2px;
+  white-space: nowrap;
+  color: #ffffff;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -0.4px;
+  text-transform: uppercase;
+}
+
 /* Narrow margin columns at either edge of the grid */
 .transition__panel.is--gutter,
 .transition__line.is--gutter {
@@ -812,6 +830,7 @@ h3 {
 /* ---------- Basic responsive fallback ---------- */
 @media (max-width: 991px) {
   :root { --grid-gutter: 20px; }
+  .transition__label { font-size: 24px; }
   .section, .footer { padding-left: 24px; padding-right: 24px; }
   .navbar { padding: 0 24px; }
   .hero { padding: 112px 24px; }

@@ -69,6 +69,12 @@ function runPageOnceAnimation(next) {
 function runPageLeaveAnimation(current, next) {
   const transitionWrap = document.querySelector("[data-transition-wrap]");
   const transitionColumns = transitionWrap.querySelectorAll("[data-transition-column]");
+  const transitionLabel = transitionWrap.querySelector("[data-transition-label]");
+  const transitionLabelText = transitionWrap.querySelector("[data-transition-label-text]");
+
+  // Name of the page we are heading to
+  const nextPageName = next.getAttribute("data-page-name");
+  transitionLabelText.innerText = nextPageName || "Hi there";
 
   const tl = gsap.timeline({
     onComplete: () => { current.remove() }
@@ -94,12 +100,19 @@ function runPageLeaveAnimation(current, next) {
     },
   }, 0);
 
+  tl.fromTo(transitionLabel, {
+    autoAlpha: 0
+  },{
+    autoAlpha: 1
+  }, "<+=0.2");
+
   return tl;
 }
 
 function runPageEnterAnimation(next){
   const transitionWrap = document.querySelector("[data-transition-wrap]");
   const transitionColumns = transitionWrap.querySelectorAll("[data-transition-column]");
+  const transitionLabel = transitionWrap.querySelector("[data-transition-label]");
 
   const tl = gsap.timeline();
 
@@ -122,6 +135,21 @@ function runPageEnterAnimation(next){
     duration: 0.6,
     stagger: 0.06,
     overwrite: "auto",
+  }, "startEnter");
+
+  tl.fromTo(transitionLabel, {
+    autoAlpha: 1
+  },{
+    autoAlpha: 0,
+    duration: 0.4,
+    overwrite: "auto",
+    immediateRender: false
+  }, "startEnter+=0.1");
+
+  // Subtle swipe up: the incoming page is drawn upward as the panels clear
+  tl.from(next, {
+    y: "10vh",
+    duration: 0.9,
   }, "startEnter");
 
   tl.add("pageReady");
@@ -225,7 +253,9 @@ function initLenis() {
 
 function resetPage(container){
   window.scrollTo(0, 0);
-  gsap.set(container, { clearProps: "position,top,left,right" });
+  // The transform must go too — it would make the container the containing
+  // block for the fixed navbar and side panels.
+  gsap.set(container, { clearProps: "position,top,left,right,transform" });
 
   if (hasLenis) {
     lenis.resize();
