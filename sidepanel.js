@@ -36,7 +36,16 @@ function initSidePanels() {
     var overlay = panel.querySelector("[data-panel-backdrop]");
     var sheets = panel.querySelectorAll("[data-panel-bg]");
     var content = panel.querySelector("[data-panel-inner]");
+    var closeBtn = panel.querySelector(".panel-close");
+    var reveal = closeBtn ? [content, closeBtn] : [content];
     var tl = hasGsap ? gsap.timeline() : null;
+
+    // Park everything off-screen / hidden up front so nothing can paint on the
+    // frame where the panel becomes visible.
+    if (hasGsap) {
+      gsap.set(sheets, { xPercent: 101 });
+      gsap.set(reveal, { autoAlpha: 0 });
+    }
 
     panel.open = function () {
       if (openPanel && openPanel !== panel) openPanel.close();
@@ -51,11 +60,15 @@ function initSidePanels() {
       }
 
       tl.clear()
-        .set(panel, { display: "block" })
+        .set(sheets, { xPercent: 101 })
+        .set(reveal, { autoAlpha: 0 }, "<")
+        .set(overlay, { autoAlpha: 0 }, "<")
         .set(dialog, { xPercent: 0 }, "<")
-        .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-        .fromTo(sheets, { xPercent: 101 }, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
-        .fromTo(content, { autoAlpha: 0, xPercent: 15 }, { autoAlpha: 1, xPercent: 0 }, "<+=0.35");
+        .set(panel, { display: "block" }, "<")
+        .to(overlay, { autoAlpha: 1 }, "<")
+        .to(sheets, { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
+        .fromTo(content, { xPercent: 15 }, { xPercent: 0 }, "<+=0.35")
+        .to(reveal, { autoAlpha: 1 }, "<");
     };
 
     panel.close = function () {
@@ -72,7 +85,9 @@ function initSidePanels() {
         .to(overlay, { autoAlpha: 0 })
         .to(dialog, { xPercent: 120 }, "<")
         .set(panel, { display: "none" })
-        .set(content, { clearProps: "all" });
+        .set(reveal, { autoAlpha: 0 })
+        .set(sheets, { xPercent: 101 })
+        .set(content, { clearProps: "xPercent" });
     };
 
     panel.querySelectorAll("[data-panel-close]").forEach(function (closer) {
