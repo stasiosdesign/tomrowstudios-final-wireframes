@@ -5,10 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Influence — Tomrow Studios</title>
 <!-- Lenis smooth scroll -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.2.3/dist/lenis.css">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.17/dist/lenis.css">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-barba="wrapper">
+
+<!-- Page transition overlay (outside the Barba container so the lines persist) -->
+<div data-transition-wrap class="transition">
+  <div class="transition__panels">
+    <div data-transition-column class="transition__panel"></div>
+    <div data-transition-column class="transition__panel"></div>
+    <div data-transition-column class="transition__panel"></div>
+    <div data-transition-column class="transition__panel"></div>
+    <div data-transition-column class="transition__panel"></div>
+  </div>
+  <div class="transition__lines">
+    <div class="transition__line"></div>
+    <div class="transition__line"></div>
+    <div class="transition__line"></div>
+    <div class="transition__line"></div>
+    <div class="transition__line is--last"></div>
+  </div>
+</div>
+
+<main data-barba="container" data-barba-namespace="influence">
 
 <!-- Navbar -->
 <header class="navbar navbar-static">
@@ -21,7 +41,7 @@
       <a href="partner.html">Partner</a>
     </nav>
     <div class="nav-actions">
-      <a href="#contact" data-panel-open="contact" class="btn btn-white">Lets Talk</a>
+      <a href="#contact" data-panel-open="contact" data-barba-prevent="self" class="btn btn-white">Lets Talk</a>
     </div>
   </div>
 </header>
@@ -231,7 +251,7 @@
           <li><a href="architecture.html">Portfolio</a></li>
           <li><a href="shop.html">Shop</a></li>
           <li><a href="partner.html">Partners</a></li>
-          <li><a href="#contact" data-panel-open="contact">Contact</a></li>
+          <li><a href="#contact" data-panel-open="contact" data-barba-prevent="self">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -313,17 +333,14 @@
   </div>
 </div>
 
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/CustomEase.min.js"></script>
 <script src="sidepanel.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.2.3/dist/lenis.min.js"></script>
-<script>
-  // Lenis
-  const lenis = new Lenis({
-    autoRaf: true,
-  });
-  window.lenis = lenis;
-</script>
+<script src="transitions.js"></script>
 
 </body>
 </html>
