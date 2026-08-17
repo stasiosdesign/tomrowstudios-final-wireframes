@@ -1,0 +1,204 @@
+/* Tomrow Studios — plain CSS translation of the Figma design */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #000000;
+  color: #ffffff;
+  font-family: "BDO Grotesk", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.container-narrow { max-width: 1024px; margin: 0 auto 0 0; }
+
+.section {
+  padding: 112px 64px;
+  background: #000000;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.btn-white  { background: #ffffff; border-color: #ffffff; color: #000509; padding: 8px 20px; }
+.btn-black  { background: #000000; border-color: #000000; color: #ffffff; }
+.btn-light  { background: rgba(0, 5, 9, 0.05); color: #000509; }
+.btn-ghost  { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+.btn-link   { background: none; padding: 10px 0; color: #ffffff; }
+.btn-link img { width: 24px; height: 24px; }
+
+.actions { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  padding: 0 64px;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+.navbar-inner {
+  width: 100%;
+  max-width: 1312px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.logo { flex: 1; }
+.logo img { width: 146px; height: 62px; object-fit: contain; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { text-decoration: none; }
+.nav-actions { flex: 1; display: flex; justify-content: flex-end; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 900px;
+  padding: 112px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("assets/hero.png");
+  background-size: cover;
+  background-position: center;
+}
+.hero-inner {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  gap: 80px;
+  align-items: stretch;
+}
+.hero-col { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+.hero-col-two { justify-content: flex-end; align-items: flex-end; text-align: right; }
+.hero h1 {
+  margin: 0;
+  font-size: 56px;
+  line-height: 1.2;
+  letter-spacing: -0.56px;
+  font-weight: 600;
+}
+.hero-col-two p { margin: 0; font-size: 18px; }
+
+/* ---------- Typography ---------- */
+.tagline { margin: 0 0 16px; font-weight: 700; font-size: 16px; }
+h2 {
+  margin: 0 0 32px;
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: -0.48px;
+  font-weight: 400;
+}
+h3 {
+  margin: 0 0 16px;
+  font-size: 32px;
+  line-height: 1.3;
+  letter-spacing: -0.32px;
+  font-weight: 400;
+}
+.lead { font-size: 18px; margin: 0 0 32px; }
+
+.section-title {
+  max-width: 768px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+.section-title h2 { margin-bottom: 24px; }
+.section-title .lead { margin-bottom: 0; }
+
+/* ---------- Two column (Recognition) ---------- */
+.two-col { display: flex; gap: 80px; margin-bottom: 80px; }
+.two-col > div { flex: 1; }
+.two-col-offset { padding-top: 160px; }
+.two-col h2 { margin-bottom: 0; }
+
+/* ---------- Staggered cards ---------- */
+.cards { display: flex; gap: 48px; align-items: flex-start; }
+.card { flex: 1; }
+.card-offset-1 { padding-top: 100px; }
+.card-offset-2 { padding-top: 200px; }
+.card-img {
+  width: 100%;
+  aspect-ratio: 394 / 240;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+.card p { margin: 0; }
+
+/* ---------- Galleries ---------- */
+.gallery { display: flex; gap: 32px; }
+.gallery img {
+  flex: 1;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ---------- Footer ---------- */
+.footer { padding: 80px 64px; background: #000000; }
+.footer-top { display: flex; gap: 64px; margin-bottom: 80px; }
+.footer-brand { flex: 1; display: flex; flex-direction: column; gap: 24px; }
+.footer-logo { width: 84px; height: 36px; object-fit: contain; margin-bottom: 8px; }
+.footer-block { font-size: 14px; }
+.footer-block p { margin: 0 0 4px; }
+.footer-block .strong { font-weight: 700; }
+.footer-block a { text-decoration: underline; }
+
+.social { display: flex; gap: 12px; margin-top: 8px; }
+.social img { width: 24px; height: 24px; }
+
+.footer-links { flex: 1; max-width: 400px; display: flex; gap: 24px; }
+.footer-links ul { flex: 1; list-style: none; margin: 0; padding: 0; }
+.footer-links li { padding: 8px 0; font-size: 14px; font-weight: 700; }
+.footer-links a { text-decoration: none; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.footer-bottom p { margin: 0; }
+.footer-legal { display: flex; gap: 24px; }
+.footer-legal a { text-decoration: underline; }
+
+/* ---------- Basic responsive fallback ---------- */
+@media (max-width: 991px) {
+  .section, .footer { padding-left: 24px; padding-right: 24px; }
+  .navbar { padding: 0 24px; }
+  .hero { padding: 112px 24px; }
+  .hero-inner, .two-col, .cards, .gallery, .footer-top { flex-direction: column; }
+  .hero-col-two { text-align: left; align-items: flex-start; }
+  .two-col-offset, .card-offset-1, .card-offset-2 { padding-top: 0; }
+  .hero h1 { font-size: 40px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 24px; }
+  .footer-bottom { flex-direction: column; gap: 16px; }
+}
