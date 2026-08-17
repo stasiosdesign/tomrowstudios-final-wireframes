@@ -21,7 +21,7 @@
       <a href="partner.html">Partner</a>
     </nav>
     <div class="nav-actions">
-      <a href="contact.html" class="btn btn-white">Lets Talk</a>
+      <a href="partner.html#enquire" class="btn btn-white">Lets Talk</a>
     </div>
   </div>
 </header>
@@ -36,12 +36,12 @@
       <p class="lead">Content, strategy and collaboration for architecture, design and technology organisations</p>
     </div>
     <div class="slider-row">
-      <img src="assets/partners/g1.png" alt="">
-      <img src="assets/partners/g2.png" alt="">
-      <img src="assets/partners/g3.png" alt="">
-      <img src="assets/partners/g4.png" alt="">
-      <img src="assets/partners/g5.png" alt="">
-      <img src="assets/partners/g5.png" alt="">
+      <a href="#case-rayon"><img src="assets/partners/g1.png" alt="Case study"></a>
+      <a href="#case-rayon"><img src="assets/partners/g2.png" alt="Case study"></a>
+      <a href="#case-rayon"><img src="assets/partners/g3.png" alt="Case study"></a>
+      <a href="#case-rayon"><img src="assets/partners/g4.png" alt="Case study"></a>
+      <a href="#case-rayon"><img src="assets/partners/g5.png" alt="Case study"></a>
+      <a href="#case-rayon"><img src="assets/partners/g5.png" alt="Case study"></a>
     </div>
     <div class="slider-controls">
       <div class="slider-dots">
@@ -225,7 +225,7 @@
 </section>
 
 <!-- Enquiry form -->
-<section class="section">
+<section class="section" id="enquire">
   <div class="container">
     <div class="contact-split">
       <div>
@@ -349,6 +349,78 @@
     </div>
   </div>
 </footer>
+
+<!-- Case study pop-up (CSS :target modal, no JavaScript) -->
+<div class="panel" id="case-rayon">
+  <a class="panel-backdrop" href="#" aria-label="Close case study"></a>
+  <div class="panel-dialog">
+    <a class="panel-close" href="#" aria-label="Close">&times;</a>
+
+    <header class="panel-header">
+      <img class="panel-header-img" src="assets/case/header.png" alt="">
+      <div class="panel-header-body">
+        <div class="panel-header-main">
+          <h2>Rayon tutorials</h2>
+          <p class="lead">A series of tutorial films and product walkthroughs showing how architects use Rayon to draw, share and collaborate on real projects.</p>
+          <div class="tags">
+            <span class="tag">Tag one</span>
+            <span class="tag">Tag two</span>
+            <span class="tag">Tag three</span>
+          </div>
+        </div>
+        <dl class="panel-meta">
+          <div><dt>Client</dt><dd>Rayon Design</dd></div>
+          <div><dt>Date</dt><dd>October 2024</dd></div>
+          <div><dt>Role</dt><dd>Content planning and end-to-end tutorial production</dd></div>
+          <div><dt>Website</dt><dd><a href="https://www.rayon.design">www.rayon.design</a></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="section panel-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Selected work</h2>
+          <p class="lead">Tutorial films showing architects how to use Rayon in practice</p>
+        </div>
+        <div class="slider-row">
+          <img src="assets/case/g1.png" alt="">
+          <img src="assets/case/g2.png" alt="">
+          <img src="assets/case/g3.png" alt="">
+          <img src="assets/case/g4.png" alt="">
+          <img src="assets/case/g5.png" alt="">
+          <img src="assets/case/g5.png" alt="">
+        </div>
+        <div class="slider-controls">
+          <div class="slider-dots">
+            <span class="dot dot-active"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <div class="slider-arrows">
+            <button type="button" class="slider-arrow"><img src="assets/partners/arrow-back.svg" alt="Previous"></button>
+            <button type="button" class="slider-arrow"><img src="assets/partners/arrow-forward.svg" alt="Next"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section panel-section">
+      <div class="container">
+        <div class="rich-split">
+          <h3>Making the product clear in practice</h3>
+          <div class="rich-text">
+            <p>Rayon needed a way to show architects and interior designers exactly how the software works. Not through abstract promises or feature lists. Through real demonstration. The brief was straightforward. Create a series of tutorial films that communicate the tool's capabilities with precision and clarity.</p>
+            <p>Tom Rowntree managed the full production process from concept through to final delivery. This began with planning the tutorial structure. Each film was designed to address a specific workflow. Drawing a floor plan. Sharing a file with a collaborator. Building a library of reusable details. The goal was never to impress. It was to instruct.</p>
+            <p>Filming took place in working architectural studios. This was a deliberate choice. The software needed to be seen in the environment where it would actually be used. Not in a sterile showroom. The camera captured real screens, real hands, and real design decisions as they happened. The result is content that feels honest and immediately useful.</p>
+            <p>Editing focused on removing anything that did not serve the lesson. No music. No slow-motion pans across empty desks. Just the software interface, a clear voiceover, and the steps an architect needs to follow. Each tutorial runs long enough to teach the skill and short enough to watch between meetings.</p>
+            <p>The finished films show Rayon functioning inside genuine design situations. An architect drawing over a scanned plan. A team commenting on a shared layout. A designer pulling together a mood board directly within the tool. The tutorials do not tell people the product works. They watch it work.</p>
+          </div>
+        </div>
+        <img class="panel-wide-img" src="assets/case/wide.png" alt="">
+      </div>
+    </section>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.2.3/dist/lenis.min.js"></script>
 <script>
