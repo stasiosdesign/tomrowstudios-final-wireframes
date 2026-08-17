@@ -164,6 +164,11 @@ barba.hooks.afterEnter(data => {
   }
 });
 
+// Barba fetches the next page over HTTP, which the file:// protocol blocks.
+// Opening a page straight from disk falls back to normal navigation.
+if (location.protocol === "file:") {
+  initOnceFunctions();
+} else {
 barba.init({
   debug: false,
   timeout: 7000,
@@ -192,6 +197,7 @@ barba.init({
     }
   ],
 });
+}
 
 
 // -----------------------------------------
