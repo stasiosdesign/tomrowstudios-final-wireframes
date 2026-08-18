@@ -30,6 +30,10 @@ function initWillemLoadingAnimation() {
   const container = document.querySelector(".willem-header");
   if (!container) return; // not the home page
 
+  // Claim the intro synchronously, before the timeline exists: settleHomeHero
+  // must never be able to snap the loader to its end state mid-animation.
+  homeIntroHasRun = true;
+
   const loadingLetter = container.querySelectorAll(".willem__letter");
   const box = container.querySelectorAll(".willem-loader__box");
   const growingImage = container.querySelectorAll(".willem__growing-image");
@@ -48,7 +52,6 @@ function initWillemLoadingAnimation() {
       ease: "expo.inOut",
     },
     onStart: () => {
-      homeIntroHasRun = true;
       container.classList.remove('is--hidden');
       // Hold the page at the top for the length of the intro
       window.scrollTo(0, 0);
