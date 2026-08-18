@@ -938,10 +938,12 @@ h3 {
 
 
 /* ---------- Film grain overlay ---------- */
+/* Above the page and nav, below the drawers (100) and the page transition
+   (200) so those read cleanly */
 .grain {
   position: fixed;
   inset: 0%;
-  z-index: 999;
+  z-index: 90;
   pointer-events: none;
   /* Smaller tile = finer, denser grain */
   background: url("https://osmo.b-cdn.net/resource-media/noise.avif") 50% 50% / 3.5em repeat;

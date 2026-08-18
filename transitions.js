@@ -39,10 +39,6 @@ function initOnceFunctions() {
 
 function initBeforeEnterFunctions(next) {
   nextPage = next || document;
-
-  // Reached through a Barba navigation, so the home hero shows without the
-  // intro animation (which is reserved for a first load / refresh).
-  if (typeof settleHomeHero === "function") settleHomeHero(nextPage);
 }
 
 function initAfterEnterFunctions(next) {
@@ -245,8 +241,11 @@ barba.init({
         return runPageLeaveAnimation(data.current.container, data.next.container);
       },
 
-      // New page enters
+      // New page enters. `enter` never runs on a first load — that is `once` —
+      // so this is the safe place to show the home hero without its intro.
       async enter(data) {
+        if (typeof settleHomeHero === "function") settleHomeHero(data.next.container);
+
         return runPageEnterAnimation(data.next.container);
       }
     }
