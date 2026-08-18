@@ -1417,7 +1417,7 @@ main:has(.willem-header.is--loading) {
   opacity: .5;
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 1.3125em;
+  font-size: 1.125em;
   font-weight: 600;
 }
 
@@ -1452,7 +1452,7 @@ main:has(.willem-header.is--loading) {
 
 .site-footer__a {
   color: inherit;
-  font-size: 2.75em;
+  font-size: 2.25em;
   line-height: 1;
   text-decoration: none;
   margin: 0;
@@ -1460,7 +1460,7 @@ main:has(.willem-header.is--loading) {
 
 .site-footer__wordmark {
   margin: 0;
-  font-size: 8em;
+  font-size: 6.5em;
   line-height: .85;
   letter-spacing: -.03em;
   font-weight: 600;
@@ -1504,7 +1504,7 @@ main:has(.willem-header.is--loading) {
     width: 100%;
   }
 
-  .site-footer__wordmark { font-size: 5em; }
+  .site-footer__wordmark { font-size: 4em; }
 }
 
 @media screen and (max-width: 767px) {
@@ -1523,10 +1523,10 @@ main:has(.willem-header.is--loading) {
   }
 
   .site-footer__a {
-    font-size: 1.75em;
+    font-size: 1.5em;
   }
 
-  .site-footer__wordmark { font-size: 3em; }
+  .site-footer__wordmark { font-size: 2.5em; }
 }
 
 /* ------------------------- Underline Link [https://osmo.supply/] -------------------------  */
