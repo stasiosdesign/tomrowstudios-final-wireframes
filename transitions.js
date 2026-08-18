@@ -38,6 +38,10 @@ function initOnceFunctions() {
 
 function initBeforeEnterFunctions(next) {
   nextPage = next || document;
+
+  // Reached through a Barba navigation, so the home hero shows without the
+  // intro animation (which is reserved for a first load / refresh).
+  if (typeof settleHomeHero === "function") settleHomeHero(nextPage);
 }
 
 function initAfterEnterFunctions(next) {
@@ -45,6 +49,7 @@ function initAfterEnterFunctions(next) {
 
   // The incoming container carries its own panels and triggers, so rebind them
   if (typeof initSidePanels === "function") initSidePanels();
+  if (typeof initHomeHeroNav === "function") initHomeHeroNav(nextPage);
 
   if (hasLenis) {
     lenis.resize();
@@ -199,6 +204,7 @@ if (location.protocol === "file:") {
   if (typeof initWillemLoadingAnimation === "function") {
     initWillemLoadingAnimation();
   }
+  if (typeof initHomeHeroNav === "function") initHomeHeroNav(document);
 } else {
 barba.init({
   debug: false,
@@ -218,6 +224,7 @@ barba.init({
         if (typeof initWillemLoadingAnimation === "function") {
           initWillemLoadingAnimation();
         }
+        if (typeof initHomeHeroNav === "function") initHomeHeroNav(document);
 
         return runPageOnceAnimation(data.next.container);
       },

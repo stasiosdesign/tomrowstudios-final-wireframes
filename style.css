@@ -1125,7 +1125,9 @@ main:has(.willem-header.is--loading:not(.is--hidden)) {
   align-items: center;
   width: 100%;
   min-height: 100dvh;
-  padding: 3em;
+  /* Horizontal padding matches the grid gutter so the nav and the wordmark
+     start on the same line the overlay draws */
+  padding: 3em var(--grid-gutter);
   display: flex;
   position: relative;
 }
@@ -1165,6 +1167,83 @@ main:has(.willem-header.is--loading:not(.is--hidden)) {
    not sit over the letters while they animate */
 .navbar { transition: opacity 0.6s ease; }
 main:has(.willem-header.is--loading:not(.is--hidden)) .navbar {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Hero nav — the reference's brand-left / links-and-CTA-right split, snapped
+   to the four column grid: brand spans the first two columns, the links and
+   CTA the last two */
+.willen-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.willem-nav__start {
+  grid-column: span 2;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+
+.willem-nav__end {
+  grid-column: span 2;
+  justify-content: space-between;
+  align-items: flex-start;
+  display: flex;
+}
+
+.willem-nav__cta {
+  display: flex;
+}
+
+.willem-nav__links {
+  grid-column-gap: .5em;
+  grid-row-gap: .5em;
+  display: flex;
+}
+
+.willem-nav__link {
+  color: inherit;
+  font-size: 1.3125em;
+  line-height: 1.3;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Settled state — the hero as the intro leaves it. Applied on Barba
+   navigations back to home, where the loading animation does not run. */
+.willem-header.is--settled .willem-loader__box { width: 110vw; }
+.willem-header.is--settled .willem__growing-image { width: 100vw; height: 100dvh; }
+.willem-header.is--settled .willem__cover-image-extra { opacity: 0; }
+
+@media screen and (max-width: 991px) {
+  .willem-nav__links {
+    grid-column-gap: 0em;
+    grid-row-gap: 0em;
+    flex-flow: column;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .willem-nav__start {
+    grid-column: span 2;
+  }
+
+  .willem-nav__end {
+    grid-column-gap: 1.5em;
+    grid-row-gap: 1.5em;
+    flex-flow: column;
+    grid-column: span 2;
+  }
+}
+
+/* Toggled by the hero observer: the hero has its own nav, so the fixed bar
+   only appears once the hero is scrolled past */
+.navbar.is--behind-hero {
   opacity: 0;
   pointer-events: none;
 }
