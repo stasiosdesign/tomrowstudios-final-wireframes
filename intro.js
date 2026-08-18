@@ -10,14 +10,12 @@
 /* Show the hero without the loading animation. Used when the home page is
    reached through a Barba navigation: the section is the page's hero either
    way, only the intro is restricted to a first load. `is--settled` puts the
-   panel and cover image straight into the state the timeline ends on. */
-let homeIntroHasRun = false;
+   panel and cover image straight into the state the timeline ends on.
 
+   Only ever called from the transition's `enter`, which runs on navigations
+   and never on a first load, so it always acts on a freshly fetched container
+   and can never touch a hero whose intro is playing. */
 function settleHomeHero(scope) {
-  // Never settle a hero whose intro is running — that would snap the loader
-  // straight to its end state mid-animation.
-  if (homeIntroHasRun) return;
-
   const container = (scope || document).querySelector(".willem-header");
   if (!container) return;
 
@@ -29,10 +27,6 @@ function initWillemLoadingAnimation() {
 
   const container = document.querySelector(".willem-header");
   if (!container) return; // not the home page
-
-  // Claim the intro synchronously, before the timeline exists: settleHomeHero
-  // must never be able to snap the loader to its end state mid-animation.
-  homeIntroHasRun = true;
 
   const loadingLetter = container.querySelectorAll(".willem__letter");
   const box = container.querySelectorAll(".willem-loader__box");
