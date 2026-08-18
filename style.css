@@ -1197,11 +1197,20 @@ main:has(.willem-header.is--loading:not(.is--hidden)) {
   position: relative;
 }
 
-/* Settled state — the hero as the intro leaves it. Applied on Barba
-   navigations back to home, where the loading animation does not run. */
-.willem-header.is--settled .willem-loader__box { width: 110vw; }
-.willem-header.is--settled .willem__growing-image { width: 100vw; height: 100dvh; }
-.willem-header.is--settled .willem__cover-image-extra { opacity: 0; }
+/* Settled state — the hero once the intro is over, or when the home page is
+   reached through a Barba navigation and the intro never runs. The loader is
+   dropped entirely and a plain full-bleed image takes over, so none of the
+   loader sizing can bleed into the animation. */
+.willem-header__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+.willem-header.is--settled .willem-header__bg { opacity: 1; }
+.willem-header.is--settled .willem-loader { display: none; }
 
 @media screen and (max-width: 991px) {
   .willem-nav__links {
@@ -1278,4 +1287,98 @@ main:has(.willem-header.is--loading:not(.is--hidden)) {
   }
 
   .willem-hero__title { font-size: 4rem; }
+}
+
+/* ---------- Parallax image slider (Smooothy) ---------- */
+.parallax-slider__group, .parallax-slider__collection {
+  width: 100%;
+}
+
+.parallax-slider__list {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.parallax-slider__item {
+  flex: none;
+  padding-left: 1em;
+  padding-right: 1em;
+  position: relative;
+}
+
+.parallax-slider__item-inner {
+  aspect-ratio: 3 / 2;
+  border-radius: .5em;
+  width: 32em;
+  position: relative;
+  overflow: clip;
+  display: block;
+}
+
+.parallax-slider__item-img {
+  object-fit: cover;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 160%;
+  max-width: none;
+  height: 100%;
+  position: absolute;
+  left: -30%;
+}
+
+.parallax-slider__item-visual {
+  will-change: transform;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+}
+
+/* Portrait quote tiles keep their own ratio and sit their text over the image */
+.parallax-slider__item-inner.is--tile {
+  aspect-ratio: 405 / 560;
+  width: 40.5rem;
+  display: flex;
+  align-items: flex-end;
+}
+.parallax-slider__item-inner.is--tile .parallax-slider__item-img { filter: brightness(0.55); }
+.parallax-slider__item-inner.is--tile .quote-tile-body { position: relative; z-index: 1; }
+
+/* Prev / next */
+.parallax-slider__controls {
+  display: flex;
+  gap: 1.6rem;
+  justify-content: flex-end;
+  margin-top: 4.8rem;
+}
+
+.parallax-slider__arrow {
+  width: 4.8rem;
+  height: 4.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.theme-light .parallax-slider__arrow { background: rgba(0, 5, 9, 0.06); color: #000509; }
+.parallax-slider__arrow:hover { background: rgba(255, 255, 255, 0.2); }
+.theme-light .parallax-slider__arrow:hover { background: rgba(0, 5, 9, 0.12); }
+
+@media screen and (max-width: 767px) {
+  .parallax-slider__item {
+    padding-left: .5em;
+    padding-right: .5em;
+  }
+
+  .parallax-slider__item-inner {
+    width: 45vw;
+  }
+
+  .parallax-slider__item-inner.is--tile { width: 70vw; }
 }

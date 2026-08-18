@@ -11,7 +11,13 @@
    reached through a Barba navigation: the section is the page's hero either
    way, only the intro is restricted to a first load. `is--settled` puts the
    panel and cover image straight into the state the timeline ends on. */
+let homeIntroHasRun = false;
+
 function settleHomeHero(scope) {
+  // Never settle a hero whose intro is running — that would snap the loader
+  // straight to its end state mid-animation.
+  if (homeIntroHasRun) return;
+
   const container = (scope || document).querySelector(".willem-header");
   if (!container) return;
 
@@ -42,6 +48,7 @@ function initWillemLoadingAnimation() {
       ease: "expo.inOut",
     },
     onStart: () => {
+      homeIntroHasRun = true;
       container.classList.remove('is--hidden');
       // Hold the page at the top for the length of the intro
       window.scrollTo(0, 0);
