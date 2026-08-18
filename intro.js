@@ -19,25 +19,6 @@ function settleHomeHero(scope) {
   container.classList.add("is--settled");
 }
 
-/* The hero carries its own nav, so the site's fixed navbar stays out of the
-   way until the hero has been scrolled past. */
-function initHomeHeroNav(scope) {
-  const container = (scope || document).querySelector(".willem-header");
-  const navbar = (scope || document).querySelector(".navbar");
-  if (!container || !navbar || !("IntersectionObserver" in window)) return;
-
-  if (container.__navObserver) container.__navObserver.disconnect();
-
-  container.__navObserver = new IntersectionObserver(
-    ([entry]) => {
-      navbar.classList.toggle("is--behind-hero", entry.isIntersecting);
-    },
-    { threshold: 0, rootMargin: "-30% 0px 0px 0px" }
-  );
-
-  container.__navObserver.observe(container);
-}
-
 function initWillemLoadingAnimation() {
 
   const container = document.querySelector(".willem-header");
@@ -51,7 +32,8 @@ function initWillemLoadingAnimation() {
   const coverImageExtra = container.querySelectorAll(".willem__cover-image-extra");
   // The hero copy and CTAs take the place of the original wordmark letters
   const headerLetter = container.querySelectorAll(".willem__letter-white, .willem__reveal");
-  const navLinks = container.querySelectorAll(".willen-nav a");
+  // The nav is now the fixed site bar, outside the hero section
+  const navLinks = document.querySelectorAll(".site-nav a");
 
 
   /* GSAP Timeline */

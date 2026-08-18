@@ -119,32 +119,24 @@ a { color: inherit; }
 
 .actions { display: flex; gap: 2.4rem; align-items: center; flex-wrap: wrap; }
 
-/* ---------- Navbar ---------- */
-.navbar {
+/* ---------- Site nav (fixed) ---------- */
+.site-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 7.2rem;
-  padding: 0 var(--grid-gutter);
-  background: transparent;
-  display: flex;
-  align-items: center;
+  /* Same inset as the hero content, so on the home page it sits exactly
+     where the hero design puts it */
+  padding: 3em var(--grid-gutter);
+  color: #f4f4f4;
   z-index: 80;
 }
-.navbar-inner {
-  width: 100%;
-  max-width: none;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 3.2rem;
-}
-.logo { flex: 1; }
-.logo img { width: 14.6rem; height: 6.2rem; object-fit: contain; }
-.nav-links { display: flex; gap: 3.2rem; align-items: center; }
-.nav-links a { text-decoration: none; }
-.nav-actions { flex: 1; display: flex; justify-content: flex-end; }
+
+/* Black text wherever the page behind the bar is white */
+main:has(> .theme-light) .site-nav { color: #000509; }
+
+/* Inner pages clear the fixed bar; the home page hero sits under it by design */
+main:not(:has(.willem-header)) .site-nav + * { padding-top: 12.4rem; }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -233,8 +225,6 @@ h3 {
 /* ---------- Alternate dark section ---------- */
 .section-alt { background: #000509; }
 
-/* The bar is fixed on every page; inner pages reserve the space it used to take */
-.navbar-static + * { padding-top: 7.2rem; }
 
 /* ---------- Lightbox / video still ---------- */
 .lightbox { position: relative; width: 100%; aspect-ratio: 1440 / 810; overflow: hidden; }
@@ -898,7 +888,7 @@ h3 {
   :root { --grid-gutter: 2rem; }
   .transition__label { font-size: 1.6rem; }
   .section, .footer { padding-left: var(--grid-gutter); padding-right: var(--grid-gutter); }
-  .navbar { padding: 0 var(--grid-gutter); }
+  .site-nav { padding: 2em var(--grid-gutter); }
   .hero { padding: 11.2rem var(--grid-gutter); }
   .tabs, .form-row { flex-direction: column; }
   /* every grid collapses to a single column */
@@ -1016,7 +1006,7 @@ main:has(.willem-header.is--loading:not(.is--hidden)) {
 .willem__h1 {
   white-space: nowrap;
   justify-content: center;
-  font-size: 10vw;
+  font-size: 6vw;
   font-weight: 500;
   line-height: .75;
   display: flex;
@@ -1153,23 +1143,16 @@ main:has(.willem-header.is--loading:not(.is--hidden)) {
 
 @media screen and (max-width: 991px) {
   .willem__h1 {
-    font-size: 9vw;
+    font-size: 6.5vw;
   }
 }
 
 @media screen and (max-width: 767px) {
   .willem__h1 {
-    font-size: 8vw;
+    font-size: 7vw;
   }
 }
 
-/* The site navbar stays out of the way until the intro finishes, so it does
-   not sit over the letters while they animate */
-.navbar { transition: opacity 0.6s ease; }
-main:has(.willem-header.is--loading:not(.is--hidden)) .navbar {
-  opacity: 0;
-  pointer-events: none;
-}
 
 /* Hero nav — the reference's brand-left / links-and-CTA-right split, snapped
    to the four column grid: brand spans the first two columns, the links and
@@ -1241,12 +1224,6 @@ main:has(.willem-header.is--loading:not(.is--hidden)) .navbar {
   }
 }
 
-/* Toggled by the hero observer: the hero has its own nav, so the fixed bar
-   only appears once the hero is scrolled past */
-.navbar.is--behind-hero {
-  opacity: 0;
-  pointer-events: none;
-}
 
 /* Hero copy + CTAs, in place of the original wordmark. Two halves of two
    grid columns each, matching the rest of the site. */
