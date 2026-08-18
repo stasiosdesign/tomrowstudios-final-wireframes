@@ -1381,3 +1381,169 @@ main:has(.willem-header.is--loading) {
 
   .parallax-slider__item-inner.is--tile { width: 70vw; }
 }
+
+/* ---------- Footer with parallax reveal ---------- */
+.footer-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Light panel so the darkening layer actually reads against the black site */
+.site-footer {
+  grid-column-gap: 7.5em;
+  grid-row-gap: 7.5em;
+  letter-spacing: -.02em;
+  background-color: #e9e9e9;
+  color: #201d1d;
+  flex-flow: column;
+  justify-content: space-between;
+  min-height: 100svh;
+  padding: 2.5em var(--grid-gutter);
+  font-weight: 600;
+  display: flex;
+  position: relative;
+}
+
+.footer-eyebrow {
+  opacity: .5;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.3125em;
+  font-weight: 600;
+}
+
+.site-footer__links-row {
+  grid-column-gap: 2.5em;
+  grid-row-gap: 2.5em;
+  display: flex;
+}
+
+.site-footer__logo-row {
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  flex-flow: column;
+  display: flex;
+}
+
+.site-footer__col {
+  grid-column-gap: 3em;
+  grid-row-gap: 3em;
+  flex-flow: column;
+  width: calc(33.3333% - 1.66667em);
+  display: flex;
+}
+
+.site-footer__links {
+  grid-column-gap: .25em;
+  grid-row-gap: .25em;
+  flex-flow: column;
+  align-items: flex-start;
+  display: flex;
+}
+
+.site-footer__a {
+  color: inherit;
+  font-size: 2.75em;
+  line-height: 1;
+  text-decoration: none;
+  margin: 0;
+}
+
+.site-footer__wordmark {
+  margin: 0;
+  font-size: 8em;
+  line-height: .85;
+  letter-spacing: -.03em;
+  font-weight: 600;
+}
+
+.site-footer__legal {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5em;
+  flex-wrap: wrap;
+  margin-top: 1.5em;
+}
+
+.site-footer__legal-links {
+  display: flex;
+  gap: 1.5em;
+}
+
+.footer-wrap__dark {
+  opacity: 0;
+  pointer-events: none;
+  background-color: #201d1d;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .site-footer__links-row {
+    flex-flow: column;
+  }
+
+  .site-footer__logo-row {
+    grid-column-gap: 1.5em;
+    grid-row-gap: 1.5em;
+  }
+
+  .site-footer__col {
+    width: 100%;
+  }
+
+  .site-footer__wordmark { font-size: 5em; }
+}
+
+@media screen and (max-width: 767px) {
+  .footer-eyebrow {
+    font-size: 1em;
+  }
+
+  .site-footer {
+    padding-left: var(--grid-gutter);
+    padding-right: var(--grid-gutter);
+  }
+
+  .site-footer__col {
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+  }
+
+  .site-footer__a {
+    font-size: 1.75em;
+  }
+
+  .site-footer__wordmark { font-size: 3em; }
+}
+
+/* ------------------------- Underline Link [https://osmo.supply/] -------------------------  */
+
+[data-underline-link] {
+  text-decoration: none;
+  position: relative;
+}
+
+[data-underline-link]::before {
+  content: "";
+  position: absolute;
+  bottom: -0.0625em;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: currentColor;
+  transition: transform 0.735s cubic-bezier(0.625, 0.05, 0, 1);
+  transform-origin: right;
+  transform: scaleX(0) rotate(0.001deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-hover]:hover [data-underline-link]::before,
+  [data-underline-link]:hover::before {
+    transform-origin: left;
+    transform: scaleX(1) rotate(0.001deg);
+  }
+}

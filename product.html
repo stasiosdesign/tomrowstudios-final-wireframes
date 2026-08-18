@@ -222,56 +222,53 @@
 </section>
 
 <!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img class="footer-logo" src="assets/logo.png" alt="Tomrow Studios">
-        <div class="footer-block">
-          <p class="strong">Studio</p>
-          <p>Sydney, Australia</p>
-        </div>
-        <div class="footer-block">
-          <p class="strong">Enquiries</p>
-          <p><a href="mailto:hello@tomrowstudios.com">hello@tomrowstudios.com</a></p>
-          <p><a href="#">Follow the work</a></p>
-        </div>
-        <div class="social">
-          <a href="#"><img src="assets/facebook.svg" alt="Facebook"></a>
-          <a href="#"><img src="assets/instagram.svg" alt="Instagram"></a>
-          <a href="#"><img src="assets/x.svg" alt="X"></a>
-          <a href="#"><img src="assets/linkedin.svg" alt="LinkedIn"></a>
-          <a href="#"><img src="assets/youtube.svg" alt="YouTube"></a>
+<div data-footer-parallax class="footer-wrap">
+  <footer data-footer-parallax-inner class="site-footer">
+    <div class="site-footer__links-row">
+      <div class="site-footer__col">
+        <p class="footer-eyebrow">( Pages )</p>
+        <div class="site-footer__links">
+          <a data-underline-link href="index.html" class="site-footer__a">Home</a>
+          <a data-underline-link href="influence.html" class="site-footer__a">Influence</a>
+          <a data-underline-link href="architecture.html" class="site-footer__a">Architecture</a>
+          <a data-underline-link href="shop.html" class="site-footer__a">Shop</a>
+          <a data-underline-link href="partner.html" class="site-footer__a">Partner</a>
+          <a data-underline-link href="partners-archive.html" class="site-footer__a">Archive</a>
         </div>
       </div>
-      <div class="footer-links">
-        <ul>
-          <li><a href="architecture.html">Portfolio</a></li>
-          <li><a href="influence.html">Influence</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="partner.html">Partner</a></li>
-        </ul>
-        <ul>
-          <li><a href="influence.html">Influence</a></li>
-          <li><a href="architecture.html">Portfolio</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="partner.html">Partners</a></li>
-          <li><a href="#contact" data-panel-open="contact" data-barba-prevent="self">Contact</a></li>
-        </ul>
+      <div class="site-footer__col">
+        <p class="footer-eyebrow">( Socials )</p>
+        <div class="site-footer__links">
+          <a data-underline-link href="#" class="site-footer__a">Instagram</a>
+          <a data-underline-link href="#" class="site-footer__a">LinkedIn</a>
+          <a data-underline-link href="#" class="site-footer__a">X/Twitter</a>
+          <a data-underline-link href="#" class="site-footer__a">YouTube</a>
+        </div>
+      </div>
+      <div class="site-footer__col">
+        <p class="footer-eyebrow">( Contact )</p>
+        <div class="site-footer__links">
+          <a data-underline-link href="mailto:hello@tomrowstudios.com" class="site-footer__a">hello@tomrowstudios.com</a>
+          <a data-underline-link href="#contact" data-panel-open="contact" data-barba-prevent="self" class="site-footer__a">Start a project</a>
+          <p class="site-footer__a">Sydney, Australia</p>
+        </div>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 Tomrowstudios. All rights reserved.</p>
-      <div class="footer-legal">
-        <a href="#">Privacy</a>
-        <a href="#">Terms of use</a>
-        <a href="#">Cookie settings</a>
+    <div class="site-footer__logo-row">
+      <p class="footer-eyebrow">Architecture, content and education for a global audience</p>
+      <p class="site-footer__wordmark">tomrowstudios ©</p>
+      <div class="site-footer__legal">
+        <p class="footer-eyebrow">© 2025 Tomrowstudios. All rights reserved.</p>
+        <div class="site-footer__legal-links">
+          <a data-underline-link href="#" class="footer-eyebrow">Privacy</a>
+          <a data-underline-link href="#" class="footer-eyebrow">Terms of use</a>
+          <a data-underline-link href="#" class="footer-eyebrow">Cookie settings</a>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
+  <div data-footer-parallax-dark class="footer-wrap__dark"></div>
+</div>
 
 <!-- Contact side panel (slide-out drawer) -->
 <div class="panel" id="contact" data-panel data-panel-state="closed">
@@ -346,7 +343,9 @@
 <script src="https://unpkg.com/smooothy"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/CustomEase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
 <script src="sidepanel.js"></script>
+<script src="footer.js"></script>
 <script src="slider.js"></script>
 <script src="transitions.js"></script>
 

@@ -11,6 +11,7 @@ let nextPage = document;
 let onceFunctionsInitialized = false;
 
 const hasLenis = typeof window.Lenis !== "undefined";
+const hasScrollTrigger = typeof window.ScrollTrigger !== "undefined";
 
 const rmMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
 let reducedMotion = rmMQ.matches;
@@ -50,9 +51,14 @@ function initAfterEnterFunctions(next) {
   // The incoming container carries its own panels and triggers, so rebind them
   if (typeof initSidePanels === "function") initSidePanels();
   if (typeof initParallaxImageSlider === "function") initParallaxImageSlider();
+  if (typeof initFooterParallax === "function") initFooterParallax();
 
   if (hasLenis) {
     lenis.resize();
+  }
+
+  if (hasScrollTrigger) {
+    ScrollTrigger.refresh();
   }
 }
 
@@ -186,6 +192,13 @@ barba.hooks.beforeEnter(data => {
   initBeforeEnterFunctions(data.next.container);
 });
 
+barba.hooks.afterLeave(() => {
+  // The outgoing container took its triggers with it
+  if (hasScrollTrigger) {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  }
+});
+
 barba.hooks.afterEnter(data => {
   // Run page functions
   initAfterEnterFunctions(data.next.container);
@@ -257,6 +270,10 @@ function initLenis() {
 
   // The side panels need to pause page scrolling while they are open
   window.lenis = lenis;
+
+  if (hasScrollTrigger) {
+    lenis.on("scroll", ScrollTrigger.update);
+  }
 
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
