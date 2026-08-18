@@ -49,7 +49,8 @@ function initWillemLoadingAnimation() {
   const headingStart = container.querySelectorAll(".willem__h1-start");
   const headingEnd = container.querySelectorAll(".willem__h1-end");
   const coverImageExtra = container.querySelectorAll(".willem__cover-image-extra");
-  const headerLetter = container.querySelectorAll(".willem__letter-white");
+  // The hero copy and CTAs take the place of the original wordmark letters
+  const headerLetter = container.querySelectorAll(".willem__letter-white, .willem__reveal");
   const navLinks = container.querySelectorAll(".willen-nav a");
 
 

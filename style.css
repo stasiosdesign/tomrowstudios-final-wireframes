@@ -1247,3 +1247,58 @@ main:has(.willem-header.is--loading:not(.is--hidden)) .navbar {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Hero copy + CTAs, in place of the original wordmark. Two halves of two
+   grid columns each, matching the rest of the site. */
+.willem-hero__content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8rem;
+  align-items: end;
+  width: 100%;
+}
+
+.willem-hero__col {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  min-width: 0;
+}
+
+.willem-hero__col.is--end {
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.willem-hero__title {
+  margin: 0;
+  font-size: 5.6rem;
+  line-height: 1.2;
+  letter-spacing: -0.056rem;
+  font-weight: 600;
+}
+
+.willem-hero__intro { margin: 0; font-size: 1.8rem; }
+
+/* Each revealed block gets its own mask so the intro's rise reads cleanly */
+.willem__reveal-mask { overflow: hidden; }
+.willem__reveal { display: block; position: relative; }
+.actions.willem__reveal { display: flex; }
+
+@media screen and (max-width: 991px) {
+  .willem-hero__content {
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+  }
+
+  .willem-hero__col,
+  .willem-hero__col.is--end {
+    grid-column: span 1;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .willem-hero__title { font-size: 4rem; }
+}
