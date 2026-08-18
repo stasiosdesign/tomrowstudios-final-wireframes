@@ -1199,7 +1199,7 @@ main:has(.willem-header.is--loading) {
 
 .willem-nav__link {
   color: inherit;
-  font-size: 1.3125em;
+  font-size: 1.125em;
   line-height: 1.3;
   text-decoration: none;
   position: relative;
