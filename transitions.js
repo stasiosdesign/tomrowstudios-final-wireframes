@@ -196,6 +196,9 @@ barba.hooks.afterEnter(data => {
 // Opening a page straight from disk falls back to normal navigation.
 if (location.protocol === "file:") {
   initOnceFunctions();
+  if (typeof initWillemLoadingAnimation === "function") {
+    initWillemLoadingAnimation();
+  }
 } else {
 barba.init({
   debug: false,
@@ -209,6 +212,12 @@ barba.init({
       // First load
       async once(data) {
         initOnceFunctions();
+
+        // Home intro — `once` only fires on a full page load, never on a
+        // Barba navigation, so this is the first-load / refresh restriction.
+        if (typeof initWillemLoadingAnimation === "function") {
+          initWillemLoadingAnimation();
+        }
 
         return runPageOnceAnimation(data.next.container);
       },

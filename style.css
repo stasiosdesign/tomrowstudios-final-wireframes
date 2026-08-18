@@ -977,3 +977,194 @@ h3 {
 @media (prefers-reduced-motion: reduce) {
   .grain[data-grain-animate="true"] { animation: none; }
 }
+
+/* ---------- Home intro (first load / refresh only) ---------- */
+
+/* Disable Scroll on Loading — scoped to the visible state so a Barba
+   navigation back to home (section stays hidden) does not lock the height */
+main:has(.willem-header.is--loading:not(.is--hidden)) {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.willem-header {
+  background-color: #000000;
+  color: #f4f4f4;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Loading: Hidden */
+.willem-header.is--loading.is--hidden {
+  display: none;
+}
+
+.willem-loader {
+  color: #f4f4f4;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+/* Sized in vw so the full 13-letter word always fits the viewport */
+.willem__h1 {
+  white-space: nowrap;
+  justify-content: center;
+  font-size: 10vw;
+  font-weight: 500;
+  line-height: .75;
+  display: flex;
+  position: relative;
+}
+
+/* Widths are content-driven: "tomrow" and "studios" are unequal, so fixed
+   em widths would clip them */
+.willem__h1-start {
+  justify-content: flex-end;
+  width: max-content;
+  display: flex;
+  overflow: hidden;
+}
+
+.willem__h1-end {
+  justify-content: flex-start;
+  width: max-content;
+  display: flex;
+  overflow: hidden;
+}
+
+.willem__letter {
+  display: block;
+  position: relative;
+}
+
+.willem__letter-white.is--space {
+  margin-left: .25em;
+}
+
+.willem-loader__box {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 0;
+  display: flex;
+  position: relative;
+}
+
+.willem-loader__box-inner {
+  justify-content: center;
+  align-items: center;
+  min-width: 1em;
+  height: 95%;
+  display: flex;
+  position: relative;
+}
+
+.willem__growing-image {
+  justify-content: center;
+  align-items: center;
+  width: 0%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  overflow: hidden;
+}
+
+.willem__growing-image-wrap {
+  width: 100%;
+  min-width: 1em;
+  height: 100%;
+  position: absolute;
+}
+
+.willem__cover-image {
+  pointer-events: none;
+  object-fit: cover;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.willem__cover-image-extra {
+  pointer-events: none;
+  object-fit: cover;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.willem__cover-image-extra.is--1 {
+  z-index: 3;
+}
+
+.willem__cover-image-extra.is--2 {
+  z-index: 2;
+}
+
+.willem__cover-image-extra.is--3 {
+  z-index: 1;
+}
+
+.willem-header__content {
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 100dvh;
+  padding: 3em;
+  display: flex;
+  position: relative;
+}
+
+.willem-header__top {
+  width: 100%;
+  position: relative;
+}
+
+.willem-header__bottom {
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.willem__letter-white {
+  display: block;
+  position: relative;
+}
+
+@media screen and (max-width: 991px) {
+  .willem__h1 {
+    font-size: 9vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .willem__h1 {
+    font-size: 8vw;
+  }
+}
+
+/* The site navbar stays out of the way until the intro finishes, so it does
+   not sit over the letters while they animate */
+.navbar { transition: opacity 0.6s ease; }
+main:has(.willem-header.is--loading:not(.is--hidden)) .navbar {
+  opacity: 0;
+  pointer-events: none;
+}

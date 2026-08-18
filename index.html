@@ -40,6 +40,62 @@
 
 <main data-barba="container" data-barba-namespace="index" data-page-name="Home">
 
+<!-- Home intro (plays only on a first load / refresh of the home page) -->
+<section class="willem-header is--loading is--hidden">
+  <div class="willem-loader">
+    <div class="willem__h1">
+      <div class="willem__h1-start">
+        <span class="willem__letter">t</span>
+        <span class="willem__letter">o</span>
+        <span class="willem__letter">m</span>
+        <span class="willem__letter">r</span>
+        <span class="willem__letter">o</span>
+        <span class="willem__letter">w</span>
+      </div>
+      <div class="willem-loader__box">
+        <div class="willem-loader__box-inner">
+          <div class="willem__growing-image">
+            <div class="willem__growing-image-wrap">
+              <img class="willem__cover-image-extra is--1" src="assets/img4.png" loading="lazy" alt="">
+              <img class="willem__cover-image-extra is--2" src="assets/img8.png" loading="lazy" alt="">
+              <img class="willem__cover-image-extra is--3" src="assets/img12.png" loading="lazy" alt="">
+              <img class="willem__cover-image" src="assets/hero.png" loading="lazy" alt=""></div>
+          </div>
+        </div>
+      </div>
+      <div class="willem__h1-end">
+        <span class="willem__letter">s</span>
+        <span class="willem__letter">t</span>
+        <span class="willem__letter">u</span>
+        <span class="willem__letter">d</span>
+        <span class="willem__letter">i</span>
+        <span class="willem__letter">o</span>
+        <span class="willem__letter">s</span></div>
+    </div>
+  </div>
+  <div class="willem-header__content">
+    <div class="willem-header__top"></div>
+    <div class="willem-header__bottom">
+      <div class="willem__h1">
+        <span class="willem__letter-white">t</span>
+        <span class="willem__letter-white">o</span>
+        <span class="willem__letter-white">m</span>
+        <span class="willem__letter-white">r</span>
+        <span class="willem__letter-white">o</span>
+        <span class="willem__letter-white">w</span>
+        <span class="willem__letter-white">s</span>
+        <span class="willem__letter-white">t</span>
+        <span class="willem__letter-white">u</span>
+        <span class="willem__letter-white">d</span>
+        <span class="willem__letter-white">i</span>
+        <span class="willem__letter-white">o</span>
+        <span class="willem__letter-white">s </span>
+        <span class="willem__letter-white is--space">©</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- Navbar -->
 <header class="navbar">
@@ -310,6 +366,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/CustomEase.min.js"></script>
+<script src="intro.js"></script>
 <script src="sidepanel.js"></script>
 <script src="transitions.js"></script>
 
