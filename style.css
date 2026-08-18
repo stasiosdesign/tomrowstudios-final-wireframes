@@ -143,7 +143,7 @@ a { color: inherit; }
 }
 
 /* Inner pages clear the fixed bar; the home page hero sits under it by design */
-main:not(:has(.willem-header)) .site-nav + * { padding-top: 7.5rem; }
+main:not(:has(.willem-header)) .site-nav + * { padding-top: var(--nav-height); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -1567,4 +1567,90 @@ main:has(.willem-header.is--loading) {
 main:has(.willem-header.is--loading) .site-nav {
   background-color: transparent;
   border-bottom-color: transparent;
+}
+
+/* ---------- Sticky section tabs ---------- */
+/* Height of the fixed bar: 2.4rem padding top and bottom plus the link's line
+   box. Every sticky offset below is derived from it. */
+:root { --nav-height: 7rem; }
+
+.sticky-tab-group {
+  overflow: clip;
+}
+
+.sticky-tab-group__nav-bg {
+  z-index: 2;
+  height: var(--nav-height);
+  background-color: #000000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.sticky-tab {
+  background-color: #000509;
+  position: relative;
+  overflow: clip;
+}
+
+.sticky-tab__sticky {
+  z-index: 1;
+  top: calc(var(--nav-height) - 1px);
+  flex-flow: column;
+  margin-top: -1px;
+  display: flex;
+  position: sticky;
+  box-shadow: 0 .25em .5em 0 rgba(0, 0, 0, 0.25);
+}
+
+.sticky-tab__inner {
+  background-color: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.sticky-tab__content {
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.4rem;
+  display: flex;
+}
+
+.sticky-tab__title {
+  margin: 0;
+  font-size: 3.2rem;
+  letter-spacing: -0.032rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.sticky-tab__eyebrow {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* The tab sections are full bleed, so their own containers carry the page
+   padding and stay on the column grid */
+.sticky-tab .container {
+  padding-left: calc(var(--grid-gutter) + var(--grid-pad));
+  padding-right: calc(var(--grid-gutter) + var(--grid-pad));
+}
+
+.sticky-tab__body {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+@media screen and (max-width: 767px) {
+  .sticky-tab__title { font-size: 2.4rem; }
+  .sticky-tab__eyebrow { font-size: 1.4rem; }
+  .sticky-tab__body { padding-top: 4.8rem; padding-bottom: 4.8rem; }
 }
