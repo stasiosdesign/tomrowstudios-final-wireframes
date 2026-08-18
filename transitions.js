@@ -48,6 +48,7 @@ function initAfterEnterFunctions(next) {
   if (typeof initSidePanels === "function") initSidePanels();
   if (typeof initParallaxImageSlider === "function") initParallaxImageSlider();
   if (typeof initFooterParallax === "function") initFooterParallax();
+  if (typeof initButton011 === "function") initButton011();
 
   if (hasLenis) {
     lenis.resize();
