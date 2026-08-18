@@ -582,7 +582,7 @@ h3 {
   color: #000509;
   background: #ffffff;
   border: none;
-  border-radius: 50%;
+  border-radius: 0;
   cursor: pointer;
 }
 .panel-section { background: #ffffff; }
@@ -1371,7 +1371,7 @@ main:has(.willem-header.is--loading) {
   color: inherit;
   background: rgba(255, 255, 255, 0.1);
   border: none;
-  border-radius: 50%;
+  border-radius: 0;
   cursor: pointer;
 }
 .theme-light .parallax-slider__arrow { background: rgba(0, 5, 9, 0.06); color: #000509; }
@@ -1660,7 +1660,7 @@ main:has(.willem-header.is--loading) .site-nav {
   --button-011-color: #121212;
   --button-011-color-background: #fff;
   --button-011-color-focus: #000;
-  --button-011-border-radius: 2.5em;
+  --button-011-border-radius: 0em;
   --button-011-padding-top: 0.75em;
   --button-011-padding-right: 1em;
   --button-011-padding-bottom: 0.75em;
