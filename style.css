@@ -1783,3 +1783,49 @@ main:has(.willem-header.is--loading) .site-nav {
   --button-011-color-background: #121212;
   --button-011-color-focus: #ffffff;
 }
+
+/* ---------- Logo marquee (advanced, scroll direction) ---------- */
+.logo-marquee {
+  padding-top: 11.2rem;
+  padding-bottom: 11.2rem;
+  background: #000000;
+  overflow: hidden;
+}
+
+.marquee-advanced {
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee-advanced__scroll {
+  will-change: transform;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.marquee-advanced__collection {
+  will-change: transform;
+  display: flex;
+  position: relative;
+}
+
+.marquee-advanced__item-width {
+  background-color: #131313;
+  border-radius: 1vw;
+  justify-content: center;
+  align-items: center;
+  width: 18vw;
+  height: 18vw;
+  margin: 1vw;
+  display: flex;
+}
+
+/* The logo artwork sits inside each box */
+.marquee-advanced__item-width img {
+  width: 60%;
+  height: auto;
+  max-height: 55%;
+  object-fit: contain;
+}
