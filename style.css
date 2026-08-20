@@ -1951,3 +1951,17 @@ main:has(.willem-header.is--loading) .site-nav {
     width: 4.5rem;
   }
 }
+
+/* Partners is a light page, so the marquee goes white there. The logo files are
+   white artwork, so they are inverted to read on the pale tiles. */
+.theme-light .logo-marquee {
+  background: #ffffff;
+}
+
+.theme-light .marquee-advanced__item-width {
+  background-color: #f2f2f2;
+}
+
+.theme-light .marquee-advanced__item-width img {
+  filter: invert(1);
+}
