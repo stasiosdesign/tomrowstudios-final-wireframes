@@ -1965,3 +1965,141 @@ main:has(.willem-header.is--loading) .site-nav {
 .theme-light .marquee-advanced__item-width img {
   filter: invert(1);
 }
+
+/* ---------- Swiper slider ---------- */
+body{
+  --swiper-pagination-color: currentColor;
+  --swiper-pagination-bottom: auto;
+  --swiper-pagination-bullet-size: 0.5em;
+  --swiper-pagination-bullet-inactive-color: currentColor;
+  --swiper-pagination-bullet-inactive-opacity: 0.15;
+  --swiper-pagination-bullet-horizontal-gap: 0.25em;
+  --swiper-wrapper-transition-timing-function: cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+.swiper-group {
+  width: 100%;
+  position: relative;
+}
+
+.swiper {
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  display: flex;
+  overflow: visible !important;
+}
+
+.swiper-wrapper {
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  display: flex;
+}
+
+.swiper-slide {
+  flex: none;
+  max-width: 20em;
+  padding-right: 1.25em;
+  --gap: 1.25em;
+  padding-right: var(--gap);
+}
+
+.swiper-slide:last-of-type{
+  margin-right: calc(-1 * var(--gap));
+}
+
+.swiper-pagination {
+  pointer-events: auto;
+  z-index: 0 !important;
+}
+
+.swiper-navigation {
+  z-index: 2;
+  pointer-events: none;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translate(0, 150%);
+}
+
+.swiper-navigation__button {
+  z-index: 1;
+  aspect-ratio: 1;
+  pointer-events: auto;
+  color: #000;
+  background-color: #fff;
+  border-radius: 100em;
+  justify-content: center;
+  align-items: center;
+  width: 3em;
+  padding: 1em;
+  display: flex;
+  position: relative;
+  transition: opacity 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.swiper-button-disabled{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.swiper-navigation__button-arorw {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+.swiper-navigation__button-arorw.is--prev {
+  transform: rotate(-180deg);
+}
+
+/* Slides keep the site's own card treatment rather than the demo card */
+.slide-card {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.slide-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-card.is--tile {
+  aspect-ratio: 405 / 560;
+  display: flex;
+  align-items: flex-end;
+}
+
+.slide-card.is--tile .slide-card__bg {
+  position: absolute;
+  inset: 0;
+  filter: brightness(0.55);
+}
+
+.slide-card.is--tile .quote-tile-body {
+  position: relative;
+  z-index: 1;
+  padding: 3.2rem;
+}
+
+/* Slides peek past the container, so clip at the section edge rather than
+   letting the page scroll sideways */
+.section:has(.swiper-group) { overflow-x: clip; }
+
+/* Room for the navigation row, which sits below the slider */
+.swiper-group { margin-bottom: 8rem; }
