@@ -50,6 +50,7 @@ function initAfterEnterFunctions(next) {
   if (typeof initFooterParallax === "function") initFooterParallax();
   if (typeof initButton011 === "function") initButton011();
   if (typeof initMarqueeScrollDirection === "function") initMarqueeScrollDirection();
+  if (typeof initParallaxImageGalleryThumbnails === "function") initParallaxImageGalleryThumbnails();
 
   if (hasLenis) {
     lenis.resize();
