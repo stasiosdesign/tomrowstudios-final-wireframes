@@ -2211,6 +2211,13 @@ body{
   font-weight: 400;
   justify-self: end;
 }
+/* Entries with no figure of their own carry a short phrase at the same
+   weight, so the column still reads as one run of large values */
+.insights-row__value.is--words {
+  font-size: 4.8rem;
+  letter-spacing: -0.03em;
+  text-align: right;
+}
 
 /* ---------- Map spread (full page width) ---------- */
 .map-spread {
@@ -2340,6 +2347,7 @@ body{
     justify-self: start;
     font-size: 4.8rem;
   }
+  .insights-row__value.is--words { font-size: 3.6rem; text-align: left; }
 
   .map-spread__footer {
     flex-direction: column;
@@ -2354,4 +2362,5 @@ body{
 @media screen and (max-width: 479px) {
   .figure-lead__number { font-size: 7.2rem; }
   .insights-row__value { font-size: 4rem; }
+  .insights-row__value.is--words { font-size: 3.2rem; }
 }
