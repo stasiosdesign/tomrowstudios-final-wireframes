@@ -1787,6 +1787,22 @@ main:has(.willem-header.is--loading) .site-nav {
   --button-011-color-focus: #ffffff;
 }
 
+/* Paired buttons: the leading action keeps the white pill and its companion
+   steps back to grey, so two solid whites never sit side by side */
+.button-011.is--secondary {
+  --button-011-color: #ffffff;
+  --button-011-color-background: rgba(255, 255, 255, 0.16);
+  --button-011-color-focus: #ffffff;
+}
+
+.theme-light .button-011.is--secondary,
+.panel .button-011.is--secondary,
+.site-footer .button-011.is--secondary {
+  --button-011-color: #121212;
+  --button-011-color-background: rgba(0, 5, 9, 0.08);
+  --button-011-color-focus: #121212;
+}
+
 /* ---------- Logo marquee (advanced, scroll direction) ---------- */
 .logo-marquee {
   padding-top: 11.2rem;
@@ -2103,3 +2119,239 @@ body{
 
 /* Room for the navigation row, which sits below the slider */
 .swiper-group { margin-bottom: 8rem; }
+
+/* =============================================================
+   Influence page: headline figure, insights, map spread, steps
+   ============================================================= */
+
+/* ---------- Number odometer ---------- */
+/* Structural only — the rollers are built in JS, so these rules just keep the
+   digit strip masked and the digits from shifting width as they spin */
+[data-odometer-element] {
+  display: inline-flex;
+  align-items: center;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-odometer-part="mask"],
+[data-odometer-part="static"] {
+  display: inline-block;
+  overflow: clip;
+  padding: 0.05em;
+  margin: -0.05em;
+}
+
+[data-odometer-part="roller"] {
+  display: block;
+  white-space: pre;
+  text-align: center;
+  will-change: transform;
+}
+
+/* ---------- Headline figure (total followers) ---------- */
+.figure-lead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.figure-lead__number {
+  margin: 0 0 2.4rem;
+  font-size: 16rem;
+  line-height: 1;
+  letter-spacing: -0.08em;
+  font-weight: 400;
+}
+.figure-lead__label {
+  /* Two of the four columns, so the caption sits under the first half */
+  max-width: var(--grid-col-2);
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* ---------- Insights (in-depth analytics) ---------- */
+.insights-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.insights-row {
+  display: grid;
+  /* index in the first column, label in the second, the figure closing out
+     the last two — the same four columns the rest of the page is built on */
+  grid-template-columns: var(--grid-col-1) 1fr auto;
+  gap: var(--grid-gap);
+  align-items: baseline;
+  padding: 3.2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.insights-row__index {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+}
+.insights-row__body { min-width: 0; }
+.insights-row__label {
+  margin: 0 0 0.4rem;
+  font-size: 2rem;
+  line-height: 1.4;
+  letter-spacing: -0.02rem;
+}
+.insights-row__note {
+  margin: 0;
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+.insights-row__value {
+  margin: 0;
+  font-size: 6.4rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  justify-self: end;
+}
+
+/* ---------- Map spread (full page width) ---------- */
+.map-spread {
+  background: #000000;
+  padding-bottom: 11.2rem;
+}
+.map-spread__img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+.map-spread__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--grid-gap);
+  padding: 4.8rem calc(var(--grid-gutter) + var(--grid-pad)) 0;
+}
+.map-spread__caption {
+  max-width: var(--grid-col-2);
+  margin: 0;
+  font-size: 1.8rem;
+}
+.map-spread__footer .actions { flex: none; }
+
+/* ---------- Step-by-step timeline ---------- */
+/* Sits in the right-hand half of a .two-col, so it fills its column rather
+   than centring itself the way the standalone component does */
+.step-timeline {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+.step-timeline__wrapper { position: relative; }
+.step-timeline__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+}
+.step-timeline__item {
+  display: flex;
+  gap: 4rem;
+  position: relative;
+}
+.step-timeline__line {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* Centred on the 4.8rem marker */
+  left: calc(2.4rem - 1px);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.step-timeline__fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 0;
+  background: #ffffff;
+}
+.step-timeline__marker {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 100em;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #000509;
+  color: #ffffff;
+  font-size: 1.6rem;
+  position: relative;
+  transition: background-color 0.4s cubic-bezier(0.645, 0.045, 0.355, 1),
+              color 0.4s cubic-bezier(0.645, 0.045, 0.355, 1),
+              border-color 0.4s cubic-bezier(0.645, 0.045, 0.355, 1),
+              box-shadow 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Marker inside an 'active' step item */
+[data-step-timeline-item][data-status="active"] [data-step-timeline-marker] {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000509;
+}
+
+/* Marker inside the 'current' step item */
+[data-step-timeline-item][data-current] [data-step-timeline-marker] {
+  box-shadow: 0 0 0 0.8rem rgba(255, 255, 255, 0.12);
+}
+
+.step-timeline__content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.4rem;
+  min-width: 0;
+  transition: opacity 0.25s;
+}
+/* Steps the line has not reached yet */
+[data-step-timeline-item] .step-timeline__content { opacity: 0.25; }
+/* Steps already passed */
+[data-step-timeline-item][data-status="active"] .step-timeline__content { opacity: 0.5; }
+/* The step the line is on */
+[data-step-timeline-item][data-current] .step-timeline__content { opacity: 1; }
+
+.step-timeline__content-h {
+  margin: 0 0 1.6rem;
+  font-size: 2rem;
+  line-height: 1.4;
+  letter-spacing: -0.02rem;
+  font-weight: 400;
+}
+.step-timeline__p { margin: 0; }
+
+@media screen and (max-width: 991px) {
+  .figure-lead__number { font-size: 10rem; }
+  .figure-lead__label,
+  .map-spread__caption { max-width: none; }
+
+  .insights-row {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+  .insights-row__value {
+    justify-self: start;
+    font-size: 4.8rem;
+  }
+
+  .map-spread__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3.2rem;
+  }
+
+  .step-timeline__list { gap: 6rem; }
+  .step-timeline__item { gap: 2.4rem; }
+}
+
+@media screen and (max-width: 479px) {
+  .figure-lead__number { font-size: 7.2rem; }
+  .insights-row__value { font-size: 4rem; }
+}

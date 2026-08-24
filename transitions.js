@@ -51,6 +51,8 @@ function initAfterEnterFunctions(next) {
   if (typeof initButton011 === "function") initButton011();
   if (typeof initMarqueeScrollDirection === "function") initMarqueeScrollDirection();
   if (typeof initParallaxImageGalleryThumbnails === "function") initParallaxImageGalleryThumbnails();
+  if (typeof initNumberOdometer === "function") initNumberOdometer();
+  if (typeof initStepByStepTimeline === "function") initStepByStepTimeline();
 
   if (hasLenis) {
     lenis.resize();
