@@ -2228,6 +2228,10 @@ body{
   width: 100%;
   max-width: none;
   height: auto;
+  /* The plate is lazy-loaded, so reserve its box up front — the cover is
+     positioned against it, and without this the spread collapses until the
+     image arrives */
+  aspect-ratio: 3542 / 1996;
 }
 .map-spread__footer {
   display: flex;
@@ -2956,4 +2960,109 @@ main section + section,
 @media screen and (max-width: 767px) {
   .form-field-row { grid-template-columns: 1fr; }
   .form-group .radio-grid { grid-template-columns: 1fr; }
+}
+
+/* =============================================================
+   Book feature + closing CTA
+   ============================================================= */
+
+/* ---------- The atlas spread, with the book it came from ---------- */
+.map-spread__media { position: relative; }
+
+/* The cover overlaps the map's lower-right, where the plate is emptiest */
+.map-spread__cover {
+  position: absolute;
+  right: calc(var(--grid-gutter) + var(--grid-pad));
+  bottom: -6.4rem;
+  width: 26rem;
+  margin: 0;
+  z-index: 1;
+}
+.map-spread__cover img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+  box-shadow: 0 2.4rem 6.4rem rgba(0, 0, 0, 0.55);
+}
+
+.book-feature {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--grid-gap);
+  align-items: start;
+  padding: 8rem calc(var(--grid-gutter) + var(--grid-pad)) 0;
+}
+.book-feature__intro { min-width: 0; }
+.book-feature__intro h2 { margin-bottom: 0; }
+.book-feature__body { min-width: 0; }
+.book-feature__body .lead { margin-bottom: 4rem; }
+
+/* The figures pick up the ruled index register used across the site */
+.book-feature__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gap);
+  margin: 0 0 4rem;
+  padding: 2.4rem 0 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+.book-feature__stats li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-width: 0;
+}
+.book-feature__stat-num {
+  font-size: 4.8rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.book-feature__stat-label {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--form-muted);
+}
+
+/* ---------- Closing CTA ---------- */
+.final-cta {
+  border-top: 1px solid var(--rule);
+  background: #000509;
+  text-align: center;
+}
+.final-cta__title {
+  margin: 0 auto 2.4rem;
+  font-size: 8rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+}
+.final-cta__lead {
+  max-width: var(--grid-col-2);
+  margin: 0 auto 4.8rem;
+}
+.final-cta .actions { justify-content: center; }
+
+@media screen and (max-width: 991px) {
+  .map-spread__cover {
+    position: static;
+    width: 18rem;
+    margin: -6.4rem calc(var(--grid-gutter) + var(--grid-pad)) 0 auto;
+  }
+  .book-feature {
+    grid-template-columns: 1fr;
+    padding-top: 5.6rem;
+  }
+  .book-feature__stats { gap: 2.4rem; }
+  .book-feature__stat-num { font-size: 3.6rem; }
+  .final-cta__title { font-size: 4.8rem; }
+  .final-cta__lead { max-width: none; }
+}
+
+@media screen and (max-width: 479px) {
+  .book-feature__stats { grid-template-columns: 1fr; }
+  .final-cta__title { font-size: 4rem; }
 }
