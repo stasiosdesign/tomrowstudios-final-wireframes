@@ -2594,3 +2594,149 @@ body{
     min-height: 0;
   }
 }
+
+/* =============================================================
+   Design language: ruled registers, quiet labels, numbered items
+   ============================================================= */
+
+/* One hairline colour for the whole site, flipped on light surfaces */
+:root { --rule: rgba(255, 255, 255, 0.1); }
+.theme-light,
+.panel { --rule: rgba(0, 5, 9, 0.12); }
+
+/* Sections stack as ruled registers rather than floating on whitespace */
+main section + section,
+.shop-hero + section,
+.page-header + section { border-top: 1px solid var(--rule); }
+
+/* Eyebrows read as small ruled captions rather than bold running text */
+.tagline {
+  margin: 0 0 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.55);
+}
+.theme-light .tagline { color: rgba(0, 5, 9, 0.55); }
+
+/* ---------- Shop hero ---------- */
+.shop-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8rem;
+  min-height: 82rem;
+  padding: 8rem calc(var(--grid-gutter) + var(--grid-pad));
+  background: #000000;
+}
+
+.shop-hero__body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--grid-gap);
+  align-items: center;
+  width: 100%;
+}
+
+.shop-hero__copy { min-width: 0; }
+.shop-hero h1 {
+  margin: 0 0 2.4rem;
+  font-size: 6.4rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+.shop-hero .lead { max-width: 48rem; margin-bottom: 0; }
+.shop-hero .social-proof { margin-top: 4rem; }
+.shop-hero .actions { margin-top: 4rem; }
+
+.shop-hero__media { min-width: 0; }
+.shop-hero__media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* The closing register: four ruled columns, numbered like an index */
+.shop-hero__index {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+  margin: 0;
+  padding: 2.4rem 0 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+.shop-hero__index li {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  min-width: 0;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.55);
+}
+/* Hairlines land mid-gap, so they read as column rules rather than borders
+   hugging each item */
+.shop-hero__index li + li {
+  border-left: 1px solid var(--rule);
+  margin-left: calc(var(--grid-pad) * -1);
+  padding-left: var(--grid-pad);
+}
+.shop-hero__index-num { color: #ffffff; }
+
+/* ---------- Product cards as ruled tiles ---------- */
+.product-grid { counter-reset: product; }
+
+.product-card {
+  background: none;
+  border-radius: 0;
+  border-top: 1px solid var(--rule);
+  padding-top: 2rem;
+  gap: 2rem;
+  counter-increment: product;
+}
+.product-card::before {
+  content: counter(product, decimal-leading-zero);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+}
+.product-card + .product-card {
+  border-left: 1px solid var(--rule);
+  margin-left: calc(var(--grid-pad) * -1);
+  padding-left: var(--grid-pad);
+}
+.product-img { border-radius: var(--radius); }
+.product-body { padding: 0; }
+/* Descriptions run to different lengths, so drop the CTAs to a common line */
+.product-body .button-011 { margin-top: auto; align-self: flex-start; }
+
+@media screen and (max-width: 991px) {
+  .shop-hero {
+    min-height: 0;
+    gap: 5.6rem;
+    padding-top: 12rem;
+    padding-bottom: 8rem;
+  }
+  .shop-hero__body { grid-template-columns: 1fr; }
+  .shop-hero h1 { font-size: 4rem; }
+  .shop-hero .lead { max-width: none; }
+  .shop-hero__index { grid-template-columns: repeat(2, 1fr); gap: 1.6rem var(--grid-gap); }
+  .shop-hero__index li:nth-child(odd) {
+    border-left: 0;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  /* Single column: the rules stack horizontally instead */
+  .product-card + .product-card {
+    border-left: 0;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
