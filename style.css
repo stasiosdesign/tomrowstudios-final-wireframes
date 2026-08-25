@@ -2740,3 +2740,220 @@ main section + section,
     padding-left: 0;
   }
 }
+
+/* =============================================================
+   Forms — live validation component
+   ============================================================= */
+
+/* Tokens, so one form markup works on the dark pages, the light Partners
+   page and inside the contact drawer */
+:root {
+  --form-text: #ffffff;
+  --form-muted: rgba(255, 255, 255, 0.5);
+  --form-field-bg: rgba(255, 255, 255, 0.06);
+  --form-field-border: rgba(255, 255, 255, 0.14);
+  --form-field-border-focus: rgba(255, 255, 255, 0.45);
+  --form-success: #5aa87f;
+  --form-error: #e2674b;
+}
+.theme-light,
+.panel {
+  --form-text: #131313;
+  --form-muted: rgba(19, 19, 19, 0.45);
+  --form-field-bg: rgba(0, 5, 9, 0.05);
+  --form-field-border: rgba(0, 5, 9, 0.12);
+  --form-field-border-focus: rgba(0, 5, 9, 0.4);
+  --form-success: #0b8f49;
+  --form-error: #d1462a;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  width: 100%;
+}
+/* Once the enquiry is in, the fields step aside for the confirmation */
+.form.is--sent { display: none; }
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  min-width: 0;
+}
+
+/* Paired fields sit two to a row on the same gutter as the page grid */
+.form-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.4rem;
+}
+
+.form-field {
+  width: 100%;
+  position: relative;
+}
+
+/* Labels borrow the site's small-caps register rather than the reference's
+   sentence case, so they read with the taglines and index bands */
+.form-label {
+  width: 100%;
+  margin-bottom: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--form-muted);
+}
+
+.form-required { color: var(--form-error); }
+
+.form-input {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0;
+  padding: 1.4rem 5.6rem 1.4rem 1.6rem;
+  font: inherit;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  color: var(--form-text);
+  background-color: var(--form-field-bg);
+  border: 1px solid var(--form-field-border);
+  border-radius: var(--radius);
+  outline: 0 solid transparent;
+  outline-offset: 0;
+  box-sizing: border-box;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-input.is--textarea {
+  min-height: 14rem;
+  resize: vertical;
+}
+
+.form-input.is--select {
+  padding-right: 1.6rem;
+  cursor: pointer;
+}
+
+.form-input:focus { border-color: var(--form-field-border-focus); }
+.form-input::placeholder { color: var(--form-muted); }
+
+.form-field-icon {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  color: var(--form-muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5.6rem;
+  max-height: 5.6rem;
+  padding: 0 1.6rem;
+  border-radius: var(--radius);
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  right: 1px;
+  transition: opacity 0.2s ease;
+}
+
+.form-field-icon.is--success { color: var(--form-success); }
+.form-field-icon.is--error { color: var(--form-error); }
+
+/* The real submit stays in the DOM for requestSubmit, behind the site's own
+   button so the form keeps the same button language as the rest of the page */
+.form-submit {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+}
+
+.form-submit-btn { cursor: pointer; }
+
+.form-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--rule);
+}
+
+.form-notifcation {
+  display: none;
+  width: 100%;
+  padding: 1.8rem 5.6rem 1.8rem 1.8rem;
+  font-size: 1.6rem;
+  text-align: left;
+  color: var(--form-success);
+  border: 1px solid currentColor;
+  border-radius: var(--radius);
+  position: relative;
+}
+.form-notifcation.is--visible { display: block; }
+.form-notifcation.is--error { color: var(--form-error); }
+
+.form-notification-icon {
+  pointer-events: none;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5.6rem;
+  padding: 0 1.6rem;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.form-notification-bg {
+  opacity: 0.1;
+  pointer-events: none;
+  color: inherit;
+  background-color: currentColor;
+  border-radius: calc(var(--radius) - 1px);
+  position: absolute;
+  inset: 0;
+}
+
+.form-notification-p {
+  position: relative;
+  margin: 0;
+  color: inherit;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+/* Field: Error */
+[data-validate].is--error .form-input { border-color: var(--form-error); }
+[data-validate].is--error .form-field-icon.is--error { opacity: 1; }
+
+/* Field: Success — the reference ticks any field that passes, which means an
+   untouched optional field shows a tick; require a value too */
+[data-validate].is--success.is--filled .form-field-icon.is--success { opacity: 1; }
+
+/* Radios and the consent checkbox keep the same register as the labels */
+.form-group .radios { border: 0; margin: 0; padding: 0; }
+.form-group .radios legend { padding: 0 0 1.2rem; }
+.form-group .radio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 2.4rem; width: 100%; }
+.form-group .radio-grid label,
+.form-group .checkbox { display: flex; gap: 1.2rem; align-items: center; font-size: 1.6rem; }
+
+@media screen and (max-width: 767px) {
+  .form-field-row { grid-template-columns: 1fr; }
+  .form-group .radio-grid { grid-template-columns: 1fr; }
+}

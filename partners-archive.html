@@ -263,43 +263,81 @@
         </div>
         <p class="panel-form-note">How can we contact you?</p>
 
-        <form class="form" action="#" method="post">
-          <div class="form-row">
-            <div class="field">
-              <label class="visually-hidden" for="panel-name">Your name</label>
-              <input id="panel-name" name="name" type="text" placeholder="Your name*" required>
+        <div data-form-validate class="form-group">
+          <form class="form" action="#" method="post" name="project-enquiry">
+            <div class="form-field-row">
+              <div data-validate class="form-field-group">
+                <label for="panel-name" class="form-label">Name <span class="form-required">*</span></label>
+                <div class="form-field">
+                  <input class="form-input" id="panel-name" name="name" type="text" placeholder="Your name" maxlength="256" min="2" required>
+                  <div class="form-field-icon is--success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M11.25 14.25L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 10.5L11.25 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3C7.02943 3 3 7.02943 3 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                  <div class="form-field-icon is--error"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path opacity="0.1" d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.996 14.5C11.444 14.5 10.996 14.948 11 15.5C11 16.052 11.448 16.5 12 16.5C12.552 16.5 13 16.052 13 15.5C13 14.948 12.552 14.5 11.996 14.5Z" fill="currentColor"></path></svg></div>
+                </div>
+              </div>
+              <div data-validate class="form-field-group">
+                <label for="panel-company" class="form-label">Company <span class="form-required">*</span></label>
+                <div class="form-field">
+                  <input class="form-input" id="panel-company" name="company" type="text" placeholder="Practice or studio" maxlength="256" min="2" required>
+                  <div class="form-field-icon is--success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M11.25 14.25L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 10.5L11.25 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3C7.02943 3 3 7.02943 3 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                  <div class="form-field-icon is--error"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path opacity="0.1" d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.996 14.5C11.444 14.5 10.996 14.948 11 15.5C11 16.052 11.448 16.5 12 16.5C12.552 16.5 13 16.052 13 15.5C13 14.948 12.552 14.5 11.996 14.5Z" fill="currentColor"></path></svg></div>
+                </div>
+              </div>
             </div>
-            <div class="field">
-              <label class="visually-hidden" for="panel-company">Company name</label>
-              <input id="panel-company" name="company" type="text" placeholder="Company name*" required>
+            <div class="form-field-row">
+              <div data-validate class="form-field-group">
+                <label for="panel-email" class="form-label">Email address <span class="form-required">*</span></label>
+                <div class="form-field">
+                  <input class="form-input" id="panel-email" name="email" type="email" placeholder="you@practice.com" maxlength="256" required>
+                  <div class="form-field-icon is--success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M11.25 14.25L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 10.5L11.25 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3C7.02943 3 3 7.02943 3 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                  <div class="form-field-icon is--error"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path opacity="0.1" d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.996 14.5C11.444 14.5 10.996 14.948 11 15.5C11 16.052 11.448 16.5 12 16.5C12.552 16.5 13 16.052 13 15.5C13 14.948 12.552 14.5 11.996 14.5Z" fill="currentColor"></path></svg></div>
+                </div>
+              </div>
+              <div data-validate class="form-field-group">
+                <label for="panel-phone" class="form-label">Phone</label>
+                <div class="form-field">
+                  <input class="form-input" id="panel-phone" name="phone" type="tel" placeholder="Optional" maxlength="256">
+                  <div class="form-field-icon is--success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M11.25 14.25L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 10.5L11.25 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3C7.02943 3 3 7.02943 3 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                  <div class="form-field-icon is--error"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path opacity="0.1" d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.996 14.5C11.444 14.5 10.996 14.948 11 15.5C11 16.052 11.448 16.5 12 16.5C12.552 16.5 13 16.052 13 15.5C13 14.948 12.552 14.5 11.996 14.5Z" fill="currentColor"></path></svg></div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label class="visually-hidden" for="panel-email">Email address</label>
-              <input id="panel-email" name="email" type="email" placeholder="Email address*" required>
-            </div>
-            <div class="field">
-              <label class="visually-hidden" for="panel-mobile">Mobile number</label>
-              <input id="panel-mobile" name="mobile" type="tel" placeholder="Mobile number*" required>
-            </div>
-          </div>
 
-          <div class="panel-form-step">
-            <h3>Project information</h3>
-            <span class="step-number">02</span>
-          </div>
-          <p class="panel-form-note">Tell us more about your project.</p>
+            <div class="panel-form-step">
+              <h3>Project information</h3>
+              <span class="step-number">02</span>
+            </div>
+            <p class="panel-form-note">Tell us more about your project.</p>
 
-          <div class="field">
-            <label class="visually-hidden" for="panel-message">Project details</label>
-            <textarea id="panel-message" name="message" rows="8" placeholder="Tell us more about your project...*" required></textarea>
-          </div>
+            <div data-validate class="form-field-group">
+              <label for="panel-message" class="form-label">Project details <span class="form-required">*</span></label>
+              <div class="form-field">
+                <textarea class="form-input is--textarea" id="panel-message" name="message" placeholder="What you are planning, who it is for and when you need it." maxlength="5000" min="10" required></textarea>
+                <div class="form-field-icon is--success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M11.25 14.25L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 10.5L11.25 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3C7.02943 3 3 7.02943 3 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                <div class="form-field-icon is--error"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path opacity="0.1" d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.996 14.5C11.444 14.5 10.996 14.948 11 15.5C11 16.052 11.448 16.5 12 16.5C12.552 16.5 13 16.052 13 15.5C13 14.948 12.552 14.5 11.996 14.5Z" fill="currentColor"></path></svg></div>
+              </div>
+            </div>
 
-          <div class="actions">
-            <button data-button-011 type="submit" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Submit Enquiry</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></button>
+            <div class="form-field-group">
+              <div class="form-divider"></div>
+            </div>
+
+            <div class="form-field-group">
+              <div class="form-field">
+                <div data-submit tabindex="0" role="button" data-button-011 class="button-011 form-submit-btn"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Submit Enquiry</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span><input type="submit" data-wait="Please wait..." class="form-submit" value="Submit Enquiry"></div>
+              </div>
+            </div>
+          </form>
+          <div class="form-notifcation" data-form-success>
+            <div class="form-notification-bg"></div>
+            <div class="form-notification-p">Thank you — your enquiry is in. Tom will be in touch shortly.</div>
+            <div class="form-notification-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M11.25 14.25L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 10.5L11.25 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3C7.02943 3 3 7.02943 3 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
           </div>
-        </form>
+          <div class="form-notifcation is--error" data-form-error>
+            <div class="form-notification-bg"></div>
+            <div class="form-notification-p">Something went wrong while submitting.</div>
+            <div class="form-notification-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path opacity="0.1" d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 12.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.996 14.5C11.444 14.5 10.996 14.948 11 15.5C11 16.052 11.448 16.5 12 16.5C12.552 16.5 13 16.052 13 15.5C13 14.948 12.552 14.5 11.996 14.5Z" fill="currentColor"></path></svg></div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -327,6 +365,7 @@
 <script src="odometer.js"></script>
 <script src="steptimeline.js"></script>
 <script src="centeredslider.js"></script>
+<script src="formvalidation.js"></script>
 <script src="transitions.js"></script>
 
 </body>
