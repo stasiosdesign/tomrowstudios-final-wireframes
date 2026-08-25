@@ -53,6 +53,7 @@ function initAfterEnterFunctions(next) {
   if (typeof initParallaxImageGalleryThumbnails === "function") initParallaxImageGalleryThumbnails();
   if (typeof initNumberOdometer === "function") initNumberOdometer();
   if (typeof initStepByStepTimeline === "function") initStepByStepTimeline();
+  if (typeof initCenteredSliders === "function") initCenteredSliders();
 
   if (hasLenis) {
     lenis.resize();

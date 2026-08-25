@@ -122,7 +122,25 @@ function initWillemLoadingAnimation() {
     tl.to(growingImage, {
       width: "100vw",
       height: "100dvh",
-      duration: 2
+      /* The image is centred on the box it grows out of, and that box sits
+         between two unequal halves of the wordmark, so its centre is a few
+         pixels off the viewport's. Left alone it lands with a hairline of the
+         loader's pale backdrop showing down one edge. Drifting it back over
+         the same two seconds is invisible and makes it land flush. */
+      x: () => {
+        const el = growingImage[0];
+        const box = el.getBoundingClientRect();
+        const current = parseFloat(gsap.getProperty(el, "x")) || 0;
+        return current + window.innerWidth / 2 - (box.left + box.width / 2);
+      },
+      duration: 2,
+      /* The full-bleed image and the settled background are the same asset, so
+         hand over the moment the growth lands. Waiting for the whole timeline
+         would leave the loader — and its backdrop — on screen for another
+         second while the hero copy reveals. */
+      onComplete: () => {
+        container.classList.add("is--settled");
+      }
     }, "< 1.25");
   }
 
