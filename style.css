@@ -66,7 +66,7 @@ body {
   margin: 0;
   background: #000000;
   color: #ffffff;
-  font-family: "BDO Grotesk", Helvetica, Arial, sans-serif;
+  font-family: "host-grotesk", Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
 }
@@ -174,7 +174,7 @@ main:not(:has(.willem-header)) .site-nav + * { padding-top: var(--nav-height); }
   font-size: 5.6rem;
   line-height: 1.2;
   letter-spacing: -0.056rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 .hero-col-two p { margin: 0; font-size: 1.8rem; }
 
@@ -1239,7 +1239,7 @@ main:has(.willem-header.is--loading) {
   font-size: 5.6rem;
   line-height: 1.2;
   letter-spacing: -0.056rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .willem-hero__intro { margin: 0; font-size: 1.8rem; }
@@ -1376,7 +1376,7 @@ main:has(.willem-header.is--loading) {
   justify-content: space-between;
   min-height: 100svh;
   padding: 2.5em calc(var(--grid-gutter) + var(--grid-pad));
-  font-weight: 600;
+  font-weight: 500;
   display: flex;
   position: relative;
 }
@@ -1386,7 +1386,7 @@ main:has(.willem-header.is--loading) {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 1.125em;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .site-footer__links-row {
@@ -1431,7 +1431,7 @@ main:has(.willem-header.is--loading) {
   font-size: 6.5em;
   line-height: .85;
   letter-spacing: -.03em;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .site-footer__legal {
@@ -3094,3 +3094,27 @@ main section + section,
     margin: 0 0 3.2rem;
   }
 }
+
+/* =============================================================
+   Project pages — portfolio plates
+   ============================================================= */
+
+/* These are portfolio spreads, not photographs: they carry their own
+   margins and captions, so they are never cropped — each plate is shown
+   whole, stacked down the page the way the portfolio reads */
+.project-plates {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gap);
+}
+.project-plates img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.project-actions { margin-top: 5.6rem; }
+
+/* The cover panel is the plate itself, so let it sit brighter than the
+   usual darkened page header */
+.page-header:has(.panel-meta) .page-header-img { filter: brightness(0.45); }
