@@ -545,7 +545,7 @@ h3 {
 .panel-dialog {
   position: relative;
   z-index: 1;
-  width: 56em;
+  width: 48em;
   max-width: 100%;
   height: 100%;
   margin-left: auto;
@@ -2999,33 +2999,6 @@ main section + section,
 .book-feature__body { min-width: 0; }
 .book-feature__body .lead { margin-bottom: 4rem; }
 
-/* The figures pick up the ruled index register used across the site */
-.book-feature__stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--grid-gap);
-  margin: 0 0 4rem;
-  padding: 2.4rem 0 0;
-  list-style: none;
-  border-top: 1px solid var(--rule);
-}
-.book-feature__stats li {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  min-width: 0;
-}
-.book-feature__stat-num {
-  font-size: 4.8rem;
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-.book-feature__stat-label {
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--form-muted);
-}
 
 /* ---------- Closing CTA ---------- */
 .final-cta {
@@ -3056,13 +3029,39 @@ main section + section,
     grid-template-columns: 1fr;
     padding-top: 5.6rem;
   }
-  .book-feature__stats { gap: 2.4rem; }
-  .book-feature__stat-num { font-size: 3.6rem; }
   .final-cta__title { font-size: 4.8rem; }
   .final-cta__lead { max-width: none; }
 }
 
 @media screen and (max-width: 479px) {
-  .book-feature__stats { grid-template-columns: 1fr; }
   .final-cta__title { font-size: 4rem; }
+}
+
+/* =============================================================
+   Influence hero, the book plate on white
+   ============================================================= */
+
+/* The lead sits straight under the statement rather than across the
+   grid from it, so the two read as one block */
+.influence-hero { max-width: var(--grid-col-3); }
+.influence-hero h2 { margin-bottom: 2.4rem; }
+.influence-hero__lead { max-width: var(--grid-col-2); margin-bottom: 0; }
+
+/* ---------- The book plate, on white ---------- */
+/* The map is a dark plate, so setting the section white lets it sit on the
+   page like a printed spread and pulls the whole band forward */
+.map-spread.theme-light {
+  background: #ffffff;
+  color: #000509;
+  padding-bottom: 10rem;
+}
+.map-spread.theme-light .book-feature__intro h2,
+.map-spread.theme-light .lead { color: #000509; }
+
+.book-feature__body .lead { margin-bottom: 4rem; }
+
+@media screen and (max-width: 991px) {
+  .influence-hero,
+  .influence-hero__lead { max-width: none; }
+  .map-spread.theme-light { padding-bottom: 6.4rem; }
 }
