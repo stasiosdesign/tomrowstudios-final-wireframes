@@ -501,8 +501,7 @@ h3 {
   color: #ffffff;
   font-size: 2.2rem;
   line-height: 1;
-  letter-spacing: 0;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 /* Narrow margin columns at either edge of the grid */
@@ -613,11 +612,10 @@ h3 {
 }
 .panel-form-header h2 {
   margin: 0;
-  font-size: 4.8rem;
-  line-height: 1;
-  letter-spacing: -0.05rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-size: 4rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 400;
 }
 .panel-form { padding: 3.2rem; }
 .panel-form-step {
@@ -1153,6 +1151,10 @@ main:has(.willem-header.is--loading) {
   justify-content: space-between;
   align-items: flex-start;
   display: flex;
+  /* The links block starts on the centre column line. Inset it by the same
+     --grid-pad every other element sits inside its line by, so it clears the
+     rule instead of sitting hard against it. */
+  padding-left: var(--grid-pad);
 }
 
 .willem-nav__cta {
@@ -1160,8 +1162,8 @@ main:has(.willem-header.is--loading) {
 }
 
 .willem-nav__links {
-  grid-column-gap: .5em;
-  grid-row-gap: .5em;
+  grid-column-gap: 2.4em;
+  grid-row-gap: 2.4em;
   display: flex;
 }
 
@@ -2457,9 +2459,7 @@ body{
 }
 
 .slide-demo__eyebrow {
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  letter-spacing: 0.04em;
+  font-size: 1.5rem;
   line-height: 1.2;
 }
 
@@ -2628,34 +2628,6 @@ main section + section,
   border-radius: var(--radius);
 }
 
-/* The closing register: four ruled columns, numbered like an index */
-.shop-hero__index {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--grid-gap);
-  margin: 0;
-  padding: 2.4rem 0 0;
-  list-style: none;
-  border-top: 1px solid var(--rule);
-}
-.shop-hero__index li {
-  display: flex;
-  align-items: baseline;
-  gap: 1.2rem;
-  min-width: 0;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.55);
-}
-/* Hairlines land mid-gap, so they read as column rules rather than borders
-   hugging each item */
-.shop-hero__index li + li {
-  border-left: 1px solid var(--rule);
-  margin-left: calc(var(--grid-pad) * -1);
-  padding-left: var(--grid-pad);
-}
-.shop-hero__index-num { color: #ffffff; }
 
 /* ---------- Product cards as ruled tiles ---------- */
 .product-grid { counter-reset: product; }
@@ -2695,12 +2667,6 @@ main section + section,
   .shop-hero__body { grid-template-columns: 1fr; }
   .shop-hero h1 { font-size: 4rem; }
   .shop-hero .lead { max-width: none; }
-  .shop-hero__index { grid-template-columns: repeat(2, 1fr); gap: 1.6rem var(--grid-gap); }
-  .shop-hero__index li:nth-child(odd) {
-    border-left: 0;
-    margin-left: 0;
-    padding-left: 0;
-  }
 
   /* Single column: the rules stack horizontally instead */
   .product-card + .product-card {
@@ -3118,3 +3084,57 @@ main section + section,
 /* The cover panel is the plate itself, so let it sit brighter than the
    usual darkened page header */
 .page-header:has(.panel-meta) .page-header-img { filter: brightness(0.45); }
+
+/* =============================================================
+   Readability and spacing refinements
+   ============================================================= */
+
+/* Long-form prose was running past a hundred characters a line. Cap the
+   measure and open the leading — the column keeps its grid position, the
+   text just stops running the full width of it. */
+.rich-text { max-width: 58rem; }
+.rich-text p {
+  margin: 0 0 2rem;
+  line-height: 1.65;
+}
+.rich-text p:last-child { margin-bottom: 0; }
+
+/* Same treatment for the case study write-up and the project standfirsts */
+.case-intro__body p { line-height: 1.65; }
+.page-header .lead,
+.section-title .lead { line-height: 1.55; }
+
+/* Headings sat too close to the copy after the spacing pass; the larger the
+   heading the more room it needs under it */
+h2 { margin-bottom: 3.2rem; }
+.section-title h2 { margin-bottom: 2rem; }
+.rich-split h3 + * { margin-top: 0; }
+
+/* Award and insight rows read as a list, so let them breathe a little more
+   than the tightened default */
+.insights-row { padding: 2.8rem 0; }
+.insights-row__note { line-height: 1.5; }
+
+/* The plates are the point of a project page — give them room from the
+   copy above and from each other */
+.project-plates { gap: 3.2rem; }
+.project-actions { margin-top: 4.8rem; }
+
+/* Meta lists had the label set larger than the value it labels. Flip the
+   hierarchy onto the same small-caps label the rest of the site uses. */
+.panel-meta { gap: 2.4rem 4rem; }
+.panel-meta dt {
+  margin-bottom: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--form-muted);
+}
+.panel-meta dd {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+.panel-meta a { text-decoration: underline; text-underline-offset: 0.3em; }
