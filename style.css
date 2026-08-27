@@ -183,7 +183,7 @@ main:not(:has(.willem-header)) .site-nav + *:not(.project-hero) { padding-top: v
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("assets/hero.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("assets/photos/talks/talk-01.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -2295,6 +2295,8 @@ body{
   width: 4rem;
   height: 4rem;
   border-radius: 100em;
+  /* Photographs now, not flat marks, so they have to be cropped to the circle */
+  object-fit: cover;
   /* The ring separates the faces where they overlap */
   border: 2px solid #000509;
 }
@@ -2399,6 +2401,7 @@ body{
   width: 4rem;
   height: 4rem;
   overflow: hidden;
+  object-fit: cover;
 }
 
 .slide-demo__eyebrow {
@@ -3267,7 +3270,7 @@ strong, b, th { font-weight: 700; }
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.28);
 }
-.testimonial-chip img { width: 4rem; height: 4rem; border-radius: 100em; flex: none; }
+.testimonial-chip img { width: 4rem; height: 4rem; border-radius: 100em; object-fit: cover; flex: none; }
 .testimonial-chip__text { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
 .testimonial-chip__name { font-size: 1.5rem; color: inherit; }
 .testimonial-chip__role { font-size: 1.3rem; opacity: 0.7; }
