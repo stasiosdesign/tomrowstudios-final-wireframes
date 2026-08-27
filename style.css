@@ -174,12 +174,12 @@ main:not(:has(.willem-header)) .site-nav + * { padding-top: var(--nav-height); }
   font-size: 5.6rem;
   line-height: 1.2;
   letter-spacing: -0.056rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 .hero-col-two p { margin: 0; font-size: 1.8rem; }
 
 /* ---------- Typography ---------- */
-.tagline { margin: 0 0 1.6rem; font-weight: 700; font-size: 1.6rem; }
+.tagline { margin: 0 0 1.6rem; font-weight: 500; font-size: 1.6rem; }
 h2 {
   margin: 0 0 2.4rem;
   font-size: 4.8rem;
@@ -325,7 +325,7 @@ h3 {
 
 /* ---------- Logo strip ---------- */
 .logo-strip { text-align: center; padding-top: 5.6rem; padding-bottom: 5.6rem; }
-.logo-strip-title { max-width: 56rem; margin: 0 auto 3.2rem; font-size: 1.8rem; font-weight: 700; }
+.logo-strip-title { max-width: 56rem; margin: 0 auto 3.2rem; font-size: 1.8rem; font-weight: 500; }
 .logo-row { display: flex; gap: 2.4rem; justify-content: center; flex-wrap: wrap; }
 .logo-row img { height: 3.6rem; width: auto; }
 
@@ -392,7 +392,7 @@ h3 {
 .testimonial-author p { margin: 0; }
 .author-divider { width: 1px; height: 6.1rem; background: rgba(0, 5, 9, 0.2); }
 .author-logo { height: 2rem; width: auto; }
-.strong { font-weight: 700; }
+.strong { font-weight: 500; }
 
 /* ---------- Contact form ---------- */
 .contact-split { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--grid-gap); align-items: flex-start; }
@@ -624,8 +624,8 @@ h3 {
   justify-content: space-between;
   gap: 2.4rem;
 }
-.panel-form-step h3 { margin: 0; font-size: 1.8rem; font-weight: 700; }
-.panel-form-step .step-number { font-size: 1.8rem; font-weight: 700; }
+.panel-form-step h3 { margin: 0; font-size: 1.8rem; font-weight: 500; }
+.panel-form-step .step-number { font-size: 1.8rem; font-weight: 500; }
 .panel-form-note { margin: 0.4rem 0 2.4rem; }
 .panel-form .form { gap: 1.6rem; }
 .panel-form .form-row { gap: 1.6rem; }
@@ -638,7 +638,7 @@ h3 {
 .tag {
   padding: 0.4rem 1rem;
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #000509;
   background: rgba(255, 255, 255, 0.85);
   border-radius: var(--radius);
@@ -675,7 +675,7 @@ h3 {
 .product-img { width: 100%; aspect-ratio: 405 / 270; object-fit: cover; }
 .product-body { display: flex; flex-direction: column; gap: 1.6rem; padding: 2.4rem; flex: 1; }
 .product-info { display: flex; gap: 1.6rem; align-items: center; }
-.product-meta { font-size: 1.4rem; font-weight: 700; }
+.product-meta { font-size: 1.4rem; font-weight: 500; }
 .tag-dark { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
 .product-card h5 { margin: 0; font-size: 2.4rem; line-height: 1.4; letter-spacing: -0.024rem; font-weight: 400; }
 .product-card p { margin: 0; }
@@ -705,7 +705,7 @@ h3 {
 .faq summary {
   padding: 2rem 0;
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
   list-style: none;
 }
@@ -802,7 +802,7 @@ h3 {
   height: 6.4rem;
   margin-bottom: 3.2rem;
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 .feature-split-center { align-items: center; gap: 5.6rem; }
 .feature-split-center > a { flex: 1; min-width: 0; }
@@ -837,7 +837,7 @@ h3 {
 .footer-logo { width: 8.4rem; height: 3.6rem; object-fit: contain; margin-bottom: 0.8rem; }
 .footer-block { font-size: 1.4rem; }
 .footer-block p { margin: 0 0 0.4rem; }
-.footer-block .strong { font-weight: 700; }
+.footer-block .strong { font-weight: 500; }
 .footer-block a { text-decoration: underline; }
 
 .social { display: flex; gap: 1.2rem; margin-top: 0.8rem; }
@@ -845,7 +845,7 @@ h3 {
 
 .footer-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.4rem; }
 .footer-links ul { flex: 1; list-style: none; margin: 0; padding: 0; }
-.footer-links li { padding: 0.8rem 0; font-size: 1.4rem; font-weight: 700; }
+.footer-links li { padding: 0.8rem 0; font-size: 1.4rem; font-weight: 500; }
 .footer-links a { text-decoration: none; }
 
 .footer-bottom {
@@ -1241,7 +1241,7 @@ main:has(.willem-header.is--loading) {
   font-size: 5.6rem;
   line-height: 1.2;
   letter-spacing: -0.056rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .willem-hero__intro { margin: 0; font-size: 1.8rem; }
@@ -1433,7 +1433,7 @@ main:has(.willem-header.is--loading) {
   font-size: 6.5em;
   line-height: .85;
   letter-spacing: -.03em;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .site-footer__legal {
@@ -1603,7 +1603,7 @@ main:has(.willem-header.is--loading) .site-nav {
 .sticky-tab__eyebrow {
   margin: 0;
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 500;
   white-space: nowrap;
 }
 
@@ -2155,7 +2155,7 @@ body{
 .insights-row__index {
   margin: 0;
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.5);
 }
 .insights-row__body { min-width: 0; }
@@ -2359,7 +2359,7 @@ body{
 .social-proof__body { display: flex; flex-direction: column; gap: 0.4rem; }
 .social-proof__stars { width: 8rem; height: auto; }
 .social-proof__label { margin: 0; font-size: 1.6rem; color: rgba(255, 255, 255, 0.7); }
-.social-proof__label strong { color: #ffffff; font-weight: 700; }
+.social-proof__label strong { color: #ffffff; font-weight: 500; }
 
 /* ---------- Centered looping slider ---------- */
 .centered-slider-row {
@@ -3138,3 +3138,8 @@ h2 { margin-bottom: 3.2rem; }
   letter-spacing: -0.01em;
 }
 .panel-meta a { text-decoration: underline; text-underline-offset: 0.3em; }
+
+/* The boldest cut of host-grotesk is not used anywhere. Emphasis lands on
+   the medium weight instead, including on elements the browser would
+   otherwise render at its own bold. */
+strong, b, th { font-weight: 500; }
