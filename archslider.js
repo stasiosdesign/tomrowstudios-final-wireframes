@@ -54,6 +54,11 @@ function initParallaxImageSlider() {
       // Read wheel and trackpad input, and treat a vertical gesture as a
       // sideways one — scrolling down walks forward through the projects
       scrollInput: true,
+      // At the default sensitivity a wheel notch moved about a seventh of a
+      // card, so crossing five projects took forty notches. This puts a notch
+      // at roughly a third of a card, and the lower lerp lets the track catch
+      // up to the input instead of drifting after it.
+      scrollSensitivity: 2.5,
       // Stop with the last card flush against the right edge. Smooothy's
       // default stops one card-width from the end of the track, which on a
       // run this short leaves half a screen of black after the last project.

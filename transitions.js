@@ -59,6 +59,7 @@ function initAfterEnterFunctions(next) {
   if (typeof initBasicFormValidation === "function") initBasicFormValidation();
   if (typeof initParallaxImageSlider === "function") initParallaxImageSlider();
   if (typeof initMasonryGrid === "function") initMasonryGrid();
+  if (typeof initScrollToNextPage === "function") initScrollToNextPage();
   // Click-to-zoom binds one delegated listener on the document, so images
   // arriving with a new container are already covered — nothing to rebind.
 

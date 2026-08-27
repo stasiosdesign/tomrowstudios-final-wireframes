@@ -1286,17 +1286,21 @@ main:has(.willem-header.is--loading) {
   justify-content: space-between;
   min-height: 100svh;
   padding: 2.5em calc(var(--grid-gutter) + var(--grid-pad));
-  font-weight: 400;
+  /* Slightly more weight through the whole footer: the links and the small
+     labels were reading as the lightest thing on the page */
+  font-weight: var(--weight-ui);
   display: flex;
   position: relative;
 }
 
 .footer-eyebrow {
-  opacity: .5;
+  /* Was half-opacity light text, which read as a whisper. A touch more of
+     both, still clearly secondary to the links beside it. */
+  opacity: .65;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 1.125em;
-  font-weight: var(--weight-label);
+  font-weight: var(--weight-ui);
 }
 
 .site-footer__links-row {
@@ -3660,32 +3664,33 @@ strong, b, th { font-weight: 700; }
 }
 .masonry-item__visual { border-radius: var(--radius); }
 
-/* Columns and gap are the component's own controls. Four columns turned
-   architectural drawings into thumbnails next to the full-bleed plates, so
-   the project pages ask for three, and a phone gets one — two columns of
-   drawing at that width is nothing anyone can read. The gap matches the
-   page's column gap so the grid sits on the same rhythm as everything else. */
+/* Columns and gap are the component's own controls, and here they are set to
+   the page's own grid: four columns, and the gap that separates them is the
+   grid gap. Because the block is inset by gutter + pad, every tile then lands
+   exactly inside a column of the overlay drawn across the whole site — the
+   first tile spans 64 to 356 at 1440, which is the first column line at 40
+   plus its 24 of padding. Two columns means a tile spans two of them, one
+   means it spans all four; both stay on the lines. */
 .project-grid [data-masonry-list] {
-  --masonry-col: 3;
-  --masonry-gap: 2.4rem;
+  --masonry-col: 4;
+  /* This is --grid-gap, written out. It has to stay in step with it by hand:
+     --grid-gap is a calc(), and the component reads this value with
+     getPropertyValue and parses the unit off the end of the string, so a
+     calc() reaches it as "calc(2.4rem * 2)" and parses to NaN. */
+  --masonry-gap: 4.8rem;
 }
 
-/* Where a whole project is drawn on 3.5:1 spreads, three columns turn every
-   plate into a 120px sliver. Those pages ask for two. */
+/* Half as many, twice as wide — for spreads too wide to read at a quarter of
+   the page, and for the pair that closes a set */
 .project-grid.is--pairs [data-masonry-list] { --masonry-col: 2; }
 
 @media screen and (max-width: 991px) {
-  .project-grid [data-masonry-list] {
-    --masonry-col: 2;
-    --masonry-gap: 1.6rem;
-  }
+  .project-grid [data-masonry-list] { --masonry-col: 2; }
 }
 
 @media screen and (max-width: 767px) {
-  .project-grid [data-masonry-list] {
-    --masonry-col: 1;
-    --masonry-gap: 1.2rem;
-  }
+  .project-grid [data-masonry-list],
+  .project-grid.is--pairs [data-masonry-list] { --masonry-col: 1; }
 }
 
 /* =============================================================
@@ -3904,8 +3909,8 @@ body:has(.arch-page) {
 .parallax-slider__item-inner {
   aspect-ratio: 3 / 2;
   border-radius: var(--radius);
-  width: min(38vw, 70rem);
-  max-height: 44vh;
+  width: min(32vw, 60rem);
+  max-height: 38vh;
   position: relative;
   overflow: clip;
   background: #05080b;
@@ -4097,4 +4102,121 @@ body:has(.arch-page) {
     padding-left: 0;
   }
   .results-item__label { max-width: none; }
+}
+
+/* =============================================================
+   Scroll to next page (supplied component)
+   ============================================================= */
+
+.scroll-next {
+  min-height: 200vh;
+  position: relative;
+}
+
+.scroll-next__inner {
+  width: 100%;
+  height: 100dvh;
+  color: inherit;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+.scroll-next__bg {
+  z-index: 0;
+  position: absolute;
+  inset: 0%;
+  overflow: hidden;
+}
+
+.scroll-next__bg-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-next__bg-overlay {
+  z-index: 2;
+  opacity: .25;
+  background-color: #000;
+  position: absolute;
+  inset: 0%;
+}
+
+.scroll-next__center {
+  z-index: 2;
+  grid-column-gap: 0em;
+  grid-row-gap: 0em;
+  color: #fff;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1em;
+  display: flex;
+  position: relative;
+}
+
+.scroll-next__sub {
+  opacity: .6;
+  letter-spacing: -.05em;
+  font-size: 1.5em;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.scroll-next__h {
+  letter-spacing: -.06em;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 6.25em;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.scroll-next__progres {
+  z-index: 1;
+  color: #fff;
+  width: 30em;
+  position: absolute;
+}
+
+.scroll-next__progres-svg {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  transform: rotate(-90deg);
+  overflow: visible !important;
+}
+
+/* Integration: the component ships with its own type stack, and this site
+   has one already. Weight and scale come off the page's headings so the
+   panel reads as the end of the project rather than as a borrowed block. */
+.scroll-next__sub {
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: var(--weight-ui);
+  margin-bottom: 1.6rem;
+}
+.scroll-next__h {
+  font-size: 8.8rem;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  text-align: center;
+  max-width: 18ch;
+}
+.scroll-next__progres { width: 34rem; }
+
+@media screen and (max-width: 991px) {
+  .scroll-next__h { font-size: 5.6rem; }
+  .scroll-next__progres { width: 26rem; }
+}
+@media screen and (max-width: 767px) {
+  .scroll-next__h { font-size: 4rem; }
+  .scroll-next__progres { width: 20rem; }
+  .scroll-next__sub { font-size: 1.3rem; }
 }
