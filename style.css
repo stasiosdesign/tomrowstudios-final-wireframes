@@ -1741,11 +1741,17 @@ main:has(.willem-header.is--loading) .site-nav {
   display: flex;
 }
 
-/* The logo artwork sits inside each box */
+/* The logo artwork sits inside each box, sized so the marks carry roughly the
+   same weight. Every logo used to be set to one width, and these run from a
+   5:1 wordmark to a 2:3 portrait mark — so Motif and xfigura came out 22px
+   tall while Epic and Krea filled 64, and the wordmarks read as the faint
+   ones. Bounding the box on both axes instead lets a long mark run wide and
+   holds a tall one down, which roughly halves the spread. */
 .marquee-advanced__item-width img {
-  width: 60%;
+  width: auto;
   height: auto;
-  max-height: 55%;
+  max-width: 78%;
+  max-height: 40%;
   object-fit: contain;
 }
 
