@@ -66,14 +66,16 @@
   </nav>
 </header>
 
-<!-- Project header — the title carries the top of the page now, with the
-     awards set underneath it as labels and the portfolio download alongside.
-     No cover image: the drawings start immediately below. -->
+
+<!-- Project header. The title takes the top of the page on its own; the rule
+     under it separates the standfirst from the awards, so the two read as a
+     row rather than one long pile of stacked blocks. -->
 <header class="project-hero">
-  <div class="project-hero__inner">
-    <p class="tagline">Architecture — Digbeth, Birmingham — 2020</p>
-    <h1>The Sequel</h1>
-    <p class="lead project-hero__lead">Fields of movement exploration, in response to the social challenge and stigma towards ex-convicts.</p>
+  <p class="tagline project-hero__eyebrow">Architecture — Digbeth, Birmingham — 2020</p>
+  <h1 class="project-hero__title">The Sequel</h1>
+  <div class="project-hero__meta">
+    <p class="project-hero__lead">Fields of movement exploration, in response to the social challenge and stigma towards ex-convicts.</p>
+    <div class="project-hero__side">
     <ul class="award-labels">
       <li class="award-label"><span class="award-label__name">RIBA Bronze Medal</span><span class="award-label__note">Nominated 2020</span></li>
       <li class="award-label"><span class="award-label__name">AJ Student Prize Award</span><span class="award-label__note">Nominated 2020</span></li>
@@ -81,48 +83,37 @@
       <li class="award-label is--meta"><span class="award-label__name">University of Westminster</span></li>
       <li class="award-label is--meta"><span class="award-label__name">2020</span></li>
     </ul>
-    <div class="actions">
-      <a data-button-011 href="https://www.tomrowstudios.com/_files/ugd/746e36_5721c37a4e36477a96ba406cb3069aed.pdf" target="_blank" rel="noopener" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Download Portfolio</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
-      <a data-button-011 href="architecture.html" class="button-011 is--secondary"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">All projects</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
+      <div class="actions project-hero__actions">
+        <a data-button-011 href="https://www.tomrowstudios.com/_files/ugd/746e36_5721c37a4e36477a96ba406cb3069aed.pdf" target="_blank" rel="noopener" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Download Portfolio</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
+        <a data-button-011 href="architecture.html" class="button-011 is--secondary"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">All projects</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- Straight into the work: the opening plate, full width and landscape -->
-<section class="project-lead">
-  <img data-click-zoom class="project-lead__img" src="assets/projects/the-sequel/01.jpg" width="1600" height="451" alt="The Sequel — opening plate">
+<!-- Full bleed -->
+<section class="project-bleed">
+  <img data-click-zoom src="assets/projects/the-sequel/01.jpg" width="1600" height="451" loading="lazy" decoding="async" alt="The Sequel — plate 1">
 </section>
 
-<!-- Masonry grid -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="section-title section-title-left">
-      <p class="tagline">Portfolio</p>
-      <h2>Selected plates</h2>
-      <p class="lead">Click any drawing to open it full size.</p>
-    </div>
-    <div class="masonry-wrap">
-      <div class="masonry-collection">
-        <div data-masonry-list class="masonry-list">
-          <div class="masonry-item">
-            <div data-click-zoom class="masonry-item__visual is--wide">
-              <img src="assets/projects/the-sequel/02.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 2" class="masonry-item__visual-img">
-            </div>
+<!-- Masonry -->
+<section class="project-grid">
+  <div class="masonry-wrap">
+    <div class="masonry-collection">
+      <div data-masonry-list class="masonry-list">
+        <div class="masonry-item">
+          <div data-click-zoom class="masonry-item__visual">
+            <img src="assets/projects/the-sequel/02.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 2" class="masonry-item__visual-img">
           </div>
-          <div class="masonry-item">
-            <div data-click-zoom class="masonry-item__visual is--wide">
-              <img src="assets/projects/the-sequel/03.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 3" class="masonry-item__visual-img">
-            </div>
+        </div>
+        <div class="masonry-item">
+          <div data-click-zoom class="masonry-item__visual is--wide">
+            <img src="assets/projects/the-sequel/03.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 3" class="masonry-item__visual-img">
           </div>
-          <div class="masonry-item">
-            <div data-click-zoom class="masonry-item__visual is--square">
-              <img src="assets/projects/the-sequel/04.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 4" class="masonry-item__visual-img">
-            </div>
-          </div>
-          <div class="masonry-item">
-            <div data-click-zoom class="masonry-item__visual is--wide">
-              <img src="assets/projects/the-sequel/05.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 5" class="masonry-item__visual-img">
-            </div>
+        </div>
+        <div class="masonry-item">
+          <div data-click-zoom class="masonry-item__visual">
+            <img src="assets/projects/the-sequel/04.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 4" class="masonry-item__visual-img">
           </div>
         </div>
       </div>
@@ -130,36 +121,52 @@
   </div>
 </section>
 
-<!-- The rest of the set, one plate to a row -->
-<section class="section">
-  <div class="container">
-    <div class="section-title section-title-left">
-      <p class="tagline">Portfolio</p>
-      <h2>The full set</h2>
-      <p class="lead">The remaining spreads, in the order the portfolio reads.</p>
-    </div>
-    <div class="project-plates">
-        <img data-click-zoom src="assets/projects/the-sequel/06.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 6">
-        <img data-click-zoom src="assets/projects/the-sequel/07.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 7">
-        <img data-click-zoom src="assets/projects/the-sequel/08.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 8">
-    </div>
-    <div class="actions project-actions">
-      <a data-button-011 href="https://www.tomrowstudios.com/_files/ugd/746e36_5721c37a4e36477a96ba406cb3069aed.pdf" target="_blank" rel="noopener" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Download Portfolio</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
+<!-- Full bleed -->
+<section class="project-bleed">
+  <img data-click-zoom src="assets/projects/the-sequel/05.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 5">
+</section>
+
+<!-- Overview -->
+<section class="project-note">
+  <div class="project-note__inner">
+    <p class="tagline">The project</p>
+    <div class="project-note__body">
+        <p>The two-part series begins with the Sequence, which explores and analyses movement in Digbeth, Birmingham, and continues research in film theory by monitoring speed, direction and time through film and key-framing.</p>
+        <p>The Sequel resolves fields of movement exploration in response to the social challenge and stigma towards ex-convicts. A metaphorical timeline anchors the construct in forming a monument that tells the story of the ex-convict in their first 12 months of rehabilitation.</p>
+        <p>The building utilises my exploration to create a journey that widens, narrows, diverts, meanders, opens, and closes. An intricate sequence and module formation create slits that portray the contrast between light and dark, with concrete acting as a canvas to add to the internal experience.</p>
     </div>
   </div>
 </section>
 
-<!-- Overview — the write-up follows the work rather than delaying it -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="rich-split">
-      <h3>The project</h3>
-      <div class="rich-text">
-        <p>The two-part series begins with the Sequence, which explores and analyses movement in Digbeth, Birmingham, and continues research in film theory by monitoring speed, direction and time through film and key-framing.</p>
-        <p>The Sequel resolves fields of movement exploration in response to the social challenge and stigma towards ex-convicts. A metaphorical timeline anchors the construct in forming a monument that tells the story of the ex-convict in their first 12 months of rehabilitation.</p>
-        <p>The building utilises my exploration to create a journey that widens, narrows, diverts, meanders, opens, and closes. An intricate sequence and module formation create slits that portray the contrast between light and dark, with concrete acting as a canvas to add to the internal experience.</p>
+<!-- Masonry -->
+<section class="project-grid">
+  <div class="masonry-wrap">
+    <div class="masonry-collection">
+      <div data-masonry-list class="masonry-list">
+        <div class="masonry-item">
+          <div data-click-zoom class="masonry-item__visual">
+            <img src="assets/projects/the-sequel/06.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 6" class="masonry-item__visual-img">
+          </div>
+        </div>
+        <div class="masonry-item">
+          <div data-click-zoom class="masonry-item__visual is--wide">
+            <img src="assets/projects/the-sequel/07.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 7" class="masonry-item__visual-img">
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Full bleed -->
+<section class="project-bleed">
+  <img data-click-zoom src="assets/projects/the-sequel/08.jpg" width="1600" height="914" loading="lazy" decoding="async" alt="The Sequel — plate 8">
+</section>
+
+<!-- Portfolio download -->
+<section class="project-close">
+  <div class="actions">
+    <a data-button-011 href="https://www.tomrowstudios.com/_files/ugd/746e36_5721c37a4e36477a96ba406cb3069aed.pdf" target="_blank" rel="noopener" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Download Portfolio</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
   </div>
 </section>
 

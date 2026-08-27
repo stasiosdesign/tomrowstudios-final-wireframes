@@ -57,7 +57,13 @@ function initParallaxImageSlider() {
       // Stop with the last card flush against the right edge. Smooothy's
       // default stops one card-width from the end of the track, which on a
       // run this short leaves half a screen of black after the last project.
-      setOffset: (viewport) => viewport.wrapperWidth || viewport.itemWidth,
+      // wrapperWidth is clientWidth, so it counts the track's left inset —
+      // taking it off twice leaves the run inset by the same amount at both
+      // ends, which is what puts the first card on the page's own grid line.
+      setOffset: (viewport) => {
+        const inset = parseFloat(getComputedStyle(wrapper).paddingLeft) || 0;
+        return (viewport.wrapperWidth - inset * 2) || viewport.itemWidth;
+      },
       onUpdate: (core) => {
         // Smooothy only hands back per-slide parallax values when it is
         // looping; on a bounded run every slide gets the same number, which

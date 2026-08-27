@@ -66,51 +66,57 @@
   </nav>
 </header>
 
-<!-- Project header — the title carries the top of the page now, with the
-     awards set underneath it as labels and the portfolio download alongside.
-     No cover image: the drawings start immediately below. -->
+
+<!-- Project header. The title takes the top of the page on its own; the rule
+     under it separates the standfirst from the awards, so the two read as a
+     row rather than one long pile of stacked blocks. -->
 <header class="project-hero">
-  <div class="project-hero__inner">
-    <p class="tagline">Architecture — Dissertation</p>
-    <h1>Irrational Matrix</h1>
-    <p class="lead project-hero__lead">Using Daniel Libeskind to question the role of drawing in architectural representation.</p>
+  <p class="tagline project-hero__eyebrow">Architecture — Dissertation</p>
+  <h1 class="project-hero__title">Irrational Matrix</h1>
+  <div class="project-hero__meta">
+    <p class="project-hero__lead">Using Daniel Libeskind to question the role of drawing in architectural representation.</p>
+    <div class="project-hero__side">
     <ul class="award-labels">
       <li class="award-label is--meta"><span class="award-label__name">Dissertation</span></li>
       <li class="award-label is--meta"><span class="award-label__name">Daniel Libeskind: Chamber Works and Micromegas</span></li>
       <li class="award-label is--meta"><span class="award-label__name">University of Westminster</span></li>
     </ul>
-    <div class="actions">
-      <a data-button-011 href="https://www.tomrowstudios.com/_files/ugd/746e36_cd0befd81e9548c89428def8600fde85.pdf" target="_blank" rel="noopener" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Download Portfolio</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
-      <a data-button-011 href="architecture.html" class="button-011 is--secondary"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">All projects</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
+      <div class="actions project-hero__actions">
+        <a data-button-011 href="https://www.tomrowstudios.com/_files/ugd/746e36_cd0befd81e9548c89428def8600fde85.pdf" target="_blank" rel="noopener" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Download Portfolio</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
+        <a data-button-011 href="architecture.html" class="button-011 is--secondary"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">All projects</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- Straight into the work: the opening plate, full width and landscape -->
-<section class="project-lead">
-  <img data-click-zoom class="project-lead__img" src="assets/projects/irrational-matrix/01.jpg" width="1600" height="1600" alt="Irrational Matrix — opening plate">
-</section>
-
-<!-- Masonry grid -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="section-title section-title-left">
-      <p class="tagline">Portfolio</p>
-      <h2>Selected plates</h2>
-      <p class="lead">Click any drawing to open it full size.</p>
-    </div>
-    <div class="masonry-wrap">
-      <div class="masonry-collection">
-        <div data-masonry-list class="masonry-list">
-          <div class="masonry-item">
-            <div data-click-zoom class="masonry-item__visual is--wide">
-              <img src="assets/projects/irrational-matrix/02.jpg" width="1600" height="1599" loading="lazy" decoding="async" alt="Irrational Matrix — plate 2" class="masonry-item__visual-img">
-            </div>
+<!-- Masonry -->
+<section class="project-grid">
+  <div class="masonry-wrap">
+    <div class="masonry-collection">
+      <div data-masonry-list class="masonry-list">
+        <div class="masonry-item">
+          <div data-click-zoom class="masonry-item__visual">
+            <img src="assets/projects/irrational-matrix/01.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt="Irrational Matrix — plate 1" class="masonry-item__visual-img">
           </div>
-          <div class="masonry-item">
-            <div data-click-zoom class="masonry-item__visual is--wide">
-              <img src="assets/projects/irrational-matrix/03.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt="Irrational Matrix — plate 3" class="masonry-item__visual-img">
-            </div>
+        </div>
+        <div class="masonry-item">
+          <div data-click-zoom class="masonry-item__visual">
+            <img src="assets/projects/irrational-matrix/02.jpg" width="1600" height="1599" loading="lazy" decoding="async" alt="Irrational Matrix — plate 2" class="masonry-item__visual-img">
+          </div>
+        </div>
+        <div class="masonry-item">
+          <div data-click-zoom class="masonry-item__visual">
+            <img src="assets/projects/irrational-matrix/03.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt="Irrational Matrix — plate 3" class="masonry-item__visual-img">
+          </div>
+        </div>
+        <div class="masonry-item">
+          <div data-click-zoom class="masonry-item__visual">
+            <img src="assets/projects/irrational-matrix/04.jpg" width="1066" height="1599" loading="lazy" decoding="async" alt="Irrational Matrix — plate 4" class="masonry-item__visual-img">
+          </div>
+        </div>
+        <div class="masonry-item">
+          <div data-click-zoom class="masonry-item__visual">
+            <img src="assets/projects/irrational-matrix/05.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt="Irrational Matrix — plate 5" class="masonry-item__visual-img">
           </div>
         </div>
       </div>
@@ -118,34 +124,21 @@
   </div>
 </section>
 
-<!-- The rest of the set, one plate to a row -->
-<section class="section">
-  <div class="container">
-    <div class="section-title section-title-left">
-      <p class="tagline">Portfolio</p>
-      <h2>The full set</h2>
-      <p class="lead">The remaining spreads, in the order the portfolio reads.</p>
-    </div>
-    <div class="project-plates">
-        <img data-click-zoom src="assets/projects/irrational-matrix/04.jpg" width="1066" height="1599" loading="lazy" decoding="async" alt="Irrational Matrix — plate 4">
-        <img data-click-zoom src="assets/projects/irrational-matrix/05.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt="Irrational Matrix — plate 5">
-    </div>
-    <div class="actions project-actions">
-      <a data-button-011 href="https://www.tomrowstudios.com/_files/ugd/746e36_cd0befd81e9548c89428def8600fde85.pdf" target="_blank" rel="noopener" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Download Portfolio</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
+<!-- Overview -->
+<section class="project-note">
+  <div class="project-note__inner">
+    <p class="tagline">The project</p>
+    <div class="project-note__body">
+        <p>In my dissertation, I aim to study both Chamber Works and Micromegas as drawings that push the role of representation in architectural drawing. These drawings have sparked intriguing discussions amongst commentators due to how they oppose the conventions of an architectural drawing of the time.</p>
+        <p>While Chamber Works provides an overarching narrative regarding the connection between architecture and music, Micromegas explore fluctuating form and space. By referring to the descriptions and analogies made by Libeskind and by making an account of some of the more significant critics to have commented on his work, I aim to dissect the drawing works that made him a leading avant-garde figure in architecture.</p>
     </div>
   </div>
 </section>
 
-<!-- Overview — the write-up follows the work rather than delaying it -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="rich-split">
-      <h3>The project</h3>
-      <div class="rich-text">
-        <p>In my dissertation, I aim to study both Chamber Works and Micromegas as drawings that push the role of representation in architectural drawing. These drawings have sparked intriguing discussions amongst commentators due to how they oppose the conventions of an architectural drawing of the time.</p>
-        <p>While Chamber Works provides an overarching narrative regarding the connection between architecture and music, Micromegas explore fluctuating form and space. By referring to the descriptions and analogies made by Libeskind and by making an account of some of the more significant critics to have commented on his work, I aim to dissect the drawing works that made him a leading avant-garde figure in architecture.</p>
-      </div>
-    </div>
+<!-- Portfolio download -->
+<section class="project-close">
+  <div class="actions">
+    <a data-button-011 href="https://www.tomrowstudios.com/_files/ugd/746e36_cd0befd81e9548c89428def8600fde85.pdf" target="_blank" rel="noopener" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Download Portfolio</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
   </div>
 </section>
 

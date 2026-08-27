@@ -169,8 +169,11 @@ a { color: inherit; }
   z-index: 80;
 }
 
-/* Inner pages clear the fixed bar; the home page hero sits under it by design */
-main:not(:has(.willem-header)) .site-nav + * { padding-top: var(--nav-height); }
+/* Inner pages clear the fixed bar; the home page hero sits under it by design.
+   A block that wants more than bare clearance opts out here rather than
+   fighting this rule — it is more specific than a single class, so it would
+   otherwise win and pin the block's top padding to the height of the bar. */
+main:not(:has(.willem-header)) .site-nav + *:not(.project-hero) { padding-top: var(--nav-height); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -1448,6 +1451,13 @@ main:has(.willem-header.is--loading) .site-nav {
 /* Height of the fixed bar: 2.4rem padding top and bottom plus the link's line
    box. Every sticky offset below is derived from it. */
 :root { --nav-height: 7rem; }
+
+/* The bar is fixed, and below 992px its links stack, so it grows to roughly
+   a third of a phone screen. The token has to grow with it — measured at 11.3
+   and 15.7rem — or every inner page starts its first block underneath the
+   bar. On a phone that was hiding the project eyebrow entirely. */
+@media screen and (max-width: 991px) { :root { --nav-height: 11.5rem; } }
+@media screen and (max-width: 767px) { :root { --nav-height: 16rem; } }
 
 .sticky-tab-group {
   overflow: clip;
@@ -3397,35 +3407,61 @@ strong, b, th { font-weight: 700; }
 
 
 /* =============================================================
-   Project pages — hero, award labels, masonry, landscape plates
+   Project pages
    ============================================================= */
 
-/* The cover image is gone from the top of a project page: the title carries
-   it now, with the awards it won set immediately underneath and the portfolio
-   download alongside. Straight after this block the drawings begin. */
-.project-hero {
-  padding: 16rem calc(var(--grid-gutter) + var(--grid-pad)) 6.4rem;
-  border-bottom: 1px solid var(--rule);
+/* One rhythm for the whole page. Every block below is spaced off these two
+   values rather than picking its own, which is what made the old page read
+   as a pile of unrelated sections. */
+:root {
+  --project-rhythm: 12rem;
+  --project-inset: calc(var(--grid-gutter) + var(--grid-pad));
 }
-.project-hero__inner { max-width: var(--grid-col-3); }
-.project-hero h1 {
-  margin: 0 0 2.4rem;
-  font-size: 7.2rem;
-  line-height: 1.02;
-  letter-spacing: -0.09rem;
+
+/* ---------- Hero ----------
+   The title gets the top of the page to itself. Underneath, a rule splits the
+   standfirst from the awards and the download, so those sit as a row across
+   the grid instead of stacking into a column of small blocks. */
+.project-hero {
+  /* A global rule gives every inner page one nav-height of clearance. That
+     is enough to clear the bar and nothing more, which left the eyebrow
+     sitting two pixels under it — hence the specificity here. */
+  padding: calc(var(--nav-height) + 14rem) var(--project-inset) var(--project-rhythm);
+}
+.project-hero__eyebrow { margin: 0 0 2.4rem; }
+.project-hero__title {
+  margin: 0;
+  max-width: 18ch;
+  font-size: 8.8rem;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
   font-weight: 700;
 }
+
+.project-hero__meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+  align-items: start;
+  margin-top: 8rem;
+  padding-top: 3.2rem;
+  border-top: 1px solid var(--rule);
+}
 .project-hero__lead {
-  max-width: 58rem;
-  margin: 0 0 3.2rem;
-  font-size: 1.8rem;
+  grid-column: span 2;
+  margin: 0;
+  max-width: 44rem;
+  font-size: 2rem;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.7);
 }
+.project-hero__side {
+  grid-column: 3 / span 2;
+  min-width: 0;
+}
 
-/* Awards as labels rather than a section of their own. The award pills read
-   first; the flat programme/year/school labels sit behind them in the same
-   row so the whole line still scans as one strip of metadata. */
+/* Stacked, not wrapped across the full width — in the side column the labels
+   read as a list of credits, which is what they are */
 .award-labels {
   list-style: none;
   display: flex;
@@ -3463,29 +3499,90 @@ strong, b, th { font-weight: 700; }
   border-style: dashed;
   border-color: rgba(255, 255, 255, 0.14);
 }
+.project-hero__actions { margin: 0; }
 
-.project-hero .actions { margin-top: 0; }
-
-/* ---------- Landscape discipline ----------
-   A plate at full width must not run tall: a tall image at that width just
-   pushes the drawing off the top and bottom of the screen, which reads as an
-   accidental zoom. Capping the height keeps every plate inside roughly one
-   desktop screen — wide spreads are untouched, square and portrait ones
-   simply narrow rather than being cropped. */
-.project-plates img,
-.project-lead__img {
+/* ---------- Full-bleed plate ----------
+   Edge to edge, no gutter and no corner. The plate keeps its own proportions:
+   these are drawings, and cropping one to fit a band takes the drawing away.
+   The spreads run from 16:9 to nearly 3.5:1, so all of them land wide. */
+.project-bleed {
+  margin: 0 0 var(--project-rhythm);
+}
+.project-bleed img {
   display: block;
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: 100%;
-  max-height: 78vh;
-  margin: 0 auto;
-  border-radius: var(--radius);
+  border-radius: 0;
 }
 
-.project-lead {
-  padding: 0 calc(var(--grid-gutter) + var(--grid-pad));
-  margin: 0 0 8rem;
+/* ---------- Masonry block ---------- */
+.project-grid {
+  padding: 0 var(--project-inset);
+  margin: 0 0 var(--project-rhythm);
+}
+
+/* ---------- Overview ----------
+   Two of the four columns, set against the label. The write-up is the only
+   text on the page after the hero, so it gets room rather than a section
+   heading and a standfirst on top of it. */
+.project-note {
+  padding: 0 var(--project-inset);
+  margin: 0 0 var(--project-rhythm);
+}
+.project-note__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+  padding-top: 3.2rem;
+  border-top: 1px solid var(--rule);
+}
+.project-note__inner .tagline {
+  grid-column: span 1;
+  margin: 0;
+}
+.project-note__body {
+  grid-column: 2 / span 2;
+  min-width: 0;
+}
+.project-note__body p {
+  margin: 0 0 2rem;
+  font-size: 1.8rem;
+  line-height: 1.55;
+}
+.project-note__body p:last-child { margin-bottom: 0; }
+
+/* ---------- Closing download ---------- */
+.project-close {
+  padding: 0 var(--project-inset) var(--project-rhythm);
+}
+.project-close .actions { justify-content: flex-start; }
+
+/* The closing CTA band already carries its own top padding, so the last
+   project block does not need to double it */
+.project-close + .final-cta { border-top: 1px solid var(--rule); }
+
+@media screen and (max-width: 991px) {
+  :root { --project-rhythm: 8rem; }
+  .project-hero { padding-top: calc(var(--nav-height) + 9rem); }
+  .project-hero__title { font-size: 5.6rem; max-width: none; }
+  .project-hero__meta {
+    grid-template-columns: 1fr;
+    margin-top: 5.6rem;
+    gap: 3.2rem;
+  }
+  .project-hero__lead,
+  .project-hero__side { grid-column: span 1; }
+  .project-hero__lead { max-width: none; }
+  .project-note__inner { grid-template-columns: 1fr; gap: 2.4rem; }
+  .project-note__inner .tagline,
+  .project-note__body { grid-column: span 1; }
+}
+
+@media screen and (max-width: 767px) {
+  :root { --project-rhythm: 6rem; }
+  .project-hero { padding-top: calc(var(--nav-height) + 6rem); }
+  .project-hero__title { font-size: 4rem; }
+  .project-hero__lead { font-size: 1.8rem; }
 }
 
 /* ---------- Masonry grid (supplied component) ---------- */
@@ -3552,21 +3649,43 @@ strong, b, th { font-weight: 700; }
   }
 }
 
-/* Integration with the page it sits on: the section already carries the grid
-   padding, so the component must not add its own on top, and the corners take
-   the site radius rather than the component's default. */
-.section .masonry-wrap {
+/* Integration with the page it sits on: the block around it already carries
+   the grid padding, so the component must not add its own on top, and the
+   corners take the site radius rather than the component's default. */
+.section .masonry-wrap,
+.project-grid .masonry-wrap {
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
 }
 .masonry-item__visual { border-radius: var(--radius); }
 
+/* Columns and gap are the component's own controls. Four columns turned
+   architectural drawings into thumbnails next to the full-bleed plates, so
+   the project pages ask for three, and a phone gets one — two columns of
+   drawing at that width is nothing anyone can read. The gap matches the
+   page's column gap so the grid sits on the same rhythm as everything else. */
+.project-grid [data-masonry-list] {
+  --masonry-col: 3;
+  --masonry-gap: 2.4rem;
+}
+
+/* Where a whole project is drawn on 3.5:1 spreads, three columns turn every
+   plate into a 120px sliver. Those pages ask for two. */
+.project-grid.is--pairs [data-masonry-list] { --masonry-col: 2; }
+
+@media screen and (max-width: 991px) {
+  .project-grid [data-masonry-list] {
+    --masonry-col: 2;
+    --masonry-gap: 1.6rem;
+  }
+}
+
 @media screen and (max-width: 767px) {
-  .project-hero { padding-top: 12rem; }
-  .project-hero h1 { font-size: 4rem; }
-  .project-plates img,
-  .project-lead__img { max-height: none; }
+  .project-grid [data-masonry-list] {
+    --masonry-col: 1;
+    --masonry-gap: 1.2rem;
+  }
 }
 
 /* =============================================================
@@ -3642,13 +3761,27 @@ body:has(.arch-page) {
   padding: var(--nav-height) 0 0;
 }
 
+/* The slider's own group sits between the stage and the three rows, so the
+   stage's column had exactly one child and the `flex: 1` on the slider row
+   had no container to grow inside. The rows stacked at their natural heights
+   and left the slack at the bottom — a hundred and thirty dead pixels above
+   the progress bar on a phone. The group carries the column instead. */
+.arch-stage__group {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .arch-stage__head {
   flex: none;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 2.4rem;
-  padding: 3.2rem calc(var(--grid-gutter) + var(--grid-pad)) 0;
+  /* The label sat two pixels under the fixed bar and the first card sat two
+     pixels under the label. Both ends of this strip get room now. */
+  padding: 5.6rem calc(var(--grid-gutter) + var(--grid-pad)) 4rem;
 }
 .arch-stage__head .tagline { margin: 0; }
 .arch-stage__count {
@@ -3676,13 +3809,14 @@ body:has(.arch-page) {
   align-items: flex-end;
   justify-content: space-between;
   gap: 2.4rem;
-  padding: 0 calc(var(--grid-gutter) + var(--grid-pad)) 4.8rem;
+  /* Clears the progress bar along the bottom edge as well as sitting off it */
+  padding: 4.8rem calc(var(--grid-gutter) + var(--grid-pad)) 6.4rem;
 }
 .arch-stage__title {
   margin: 0;
-  font-size: 7.2rem;
+  font-size: 6.4rem;
   line-height: 0.92;
-  letter-spacing: -0.09rem;
+  letter-spacing: -0.03em;
   font-weight: 700;
 }
 
@@ -3748,8 +3882,11 @@ body:has(.arch-page) {
   align-items: center;
   overflow: hidden;
   cursor: grab;
-  /* No inset: the wrapper width is what bounds the run, so padding here would
-     push the last card past the right edge at the end of the scroll */
+  /* The track starts on the same line as the heading and the page title
+     rather than hard against the viewport edge. The item's own 1em is part
+     of that inset, so it comes off here; the slider's setOffset subtracts
+     this padding again so the run still ends flush on the right. */
+  padding-left: calc(var(--grid-gutter) + var(--grid-pad) - 1em);
 }
 .parallax-slider__list:active { cursor: grabbing; }
 
@@ -3761,12 +3898,14 @@ body:has(.arch-page) {
 }
 
 /* Landscape, and sized off the stage height so the card plus its label
-   always clears the footer row */
+   always clears the footer row. Smaller than it was: at half the viewport a
+   single project filled the screen and the run read as one image at a time
+   rather than as a body of work. */
 .parallax-slider__item-inner {
   aspect-ratio: 3 / 2;
   border-radius: var(--radius);
-  width: min(52vw, 96rem);
-  max-height: 52vh;
+  width: min(38vw, 70rem);
+  max-height: 44vh;
   position: relative;
   overflow: clip;
   background: #05080b;
@@ -3855,19 +3994,24 @@ body:has(.arch-page) {
 .parallax-slider__list.is--fallback .parallax-slider__item { scroll-snap-align: center; }
 
 @media screen and (max-width: 991px) {
+  .arch-stage__head { padding: 4rem calc(var(--grid-gutter) + var(--grid-pad)) 3.2rem; }
+  .arch-stage__foot { padding: 4rem calc(var(--grid-gutter) + var(--grid-pad)) 5.6rem; }
   .arch-stage__title { font-size: 4.8rem; }
-  .parallax-slider__item-inner { width: 74vw; }
+  .parallax-slider__item-inner { width: 62vw; }
 }
 @media screen and (max-width: 767px) {
+  .arch-stage__head { padding: 3.2rem calc(var(--grid-gutter) + var(--grid-pad)) 2.4rem; }
   .arch-stage__foot {
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
-    padding-bottom: 4rem;
+    padding: 3.2rem calc(var(--grid-gutter) + var(--grid-pad)) 4.8rem;
   }
   .arch-stage__title { font-size: 3.6rem; }
   .parallax-slider__item { padding-left: 0.5em; padding-right: 0.5em; }
-  .parallax-slider__item-inner { width: 84vw; max-height: 40vh; }
+  .parallax-slider__item-inner { width: 78vw; max-height: 38vh; }
+  /* The item's own padding shrinks here, so the track inset follows it */
+  .parallax-slider__list { padding-left: calc(var(--grid-gutter) + var(--grid-pad) - 0.5em); }
 }
 
 
