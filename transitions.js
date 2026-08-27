@@ -54,6 +54,8 @@ function initAfterEnterFunctions(next) {
   if (typeof initNumberOdometer === "function") initNumberOdometer();
   if (typeof initStepByStepTimeline === "function") initStepByStepTimeline();
   if (typeof initCenteredSliders === "function") initCenteredSliders();
+  if (typeof initServiceList === "function") initServiceList();
+  if (typeof initTestimonialSwitcher === "function") initTestimonialSwitcher();
   if (typeof initBasicFormValidation === "function") initBasicFormValidation();
 
   if (hasLenis) {

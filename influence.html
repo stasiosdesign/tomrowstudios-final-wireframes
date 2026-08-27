@@ -175,29 +175,13 @@
       <li class="insights-row">
         <p class="insights-row__index">02</p>
         <div class="insights-row__body">
-          <p class="insights-row__label">TikTok</p>
-          <p class="insights-row__note">Followers — short-form work that reaches beyond the profession</p>
-        </div>
-        <p data-odometer-element data-odometer-duration="1.6" class="insights-row__value">41,200</p>
-      </li>
-      <li class="insights-row">
-        <p class="insights-row__index">03</p>
-        <div class="insights-row__body">
           <p class="insights-row__label">YouTube</p>
           <p class="insights-row__note">Subscribers — long-form explainers, walkthroughs and interviews</p>
         </div>
         <p data-odometer-element data-odometer-duration="1.6" class="insights-row__value">24,800</p>
       </li>
       <li class="insights-row">
-        <p class="insights-row__index">04</p>
-        <div class="insights-row__body">
-          <p class="insights-row__label">LinkedIn</p>
-          <p class="insights-row__note">Followers — practices, studios and industry decision makers</p>
-        </div>
-        <p data-odometer-element data-odometer-duration="1.6" class="insights-row__value">18,300</p>
-      </li>
-      <li class="insights-row">
-        <p class="insights-row__index">05</p>
+        <p class="insights-row__index">03</p>
         <div class="insights-row__body">
           <p class="insights-row__label">Combined audience</p>
           <p class="insights-row__note">A voice built across every platform over seven years</p>
@@ -205,23 +189,18 @@
         <p data-odometer-element data-odometer-duration="1.6" class="insights-row__value">180,000+</p>
       </li>
       <li class="insights-row">
-        <p class="insights-row__index">06</p>
-        <div class="insights-row__body">
-          <p class="insights-row__label">Monthly reach</p>
-          <p class="insights-row__note">Accounts reached across every channel in an average month</p>
-        </div>
-        <p data-odometer-element data-odometer-duration="1.6" class="insights-row__value">2,400,000</p>
-      </li>
-      <li class="insights-row">
-        <p class="insights-row__index">07</p>
+        <p class="insights-row__index">04</p>
         <div class="insights-row__body">
           <p class="insights-row__label">Publication</p>
           <p class="insights-row__note">Architectural Influence, published by RIBA Publishing — 21 creators across 13 countries</p>
         </div>
-        <p class="insights-row__value is--words">Published Book</p>
+        <div class="insights-row__value-group">
+          <p class="insights-row__value is--words">Published Book</p>
+          <a href="book.html" class="insights-row__link">See the book<span aria-hidden="true">&#8202;&#8594;</span></a>
+        </div>
       </li>
       <li class="insights-row">
-        <p class="insights-row__index">08</p>
+        <p class="insights-row__index">05</p>
         <div class="insights-row__body">
           <p class="insights-row__label">Recognition</p>
           <p class="insights-row__note">The RIBA West London Architects Group Prize, for a new kind of architectural practice</p>
@@ -229,7 +208,7 @@
         <p class="insights-row__value is--words">Prize Winner</p>
       </li>
       <li class="insights-row">
-        <p class="insights-row__index">09</p>
+        <p class="insights-row__index">06</p>
         <div class="insights-row__body">
           <p class="insights-row__label">Collaboration</p>
           <p class="insights-row__note">RIBA, Meta, Archi-Tech Network and Rayon Design — partnerships beyond the drawing board</p>
@@ -240,13 +219,14 @@
   </div>
 </section>
 
-<!-- Atlas — full-width map spread and the book it came from -->
+<!-- Atlas — the map, then the book it came from -->
 <section class="map-spread theme-light">
+  <div class="map-spread__head">
+    <p class="tagline">Global reach</p>
+    <h2>Twenty-one creators, thirteen countries</h2>
+  </div>
   <div class="map-spread__media">
     <img class="map-spread__img" src="assets/influence/map.png" loading="lazy" decoding="async" alt="World map plotting the twenty-one architecture creators studied in Architectural Influence">
-    <figure class="map-spread__cover">
-      <img src="assets/shop/p3.png" alt="The Architectural Influence hardcover">
-    </figure>
   </div>
   <div class="book-feature">
     <div class="book-feature__intro">
@@ -265,8 +245,12 @@
 <!-- Closing CTA -->
 <section class="section final-cta">
   <div class="container">
-    <p class="tagline">Get in touch</p>
-    <h2 class="final-cta__title">Contact Tom</h2>
+    <p class="tagline final-cta__eyebrow">Get in touch</p>
+    <h2 class="final-cta__title">
+      <span>Talk to</span>
+      <span class="final-cta__portrait"><img src="assets/photos/portrait-01.jpg" alt="Tom Rowntree"></span>
+      <span>Tom</span>
+    </h2>
     <p class="lead final-cta__lead">Speaking, partnerships, teaching or a project you are still working out — start the conversation and Tom will come back to you himself.</p>
     <div class="actions">
       <a data-button-011 href="#contact" data-panel-open="contact" data-barba-prevent="self" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Contact Tom</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
@@ -448,6 +432,7 @@
 <script src="odometer.js"></script>
 <script src="steptimeline.js"></script>
 <script src="centeredslider.js"></script>
+<script src="partners.js"></script>
 <script src="formvalidation.js"></script>
 <script src="transitions.js"></script>
 
