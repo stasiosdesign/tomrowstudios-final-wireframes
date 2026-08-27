@@ -3013,39 +3013,61 @@ strong, b, th { font-weight: 500; }
    ============================================================= */
 
 /* ---------- Sticky service list ---------- */
+/* Label in the first column, the list running across the remaining three —
+   the same split as the reference, and still on the page's four columns */
 .service-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--grid-gap);
-  align-items: start;
 }
-.service-list__aside {
-  position: sticky;
-  /* clears the fixed bar */
-  top: calc(var(--nav-height) + 6.4rem);
-  min-width: 0;
-}
-.service-list__aside .lead { margin-bottom: 3.2rem; }
+.service-list__aside { grid-column: span 1; min-width: 0; }
+.service-list__items { grid-column: span 3; }
 
+/* The aside has to stretch the full height of the row for sticky to have
+   anywhere to travel — start-aligned it is exactly its own content height
+   and never moves. It then holds a full viewport and centres the label
+   inside it, so the label sits mid-screen while the list runs past. */
+.service-list__aside {
+  align-self: stretch;
+  position: relative;
+}
+.service-list__intro {
+  position: sticky;
+  /* Pinned to the middle of the screen. Kept to its own height rather than a
+     full viewport, or the travel inside the stretched aside would run out
+     partway down the list and the label would scroll off with it. */
+  top: 50vh;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.service-list__lead {
+  margin: 0;
+  font-size: 1.8rem;
+  line-height: 1.4;
+  max-width: 24rem;
+}
+
+/* A dense block of names rather than a spaced list — tight leading, no
+   padding between them, the way the reference stacks */
 .service-list__items {
   list-style: none;
   margin: 0;
   padding: 0;
   min-width: 0;
 }
-/* The list runs long on purpose — it is what you scroll past */
 .service-list__item {
-  font-size: 4.8rem;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-size: 7.2rem;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.28);
-  padding: 1.2rem 0;
+  color: rgba(255, 255, 255, 0.25);
   transition: color 0.35s cubic-bezier(0.65, 0.05, 0, 1);
 }
 .service-list__item.is--active { color: #ffffff; }
 
-.theme-light .service-list__item { color: rgba(0, 5, 9, 0.25); }
+.theme-light .service-list__item { color: rgba(0, 5, 9, 0.22); }
 .theme-light .service-list__item.is--active { color: #000509; }
 
 /* ---------- Testimonial feature ---------- */
@@ -3186,8 +3208,12 @@ strong, b, th { font-weight: 500; }
 
 @media screen and (max-width: 991px) {
   .service-list { grid-template-columns: 1fr; }
-  .service-list__aside { position: static; }
-  .service-list__item { font-size: 3.2rem; }
+  .service-list__aside,
+  .service-list__items { grid-column: span 1; }
+  /* No room to hold a label beside the list, so it just leads it */
+  .service-list__intro { position: static; height: auto; margin-bottom: 4rem; }
+  .service-list__lead { max-width: none; }
+  .service-list__item { font-size: 3.6rem; }
 
   .testimonial-stage { min-height: 0; }
   .testimonial-slide__body {
