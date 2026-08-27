@@ -40,6 +40,9 @@
 <!-- Film grain overlay (outside the Barba container so it persists) -->
 <div class="grain" data-grain-animate="true"></div>
 
+<!-- Click-to-zoom target (outside the Barba container so it persists) -->
+<div data-click-zoom-lightbox class="click-zoom__lightbox"></div>
+
 <main data-barba="container" data-barba-namespace="partner" data-page-name="Partners">
 
 
@@ -72,8 +75,8 @@
       <h2>Partners</h2>
       <p class="lead">Content, strategy and collaboration for architecture, design and technology organisations</p>
       <div class="actions">
-        <a data-button-011 href="#contact" data-panel-open="contact" data-barba-prevent="self" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Contact</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
-        <a data-button-011 href="influence.html" class="button-011 is--secondary"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">About</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
+        <a data-button-011 href="#contact" data-panel-open="contact" data-barba-prevent="self" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Get Started</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
+        <a data-button-011 href="partners-archive.html" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">View Archive</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
       </div>
     </div>
     <div data-swiper-group class="swiper-group">
@@ -151,15 +154,15 @@
         </button>
       </div>
     </div>
-    <div class="actions actions-end">
-      <a data-button-011 href="partners-archive.html" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">View Archive</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
-    </div>
   </div>
 </section>
 
 <!-- Logo strip -->
 <section class="section logo-strip">
-  <p class="logo-strip-title">Seen in the studios that shape our world</p>
+  <div class="section-title section-title-left logo-strip__head">
+    <p class="tagline">Clients</p>
+    <h2 class="logo-strip-title">Seen in the studios that shape our world</h2>
+  </div>
 </section>
 
 <section class="logo-marquee is--tight">
@@ -191,25 +194,23 @@
       <div class="service-list__aside">
         <div class="service-list__intro">
           <p class="tagline">Services</p>
-          <p class="service-list__lead">What Tom does for partners</p>
+          <p class="service-list__lead">What Tom does</p>
         </div>
       </div>
       <ul class="service-list__items">
-        <li data-service-item class="service-list__item">Content strategy</li>
-        <li data-service-item class="service-list__item">Social media audits</li>
-        <li data-service-item class="service-list__item">Channel planning</li>
-        <li data-service-item class="service-list__item">Video production</li>
-        <li data-service-item class="service-list__item">Photography direction</li>
-        <li data-service-item class="service-list__item">Tutorial films</li>
-        <li data-service-item class="service-list__item">Product walkthroughs</li>
-        <li data-service-item class="service-list__item">Brand partnerships</li>
-        <li data-service-item class="service-list__item">Sponsored content</li>
-        <li data-service-item class="service-list__item">Keynotes and talks</li>
-        <li data-service-item class="service-list__item">Workshops and teaching</li>
-        <li data-service-item class="service-list__item">Editorial and copywriting</li>
-        <li data-service-item class="service-list__item">Launch campaigns</li>
-        <li data-service-item class="service-list__item">Consulting</li>
+        <li data-service-item data-service-desc="Defining the ideas, messaging and content a brand needs to position itself clearly." class="service-list__item">Content Strategy</li>
+        <li data-service-item data-service-desc="Building a visual direction that gives campaigns and products a distinctive identity." class="service-list__item">Photography</li>
+        <li data-service-item data-service-desc="Shooting and cutting films that carry the idea, not just the footage." class="service-list__item">Video</li>
+        <li data-service-item data-service-desc="Showing an audience what a tool actually does, in the language they already use." class="service-list__item">Product</li>
+        <li data-service-item data-service-desc="Planning a launch end to end, from the first teaser to the last follow-up." class="service-list__item">Campaigns</li>
+        <li data-service-item data-service-desc="Teaching teams and students how to present architectural work convincingly." class="service-list__item">Workshops</li>
+        <li data-service-item data-service-desc="Setting the creative standard a project is held to, and holding it there." class="service-list__item">Direction</li>
+        <li data-service-item data-service-desc="Reading a channel honestly and saying what to keep, what to cut and what to change." class="service-list__item">Consulting</li>
       </ul>
+      <!-- Third column: the line changes with whichever deliverable is lit -->
+      <div class="service-list__detail">
+        <p data-service-detail class="service-list__detail-text">Defining the ideas, messaging and content a brand needs to position itself clearly.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -267,58 +268,41 @@
   </div>
 </section>
 
-<!-- Process -->
-<section class="section theme-light process-section">
+<!-- Results — what the work returned, not how it was made. The figures use the
+     site's own odometer, so they count up on scroll like the ones on Influence. -->
+<section class="section theme-light results-section">
   <div class="container">
     <div class="two-col two-col-flat">
       <div>
-        <p class="tagline">Process</p>
-        <h2>From strategy to delivery</h2>
+        <p class="tagline">Results</p>
+        <h2>What it delivered</h2>
         <div class="actions">
           <a data-button-011 href="#contact" data-panel-open="contact" data-barba-prevent="self" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Get Started</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
           <a data-button-011 href="partners-archive.html" class="button-011 is--secondary"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">View Work</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
         </div>
       </div>
       <div>
-        <div data-step-timeline-init data-step-timeline-activation="0.5" class="step-timeline is--roomy">
-          <div class="step-timeline__wrapper">
-            <div data-step-timeline-line class="step-timeline__line">
-              <div data-step-timeline-fill class="step-timeline__fill"></div>
-            </div>
-            <div class="step-timeline__list">
-              <div data-step-timeline-item class="step-timeline__item">
-                <div data-step-timeline-marker class="step-timeline__marker"><span>1</span></div>
-                <div class="step-timeline__content">
-                  <h4 class="step-timeline__content-h">Audit</h4>
-                  <p class="step-timeline__p">We map your current content, channels and audience to find the real gaps.</p>
-                </div>
-              </div>
-              <div data-step-timeline-item class="step-timeline__item">
-                <div data-step-timeline-marker class="step-timeline__marker"><span>2</span></div>
-                <div class="step-timeline__content">
-                  <h4 class="step-timeline__content-h">Messaging</h4>
-                  <p class="step-timeline__p">We clarify what you stand for and why it matters to the people you need.</p>
-                </div>
-              </div>
-              <div data-step-timeline-item class="step-timeline__item">
-                <div data-step-timeline-marker class="step-timeline__marker"><span>3</span></div>
-                <div class="step-timeline__content">
-                  <h4 class="step-timeline__content-h">Production</h4>
-                  <p class="step-timeline__p">We shoot, write and cut the work. No handoffs, no lost meaning.</p>
-                </div>
-              </div>
-              <div data-step-timeline-item class="step-timeline__item">
-                <div data-step-timeline-marker class="step-timeline__marker"><span>4</span></div>
-                <div class="step-timeline__content">
-                  <h4 class="step-timeline__content-h">Delivery</h4>
-                  <p class="step-timeline__p">We publish, manage and refine. The work stays sharp long after it ships.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p class="results-note">Averaged across partner campaigns run in the last two years.</p>
       </div>
     </div>
+    <ul data-odometer-group data-odometer-stagger="0.1" class="results-grid">
+      <li class="results-item">
+        <p data-odometer-element data-odometer-duration="2" class="results-item__value">+42%</p>
+        <p class="results-item__label">Increase in campaign engagement</p>
+      </li>
+      <li class="results-item">
+        <p data-odometer-element data-odometer-duration="2" class="results-item__value">3.2&#215;</p>
+        <p class="results-item__label">More qualified enquiries</p>
+      </li>
+      <li class="results-item">
+        <p data-odometer-element data-odometer-duration="2" class="results-item__value">+68%</p>
+        <p class="results-item__label">Growth in organic audience reach</p>
+      </li>
+      <li class="results-item">
+        <p data-odometer-element data-odometer-duration="2" class="results-item__value">+31%</p>
+        <p class="results-item__label">Increase in conversion</p>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -466,16 +450,15 @@
           <a data-underline-link href="architecture.html" class="site-footer__a">Architecture</a>
           <a data-underline-link href="shop.html" class="site-footer__a">Shop</a>
           <a data-underline-link href="partner.html" class="site-footer__a">Partner</a>
-          <a data-underline-link href="partners-archive.html" class="site-footer__a">Archive</a>
         </div>
       </div>
       <div class="site-footer__col">
         <p class="footer-eyebrow">( Socials )</p>
         <div class="site-footer__links">
-          <a data-underline-link href="#" class="site-footer__a">Instagram</a>
-          <a data-underline-link href="#" class="site-footer__a">LinkedIn</a>
-          <a data-underline-link href="#" class="site-footer__a">X/Twitter</a>
-          <a data-underline-link href="#" class="site-footer__a">YouTube</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">Instagram</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">LinkedIn</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">X/Twitter</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">YouTube</a>
         </div>
       </div>
       <div class="site-footer__col">
@@ -725,6 +708,7 @@
 <script src="partners.js"></script>
 <script src="formvalidation.js"></script>
 <script src="archslider.js"></script>
+<script src="masonry.js"></script>
 <script src="transitions.js"></script>
 <script src="lightbox.js"></script>
 

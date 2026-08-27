@@ -11,12 +11,27 @@ function initServiceList() {
     const items = Array.from(root.querySelectorAll("[data-service-item]"));
     if (!items.length) return;
 
+    // The third column, if the section has one — it carries the line that
+    // explains whichever deliverable is currently lit
+    const detail = root.querySelector("[data-service-detail]");
+
     let current = -1;
 
     function setCurrent(index) {
       if (index === current) return;
       current = index;
       items.forEach((el, i) => el.classList.toggle("is--active", i === index));
+
+      const copy = items[index] && items[index].getAttribute("data-service-desc");
+      if (!detail || !copy || detail.textContent === copy) return;
+
+      // Fade out, swap, fade back — a hard cut mid-scroll reads as a glitch
+      detail.classList.add("is--swapping");
+      clearTimeout(detail.__swap);
+      detail.__swap = setTimeout(() => {
+        detail.textContent = copy;
+        detail.classList.remove("is--swapping");
+      }, 180);
     }
 
     function pick() {

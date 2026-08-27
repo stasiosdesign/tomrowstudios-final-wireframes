@@ -40,6 +40,9 @@
 <!-- Film grain overlay (outside the Barba container so it persists) -->
 <div class="grain" data-grain-animate="true"></div>
 
+<!-- Click-to-zoom target (outside the Barba container so it persists) -->
+<div data-click-zoom-lightbox class="click-zoom__lightbox"></div>
+
 <main data-barba="container" data-barba-namespace="project-sequel-post" data-page-name="The Sequel: Post-production">
 
 
@@ -87,7 +90,7 @@
 
 <!-- Straight into the work: the opening plate, full width and landscape -->
 <section class="project-lead">
-  <img data-zoom class="project-lead__img" src="assets/projects/the-sequel-post/01.jpg" width="1600" height="450" alt="The Sequel: Post-production — opening plate">
+  <img data-click-zoom class="project-lead__img" src="assets/projects/the-sequel-post/01.jpg" width="1600" height="450" alt="The Sequel: Post-production — opening plate">
 </section>
 
 <!-- Masonry grid -->
@@ -98,11 +101,31 @@
       <h2>Selected plates</h2>
       <p class="lead">Click any drawing to open it full size.</p>
     </div>
-    <div class="masonry">
-        <div class="masonry__item"><img data-zoom src="assets/projects/the-sequel-post/02.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 2"></div>
-        <div class="masonry__item"><img data-zoom src="assets/projects/the-sequel-post/03.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 3"></div>
-        <div class="masonry__item"><img data-zoom src="assets/projects/the-sequel-post/04.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 4"></div>
-        <div class="masonry__item"><img data-zoom src="assets/projects/the-sequel-post/05.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 5"></div>
+    <div class="masonry-wrap">
+      <div class="masonry-collection">
+        <div data-masonry-list class="masonry-list">
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--wide">
+              <img src="assets/projects/the-sequel-post/02.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 2" class="masonry-item__visual-img">
+            </div>
+          </div>
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--wide">
+              <img src="assets/projects/the-sequel-post/03.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 3" class="masonry-item__visual-img">
+            </div>
+          </div>
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--square">
+              <img src="assets/projects/the-sequel-post/04.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 4" class="masonry-item__visual-img">
+            </div>
+          </div>
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--wide">
+              <img src="assets/projects/the-sequel-post/05.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 5" class="masonry-item__visual-img">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -116,9 +139,9 @@
       <p class="lead">The remaining spreads, in the order the portfolio reads.</p>
     </div>
     <div class="project-plates">
-        <img data-zoom src="assets/projects/the-sequel-post/06.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 6">
-        <img data-zoom src="assets/projects/the-sequel-post/07.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 7">
-        <img data-zoom src="assets/projects/the-sequel-post/08.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 8">
+        <img data-click-zoom src="assets/projects/the-sequel-post/06.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 6">
+        <img data-click-zoom src="assets/projects/the-sequel-post/07.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 7">
+        <img data-click-zoom src="assets/projects/the-sequel-post/08.jpg" width="1600" height="450" loading="lazy" decoding="async" alt="The Sequel: Post-production — plate 8">
     </div>
     <div class="actions project-actions">
       <a data-button-011 href="https://www.tomrowstudios.com/_files/ugd/746e36_d5318529e26b42b2b7b49a73648a95e2.pdf" target="_blank" rel="noopener" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Download Portfolio</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
@@ -167,16 +190,15 @@
           <a data-underline-link href="architecture.html" class="site-footer__a">Architecture</a>
           <a data-underline-link href="shop.html" class="site-footer__a">Shop</a>
           <a data-underline-link href="partner.html" class="site-footer__a">Partner</a>
-          <a data-underline-link href="partners-archive.html" class="site-footer__a">Archive</a>
         </div>
       </div>
       <div class="site-footer__col">
         <p class="footer-eyebrow">( Socials )</p>
         <div class="site-footer__links">
-          <a data-underline-link href="#" class="site-footer__a">Instagram</a>
-          <a data-underline-link href="#" class="site-footer__a">LinkedIn</a>
-          <a data-underline-link href="#" class="site-footer__a">X/Twitter</a>
-          <a data-underline-link href="#" class="site-footer__a">YouTube</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">Instagram</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">LinkedIn</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">X/Twitter</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">YouTube</a>
         </div>
       </div>
       <div class="site-footer__col">
@@ -333,6 +355,7 @@
 <script src="partners.js"></script>
 <script src="formvalidation.js"></script>
 <script src="archslider.js"></script>
+<script src="masonry.js"></script>
 <script src="transitions.js"></script>
 <script src="lightbox.js"></script>
 

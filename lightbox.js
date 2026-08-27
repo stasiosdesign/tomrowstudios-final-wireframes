@@ -1,206 +1,254 @@
 // -----------------------------------------
-// IMAGE ZOOM (click any plate to open it full size)
+// CLICK TO ZOOM
 // -----------------------------------------
-// Every image on a project page carries [data-zoom], whatever size it is
-// rendered at — a masonry tile and a full-bleed plate open the same way. The
-// overlay is built once and reused, so a page with twenty plates still only
-// ever has one lightbox in the DOM.
+// Supplied implementation. One delegated listener on the document, so images
+// that arrive with a Barba navigation are covered without re-initialising.
 
-function initImageZoom() {
-  const targets = document.querySelectorAll("[data-zoom]");
-  if (!targets.length) return;
+function initClickToZoomBasic() {
 
-  const ui = buildZoomOverlay();
+  const CONFIG = {
+    openDuration: 0.55,
+    closeDuration: 0.45,
+    openEase: "power3.out",
+    closeEase: "power2.inOut",
 
-  // The set the arrows step through is rebuilt on open, so a Barba navigation
-  // that swaps the container never leaves us pointing at detached images.
-  targets.forEach((el) => {
-    if (el.__zoomBound) return;
-    el.__zoomBound = true;
-    el.classList.add("is--zoomable");
-    el.addEventListener("click", () => openZoom(ui, el));
-  });
-}
-
-function buildZoomOverlay() {
-  if (window.__zoomUI) return window.__zoomUI;
-
-  const root = document.createElement("div");
-  root.className = "zoom";
-  root.setAttribute("aria-hidden", "true");
-  root.innerHTML = `
-    <div class="zoom__backdrop" data-zoom-close></div>
-    <figure class="zoom__figure">
-      <img class="zoom__img" alt="">
-    </figure>
-    <button class="zoom__close" type="button" data-zoom-close aria-label="Close">&times;</button>
-    <button class="zoom__arrow is--prev" type="button" data-zoom-prev aria-label="Previous image"></button>
-    <button class="zoom__arrow is--next" type="button" data-zoom-next aria-label="Next image"></button>
-    <p class="zoom__counter"><span data-zoom-index>1</span> / <span data-zoom-total>1</span></p>
-  `;
-  document.body.appendChild(root);
-
-  const ui = {
-    root,
-    backdrop: root.querySelector(".zoom__backdrop"),
-    figure: root.querySelector(".zoom__figure"),
-    img: root.querySelector(".zoom__img"),
-    prev: root.querySelector("[data-zoom-prev]"),
-    next: root.querySelector("[data-zoom-next]"),
-    index: root.querySelector("[data-zoom-index]"),
-    total: root.querySelector("[data-zoom-total]"),
-    group: [],
-    at: 0,
-    open: false,
-    magnified: false
+    closeOnScroll: true,
+    closeOnEscape: true,
+    closeOnClick: true,
   };
 
-  root.querySelectorAll("[data-zoom-close]").forEach((el) => {
-    el.addEventListener("click", () => closeZoom(ui));
-  });
-  ui.prev.addEventListener("click", (e) => { e.stopPropagation(); stepZoom(ui, -1); });
-  ui.next.addEventListener("click", (e) => { e.stopPropagation(); stepZoom(ui, 1); });
+  const lightbox = document.querySelector("[data-click-zoom-lightbox]");
+  if (!lightbox) return;
 
-  // Inside the overlay a click magnifies further, and the pointer pans around
-  // the enlarged image rather than scrolling it
-  ui.figure.addEventListener("click", () => toggleMagnify(ui));
-  ui.figure.addEventListener("pointermove", (e) => {
-    if (!ui.magnified) return;
-    const r = ui.figure.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width) * 100;
-    const y = ((e.clientY - r.top) / r.height) * 100;
-    gsap.to(ui.img, { transformOrigin: `${x}% ${y}%`, duration: 0.4, overwrite: "auto" });
-  });
+  lightbox.setAttribute("role", "dialog");
+  lightbox.setAttribute("aria-modal", "true");
+  lightbox.setAttribute("aria-hidden", "true");
 
-  document.addEventListener("keydown", (e) => {
-    if (!ui.open) return;
-    if (e.key === "Escape") closeZoom(ui);
-    if (e.key === "ArrowLeft") stepZoom(ui, -1);
-    if (e.key === "ArrowRight") stepZoom(ui, 1);
-  });
+  const backdropColor = window.getComputedStyle(lightbox).backgroundColor;
+  const transparent = "rgba(0, 0, 0, 0)";
 
-  window.addEventListener("resize", () => {
-    if (ui.open) gsap.set(ui.figure, fitZoomRect(ui.img));
-  });
+  let cloneEl = null;
+  let isOpen = false;
+  let isAnimating = false;
+  let openScrollY = 0;
+  let openSourceRectDoc = null;
 
-  window.__zoomUI = ui;
-  return ui;
-}
+  function computeFlip(src, dst) {
+    return {
+      scaleX: src.width / dst.width,
+      scaleY: src.height / dst.height,
+      tx: (src.left + src.width / 2) - (dst.left + dst.width / 2),
+      ty: (src.top + src.height / 2) - (dst.top + dst.height / 2),
+    };
+  }
 
-// Where the image sits once it is open: the largest landscape-safe box that
-// fits the viewport without ever enlarging past the file's own pixels
-function fitZoomRect(img) {
-  const nw = img.naturalWidth || img.width || 1;
-  const nh = img.naturalHeight || img.height || 1;
-  const maxW = window.innerWidth * 0.92;
-  const maxH = window.innerHeight * 0.86;
-  const scale = Math.min(maxW / nw, maxH / nh);
-  const w = nw * scale;
-  const h = nh * scale;
-  return {
-    left: (window.innerWidth - w) / 2,
-    top: (window.innerHeight - h) / 2,
-    width: w,
-    height: h
-  };
-}
+  function open(img) {
+    if (isOpen || isAnimating) return;
+    if (!img.complete || !img.naturalWidth) return;
 
-function openZoom(ui, source) {
-  if (ui.open) return;
+    isAnimating = true;
+    openScrollY = window.scrollY;
 
-  // Everything zoomable that is currently on the page, in document order
-  ui.group = Array.from(document.querySelectorAll("[data-zoom]"));
-  ui.at = ui.group.indexOf(source);
-  ui.open = true;
-  ui.magnified = false;
+    const srcRect = img.getBoundingClientRect();
+    openSourceRectDoc = {
+      top: srcRect.top + window.scrollY,
+      left: srcRect.left,
+      width: srcRect.width,
+      height: srcRect.height,
+    };
 
-  const from = source.getBoundingClientRect();
+    cloneEl = img.cloneNode(false);
+    cloneEl.loading = "eager";
+    cloneEl.removeAttribute("data-click-zoom");
 
-  ui.img.src = source.currentSrc || source.src;
-  ui.img.alt = source.alt || "";
-  ui.total.textContent = ui.group.length;
-  ui.index.textContent = ui.at + 1;
-  ui.root.setAttribute("aria-hidden", "false");
-  ui.root.classList.add("is--open");
-  ui.root.classList.toggle("is--single", ui.group.length < 2);
-  document.documentElement.classList.add("has--zoom");
+    const srcComputed = window.getComputedStyle(img);
 
-  if (window.lenis && typeof window.lenis.stop === "function") window.lenis.stop();
+    gsap.set(lightbox, { display: "flex", backgroundColor: transparent });
 
-  gsap.set(ui.img, { scale: 1, transformOrigin: "50% 50%" });
-  gsap.set(ui.figure, { left: from.left, top: from.top, width: from.width, height: from.height });
-  gsap.to(ui.backdrop, { autoAlpha: 1, duration: 0.4 });
-  gsap.to(ui.figure, { ...fitZoomRect(ui.img), duration: 0.6, ease: "osmo" });
-  gsap.fromTo(
-    [ui.prev, ui.next, ui.root.querySelector(".zoom__close"), ui.root.querySelector(".zoom__counter")],
-    { autoAlpha: 0 },
-    { autoAlpha: 1, duration: 0.3, delay: 0.25 }
-  );
-}
+    const lightboxStyle = window.getComputedStyle(lightbox);
+    const padX = parseFloat(lightboxStyle.paddingLeft) + parseFloat(lightboxStyle.paddingRight);
+    const padY = parseFloat(lightboxStyle.paddingTop) + parseFloat(lightboxStyle.paddingBottom);
+    const aspect = srcRect.width / srcRect.height;
+    const maxW = lightbox.clientWidth - padX;
+    const maxH = lightbox.clientHeight - padY;
+    let w = maxW;
+    let h = w / aspect;
 
-function stepZoom(ui, direction) {
-  if (!ui.open || ui.group.length < 2) return;
-  const next = (ui.at + direction + ui.group.length) % ui.group.length;
-  ui.at = next;
-  ui.magnified = false;
+    if (h > maxH) {
+      h = maxH;
+      w = h * aspect;
+    }
 
-  const source = ui.group[next];
-  gsap.to(ui.img, {
-    autoAlpha: 0,
-    scale: 1,
-    duration: 0.2,
-    onComplete: () => {
-      ui.img.src = source.currentSrc || source.src;
-      ui.img.alt = source.alt || "";
-      ui.index.textContent = next + 1;
-      const settle = () => {
-        gsap.to(ui.figure, { ...fitZoomRect(ui.img), duration: 0.45, ease: "osmo" });
-        gsap.to(ui.img, { autoAlpha: 1, duration: 0.3 });
+    gsap.set(cloneEl, {
+      width: w,
+      height: h,
+      display: "block",
+      objectFit: srcComputed.objectFit,
+      objectPosition: srcComputed.objectPosition,
+    });
+
+    while (lightbox.firstChild) lightbox.removeChild(lightbox.firstChild);
+    lightbox.appendChild(cloneEl);
+
+    const dstRect = cloneEl.getBoundingClientRect();
+    const flip = computeFlip(srcRect, dstRect);
+
+    lightbox.setAttribute("aria-hidden", "false");
+    document.documentElement.style.cursor = "zoom-out";
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        isAnimating = false;
+        isOpen = true;
+        attachCloseListeners();
+      },
+    });
+
+    tl.to(lightbox, {
+      backgroundColor: backdropColor,
+      duration: 0.3,
+      ease: "none",
+    }, 0);
+
+    tl.fromTo(
+      cloneEl,
+      { x: flip.tx, y: flip.ty, scaleX: flip.scaleX, scaleY: flip.scaleY },
+      {
+        x: 0,
+        y: 0,
+        scaleX: 1,
+        scaleY: 1,
+        duration: CONFIG.openDuration,
+        ease: CONFIG.openEase
+      },
+      0
+    );
+  }
+
+  function close() {
+    if (!isOpen || isAnimating) return;
+
+    isAnimating = true;
+    detachCloseListeners();
+    document.documentElement.style.cursor = "";
+
+    const dstRect = cloneEl.getBoundingClientRect();
+    const startX = Number(gsap.getProperty(cloneEl, "x")) || 0;
+    const startY = Number(gsap.getProperty(cloneEl, "y")) || 0;
+    const startScaleX = Number(gsap.getProperty(cloneEl, "scaleX")) || 1;
+    const startScaleY = Number(gsap.getProperty(cloneEl, "scaleY")) || 1;
+
+    function currentSrcRect() {
+      return {
+        top: openSourceRectDoc.top - window.scrollY,
+        left: openSourceRectDoc.left,
+        width: openSourceRectDoc.width,
+        height: openSourceRectDoc.height,
       };
-      if (ui.img.complete) settle();
-      else ui.img.onload = settle;
     }
-  });
-}
 
-function toggleMagnify(ui) {
-  ui.magnified = !ui.magnified;
-  ui.figure.classList.toggle("is--magnified", ui.magnified);
-  gsap.to(ui.img, { scale: ui.magnified ? 2.2 : 1, duration: 0.5, ease: "osmo" });
-}
+    let lastFlip = computeFlip(currentSrcRect(), dstRect);
 
-function closeZoom(ui) {
-  if (!ui.open) return;
-  ui.open = false;
-  ui.magnified = false;
-  ui.figure.classList.remove("is--magnified");
-  document.documentElement.classList.remove("has--zoom");
+    const cleanup = () => {
+      gsap.set(lightbox, { display: "none", clearProps: "backgroundColor" });
 
-  const source = ui.group[ui.at];
-  const to = source ? source.getBoundingClientRect() : { left: window.innerWidth / 2, top: window.innerHeight / 2, width: 0, height: 0 };
+      if (cloneEl && cloneEl.parentNode) {
+        cloneEl.parentNode.removeChild(cloneEl);
+      }
 
-  gsap.to(ui.img, { scale: 1, duration: 0.3 });
-  gsap.to([ui.prev, ui.next, ui.root.querySelector(".zoom__close"), ui.root.querySelector(".zoom__counter")], { autoAlpha: 0, duration: 0.2 });
-  gsap.to(ui.figure, {
-    left: to.left,
-    top: to.top,
-    width: to.width,
-    height: to.height,
-    duration: 0.5,
-    ease: "osmo"
-  });
-  gsap.to(ui.backdrop, {
-    autoAlpha: 0,
-    duration: 0.4,
-    onComplete: () => {
-      ui.root.classList.remove("is--open");
-      ui.root.setAttribute("aria-hidden", "true");
-      if (window.lenis && typeof window.lenis.start === "function") window.lenis.start();
+      cloneEl = null;
+      lightbox.setAttribute("aria-hidden", "true");
+      openSourceRectDoc = null;
+      isOpen = false;
+      isAnimating = false;
+    };
+
+    const state = { t: 0 };
+
+    gsap.to(state, {
+      t: 1,
+      duration: CONFIG.closeDuration,
+      ease: CONFIG.closeEase,
+      onUpdate: () => {
+        lastFlip = computeFlip(currentSrcRect(), dstRect);
+
+        const t = state.t;
+
+        gsap.set(cloneEl, {
+          x: startX + (lastFlip.tx - startX) * t,
+          y: startY + (lastFlip.ty - startY) * t,
+          scaleX: startScaleX + (lastFlip.scaleX - startScaleX) * t,
+          scaleY: startScaleY + (lastFlip.scaleY - startScaleY) * t,
+        });
+      },
+      onComplete: cleanup,
+    });
+
+    gsap.to(lightbox, {
+      backgroundColor: transparent,
+      duration: 0.3,
+      ease: "power2.in",
+      delay: CONFIG.closeDuration * 0.4,
+    });
+  }
+
+  function onDocumentClick(e) {
+
+    const article = e.target.closest("[data-click-zoom-article]");
+
+    if (article) {
+      const img = e.target.closest("img");
+
+      if (img && article.contains(img)) {
+        e.preventDefault();
+        open(img);
+        return;
+      }
     }
-  });
+
+    const trigger = e.target.closest("[data-click-zoom]");
+    if (!trigger) return;
+
+    const img = trigger.tagName === "IMG"
+      ? trigger
+      : trigger.querySelector("img");
+
+    if (!img) return;
+
+    e.preventDefault();
+    open(img);
+  }
+
+  function onOverlayClick() {
+    if (CONFIG.closeOnClick) close();
+  }
+
+  function onKeyDown(e) {
+    if (CONFIG.closeOnEscape && e.key === "Escape") close();
+  }
+
+  function onScroll() {
+    if (!CONFIG.closeOnScroll) return;
+    if (Math.abs(window.scrollY - openScrollY) < 2) return;
+
+    close();
+  }
+
+  function attachCloseListeners() {
+    lightbox.addEventListener("click", onOverlayClick);
+    document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  function detachCloseListeners() {
+    lightbox.removeEventListener("click", onOverlayClick);
+    document.removeEventListener("keydown", onKeyDown);
+    window.removeEventListener("scroll", onScroll);
+  }
+
+  document.addEventListener("click", onDocumentClick);
 }
 
-// Initialize Image Zoom
-document.addEventListener("DOMContentLoaded", () => {
-  initImageZoom();
+document.addEventListener("DOMContentLoaded", function() {
+  initClickToZoomBasic();
 });

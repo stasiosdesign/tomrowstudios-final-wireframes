@@ -58,7 +58,9 @@ function initAfterEnterFunctions(next) {
   if (typeof initTestimonialSwitcher === "function") initTestimonialSwitcher();
   if (typeof initBasicFormValidation === "function") initBasicFormValidation();
   if (typeof initParallaxImageSlider === "function") initParallaxImageSlider();
-  if (typeof initImageZoom === "function") initImageZoom();
+  if (typeof initMasonryGrid === "function") initMasonryGrid();
+  // Click-to-zoom binds one delegated listener on the document, so images
+  // arriving with a new container are already covered — nothing to rebind.
 
   if (hasLenis) {
     lenis.resize();

@@ -40,6 +40,9 @@
 <!-- Film grain overlay (outside the Barba container so it persists) -->
 <div class="grain" data-grain-animate="true"></div>
 
+<!-- Click-to-zoom target (outside the Barba container so it persists) -->
+<div data-click-zoom-lightbox class="click-zoom__lightbox"></div>
+
 <main data-barba="container" data-barba-namespace="project-transport" data-page-name="Trans[port]">
 
 
@@ -86,7 +89,7 @@
 
 <!-- Straight into the work: the opening plate, full width and landscape -->
 <section class="project-lead">
-  <img data-zoom class="project-lead__img" src="assets/projects/transport/01.jpg" width="1600" height="902" alt="Trans[port]: Logistics Market — opening plate">
+  <img data-click-zoom class="project-lead__img" src="assets/projects/transport/01.jpg" width="1600" height="902" alt="Trans[port]: Logistics Market — opening plate">
 </section>
 
 <!-- Masonry grid -->
@@ -97,15 +100,51 @@
       <h2>Selected plates</h2>
       <p class="lead">Click any drawing to open it full size.</p>
     </div>
-    <div class="masonry">
-        <div class="masonry__item"><img data-zoom src="assets/projects/transport/02.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 2"></div>
-        <div class="masonry__item"><img data-zoom src="assets/projects/transport/03.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 3"></div>
-        <div class="masonry__item"><img data-zoom src="assets/projects/transport/04.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 4"></div>
-        <div class="masonry__item"><img data-zoom src="assets/projects/transport/05.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 5"></div>
-        <div class="masonry__item"><img data-zoom src="assets/projects/transport/06.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 6"></div>
-        <div class="masonry__item"><img data-zoom src="assets/projects/transport/07.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 7"></div>
-        <div class="masonry__item"><img data-zoom src="assets/projects/transport/08.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 8"></div>
-        <div class="masonry__item"><img data-zoom src="assets/projects/transport/09.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 9"></div>
+    <div class="masonry-wrap">
+      <div class="masonry-collection">
+        <div data-masonry-list class="masonry-list">
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--wide">
+              <img src="assets/projects/transport/02.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 2" class="masonry-item__visual-img">
+            </div>
+          </div>
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--wide">
+              <img src="assets/projects/transport/03.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 3" class="masonry-item__visual-img">
+            </div>
+          </div>
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--square">
+              <img src="assets/projects/transport/04.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 4" class="masonry-item__visual-img">
+            </div>
+          </div>
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--wide">
+              <img src="assets/projects/transport/05.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 5" class="masonry-item__visual-img">
+            </div>
+          </div>
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--wide">
+              <img src="assets/projects/transport/06.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 6" class="masonry-item__visual-img">
+            </div>
+          </div>
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--square">
+              <img src="assets/projects/transport/07.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 7" class="masonry-item__visual-img">
+            </div>
+          </div>
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--wide">
+              <img src="assets/projects/transport/08.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 8" class="masonry-item__visual-img">
+            </div>
+          </div>
+          <div class="masonry-item">
+            <div data-click-zoom class="masonry-item__visual is--wide">
+              <img src="assets/projects/transport/09.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 9" class="masonry-item__visual-img">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -119,14 +158,14 @@
       <p class="lead">The remaining spreads, in the order the portfolio reads.</p>
     </div>
     <div class="project-plates">
-        <img data-zoom src="assets/projects/transport/10.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 10">
-        <img data-zoom src="assets/projects/transport/11.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 11">
-        <img data-zoom src="assets/projects/transport/12.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 12">
-        <img data-zoom src="assets/projects/transport/13.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 13">
-        <img data-zoom src="assets/projects/transport/14.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 14">
-        <img data-zoom src="assets/projects/transport/15.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 15">
-        <img data-zoom src="assets/projects/transport/16.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 16">
-        <img data-zoom src="assets/projects/transport/17.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 17">
+        <img data-click-zoom src="assets/projects/transport/10.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 10">
+        <img data-click-zoom src="assets/projects/transport/11.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 11">
+        <img data-click-zoom src="assets/projects/transport/12.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 12">
+        <img data-click-zoom src="assets/projects/transport/13.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 13">
+        <img data-click-zoom src="assets/projects/transport/14.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 14">
+        <img data-click-zoom src="assets/projects/transport/15.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 15">
+        <img data-click-zoom src="assets/projects/transport/16.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 16">
+        <img data-click-zoom src="assets/projects/transport/17.jpg" width="1600" height="902" loading="lazy" decoding="async" alt="Trans[port]: Logistics Market — plate 17">
     </div>
     <div class="actions project-actions">
       <a data-button-011 href="https://www.tomrowstudios.com/_files/ugd/746e36_a60b395b644c4660b17bc8aa0f1df0e6.pdf" target="_blank" rel="noopener" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Download Portfolio</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
@@ -176,16 +215,15 @@
           <a data-underline-link href="architecture.html" class="site-footer__a">Architecture</a>
           <a data-underline-link href="shop.html" class="site-footer__a">Shop</a>
           <a data-underline-link href="partner.html" class="site-footer__a">Partner</a>
-          <a data-underline-link href="partners-archive.html" class="site-footer__a">Archive</a>
         </div>
       </div>
       <div class="site-footer__col">
         <p class="footer-eyebrow">( Socials )</p>
         <div class="site-footer__links">
-          <a data-underline-link href="#" class="site-footer__a">Instagram</a>
-          <a data-underline-link href="#" class="site-footer__a">LinkedIn</a>
-          <a data-underline-link href="#" class="site-footer__a">X/Twitter</a>
-          <a data-underline-link href="#" class="site-footer__a">YouTube</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">Instagram</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">LinkedIn</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">X/Twitter</a>
+          <a data-underline-link href="https://www.youtube.com/@tomrowstudios" target="_blank" rel="noopener" class="site-footer__a">YouTube</a>
         </div>
       </div>
       <div class="site-footer__col">
@@ -342,6 +380,7 @@
 <script src="partners.js"></script>
 <script src="formvalidation.js"></script>
 <script src="archslider.js"></script>
+<script src="masonry.js"></script>
 <script src="transitions.js"></script>
 <script src="lightbox.js"></script>
 
