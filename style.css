@@ -68,11 +68,12 @@ body {
   color: #ffffff;
   font-family: "neue-haas-grotesk-display", Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
-  /* The kit has no 500, so the scale is three of its light cuts: 200 for
-     display type, 300 for running text, 400 for labels and emphasis. Body
-     has to be stated — left to the browser default it lands on 400 and the
-     small headings end up lighter than the copy beneath them. */
-  font-weight: 300;
+  /* Three steps: 700 for headings and emphasis, 400 for running text, 300
+     for the small uppercase labels. The kit has no 500 or 600, so 700 is the
+     only cut above the "45 Light" 400 — headings take it. Body is stated
+     rather than left to the browser default, which would land on 400 by
+     coincidence rather than intent. */
+  font-weight: 400;
   line-height: 1.4;
 }
 
@@ -133,7 +134,7 @@ a { color: inherit; }
 .btn-link   { background: none; padding: 1rem 0; color: #ffffff; }
 .btn-link img { width: 2.4rem; height: 2.4rem; }
 
-.actions { display: flex; gap: 2.4rem; align-items: center; flex-wrap: wrap; }
+.actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
 
 /* ---------- Site nav (fixed) ---------- */
 .site-nav {
@@ -179,25 +180,25 @@ main:not(:has(.willem-header)) .site-nav + * { padding-top: var(--nav-height); }
   font-size: 5.6rem;
   line-height: 1.1;
   letter-spacing: -0.056rem;
-  font-weight: 200;
+  font-weight: 700;
 }
 .hero-col-two p { margin: 0; font-size: 1.8rem; }
 
 /* ---------- Typography ---------- */
-.tagline { margin: 0 0 1.6rem; font-weight: 400; font-size: 1.6rem; }
+.tagline { margin: 0 0 1.6rem; font-weight: 300; font-size: 1.6rem; }
 h2 {
   margin: 0 0 2.4rem;
   font-size: 4.8rem;
   line-height: 1.1;
   letter-spacing: -0.048rem;
-  font-weight: 200;
+  font-weight: 700;
 }
 h3 {
   margin: 0 0 1.6rem;
   font-size: 3.2rem;
   line-height: 1.2;
   letter-spacing: -0.032rem;
-  font-weight: 200;
+  font-weight: 700;
 }
 .lead { font-size: 1.8rem; margin: 0 0 2.4rem; }
 
@@ -263,7 +264,7 @@ h3 {
 .timeline-marker { display: flex; flex-direction: column; align-items: center; gap: 1.6rem; }
 .timeline-marker img { width: 4.8rem; height: 4.8rem; }
 .timeline-line { flex: 1; min-height: 6.4rem; width: 0.2rem; background: rgba(255, 255, 255, 0.2); }
-.timeline h4 { margin: 0 0 1.6rem; font-size: 2rem; line-height: 1.3; letter-spacing: -0.02rem; font-weight: 300; }
+.timeline h4 { margin: 0 0 1.6rem; font-size: 2rem; line-height: 1.3; letter-spacing: -0.02rem; font-weight: 700; }
 .timeline p { margin: 0 0 1.6rem; }
 
 /* ---------- Light theme sections ---------- */
@@ -273,12 +274,12 @@ h3 {
 .section-title-left { max-width: var(--grid-col-2); margin: 0 0 5.6rem; text-align: left; }
 .section-title-left h2 { margin-bottom: 2.4rem; }
 
-.strong { font-weight: 400; }
+.strong { font-weight: 700; }
 .quote { margin: 0; font-size: 1.8rem; }
 
 /* ---------- Logo strip ---------- */
 .logo-strip { text-align: center; padding-top: 5.6rem; padding-bottom: 5.6rem; }
-.logo-strip-title { max-width: 56rem; margin: 0 auto 3.2rem; font-size: 1.8rem; font-weight: 400; }
+.logo-strip-title { max-width: 56rem; margin: 0 auto 3.2rem; font-size: 1.8rem; font-weight: 700; }
 .logo-row { display: flex; gap: 2.4rem; justify-content: center; flex-wrap: wrap; }
 .logo-row img { height: 3.6rem; width: auto; }
 
@@ -508,7 +509,7 @@ h3 {
   font-size: 4rem;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  font-weight: 200;
+  font-weight: 700;
 }
 .panel-form { padding: 3.2rem; }
 .panel-form-step {
@@ -517,8 +518,8 @@ h3 {
   justify-content: space-between;
   gap: 2.4rem;
 }
-.panel-form-step h3 { margin: 0; font-size: 1.8rem; font-weight: 400; }
-.panel-form-step .step-number { font-size: 1.8rem; font-weight: 400; }
+.panel-form-step h3 { margin: 0; font-size: 1.8rem; font-weight: 700; }
+.panel-form-step .step-number { font-size: 1.8rem; font-weight: 300; }
 .panel-form-note { margin: 0.4rem 0 2.4rem; }
 .panel-form .form { gap: 1.6rem; }
 .panel-form .form-row { gap: 1.6rem; }
@@ -531,7 +532,7 @@ h3 {
 .tag {
   padding: 0.4rem 1rem;
   font-size: 1.4rem;
-  font-weight: 400;
+  font-weight: 700;
   color: #000509;
   background: rgba(255, 255, 255, 0.85);
   border-radius: var(--radius);
@@ -568,9 +569,9 @@ h3 {
 .product-img { width: 100%; aspect-ratio: 405 / 270; object-fit: cover; }
 .product-body { display: flex; flex-direction: column; gap: 1.6rem; padding: 2.4rem; flex: 1; }
 .product-info { display: flex; gap: 1.6rem; align-items: center; }
-.product-meta { font-size: 1.4rem; font-weight: 400; }
+.product-meta { font-size: 1.4rem; font-weight: 700; }
 .tag-dark { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
-.product-card h5 { margin: 0; font-size: 2.4rem; line-height: 1.3; letter-spacing: -0.024rem; font-weight: 300; }
+.product-card h5 { margin: 0; font-size: 2.4rem; line-height: 1.3; letter-spacing: -0.024rem; font-weight: 700; }
 .product-card p { margin: 0; }
 .product-card .btn-link { margin-top: auto; align-self: flex-start; }
 .actions-end { justify-content: flex-end; margin-top: 5.6rem; }
@@ -582,12 +583,12 @@ h3 {
 .faq summary {
   padding: 2rem 0;
   font-size: 1.8rem;
-  font-weight: 400;
+  font-weight: 700;
   cursor: pointer;
   list-style: none;
 }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; float: right; font-weight: 300; }
+.faq summary::after { content: "+"; float: right; font-weight: 400; }
 .faq details[open] summary::after { content: "–"; }
 .faq details p { margin: 0; padding-bottom: 2.4rem; }
 .faq-footer { max-width: 56rem; margin: 5.6rem auto 0; text-align: center; }
@@ -625,7 +626,7 @@ h3 {
   font-size: 5.6rem;
   line-height: 1.1;
   letter-spacing: -0.056rem;
-  font-weight: 200;
+  font-weight: 700;
 }
 .page-header .lead { margin-bottom: 2.4rem; }
 
@@ -676,7 +677,7 @@ h3 {
   height: 6.4rem;
   margin-bottom: 3.2rem;
   font-size: 1.8rem;
-  font-weight: 400;
+  font-weight: 700;
 }
 .feature-split-center { align-items: center; gap: 5.6rem; }
 .feature-split-center > a { flex: 1; min-width: 0; }
@@ -711,7 +712,7 @@ h3 {
 .footer-logo { width: 8.4rem; height: 3.6rem; object-fit: contain; margin-bottom: 0.8rem; }
 .footer-block { font-size: 1.4rem; }
 .footer-block p { margin: 0 0 0.4rem; }
-.footer-block .strong { font-weight: 400; }
+.footer-block .strong { font-weight: 700; }
 .footer-block a { text-decoration: underline; }
 
 .social { display: flex; gap: 1.2rem; margin-top: 0.8rem; }
@@ -719,7 +720,7 @@ h3 {
 
 .footer-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.4rem; }
 .footer-links ul { flex: 1; list-style: none; margin: 0; padding: 0; }
-.footer-links li { padding: 0.8rem 0; font-size: 1.4rem; font-weight: 400; }
+.footer-links li { padding: 0.8rem 0; font-size: 1.4rem; font-weight: 700; }
 .footer-links a { text-decoration: none; }
 
 .footer-bottom {
@@ -850,7 +851,7 @@ main:has(.willem-header.is--loading) {
   white-space: nowrap;
   justify-content: center;
   font-size: 6em;
-  font-weight: 200;
+  font-weight: 700;
   line-height: .75;
   display: flex;
   position: relative;
@@ -1110,7 +1111,7 @@ main:has(.willem-header.is--loading) {
   font-size: 5.6rem;
   line-height: 1.1;
   letter-spacing: -0.056rem;
-  font-weight: 200;
+  font-weight: 700;
 }
 
 .willem-hero__intro { margin: 0; font-size: 1.8rem; }
@@ -1257,7 +1258,7 @@ main:has(.willem-header.is--loading) {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 1.125em;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .site-footer__links-row {
@@ -1302,7 +1303,7 @@ main:has(.willem-header.is--loading) {
   font-size: 6.5em;
   line-height: .85;
   letter-spacing: -.03em;
-  font-weight: 200;
+  font-weight: 700;
 }
 
 .site-footer__legal {
@@ -1465,14 +1466,14 @@ main:has(.willem-header.is--loading) .site-nav {
   margin: 0;
   font-size: 3.2rem;
   letter-spacing: -0.032rem;
-  font-weight: 200;
+  font-weight: 700;
   line-height: 1;
 }
 
 .sticky-tab__eyebrow {
   margin: 0;
   font-size: 1.6rem;
-  font-weight: 400;
+  font-weight: 300;
   white-space: nowrap;
 }
 
@@ -1995,7 +1996,7 @@ body{
   font-size: 16rem;
   line-height: 1;
   letter-spacing: -0.08em;
-  font-weight: 200;
+  font-weight: 700;
 }
 .figure-lead__label {
   /* Two of the four columns, so the caption sits under the first half */
@@ -2024,7 +2025,7 @@ body{
 .insights-row__index {
   margin: 0;
   font-size: 1.4rem;
-  font-weight: 400;
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.5);
 }
 .insights-row__body { min-width: 0; }
@@ -2044,7 +2045,7 @@ body{
   font-size: 6.4rem;
   line-height: 1;
   letter-spacing: -0.04em;
-  font-weight: 200;
+  font-weight: 700;
   justify-self: end;
 }
 /* Entries with no figure of their own carry a short phrase at the same
@@ -2170,7 +2171,7 @@ body{
   font-size: 2rem;
   line-height: 1.3;
   letter-spacing: -0.02rem;
-  font-weight: 300;
+  font-weight: 700;
 }
 .step-timeline__p { margin: 0; }
 
@@ -2228,7 +2229,7 @@ body{
 .social-proof__body { display: flex; flex-direction: column; gap: 0.4rem; }
 .social-proof__stars { width: 8rem; height: auto; }
 .social-proof__label { margin: 0; font-size: 1.6rem; color: rgba(255, 255, 255, 0.7); }
-.social-proof__label strong { color: #ffffff; font-weight: 400; }
+.social-proof__label strong { color: #ffffff; font-weight: 700; }
 
 /* ---------- Centered looping slider ---------- */
 .centered-slider-row {
@@ -2451,7 +2452,7 @@ main section + section,
 .tagline {
   margin: 0 0 1.6rem;
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.55);
@@ -2483,7 +2484,7 @@ main section + section,
   font-size: 6.4rem;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  font-weight: 200;
+  font-weight: 700;
 }
 .shop-hero .lead { max-width: 48rem; margin-bottom: 0; }
 .shop-hero .social-proof { margin-top: 4rem; }
@@ -2512,7 +2513,7 @@ main section + section,
 .product-card::before {
   content: counter(product, decimal-leading-zero);
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.45);
 }
@@ -2614,7 +2615,7 @@ main section + section,
   width: 100%;
   margin-bottom: 0;
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -2739,7 +2740,7 @@ main section + section,
   margin: 0;
   color: inherit;
   font-size: 1.6rem;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 /* Field: Error */
@@ -2811,7 +2812,7 @@ main section + section,
   font-size: 8rem;
   line-height: 1;
   letter-spacing: -0.04em;
-  font-weight: 200;
+  font-weight: 700;
 }
 .final-cta__lead {
   max-width: var(--grid-col-2);
@@ -2876,40 +2877,42 @@ main section + section,
   font-size: 5.6rem;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  font-weight: 200;
+  font-weight: 700;
 }
 
-/* The prose runs the width of the block and the fact table sits inside it,
-   so the two read as one passage rather than a column beside a column */
-.case-intro__body::after { content: ''; display: block; clear: both; }
 .case-intro__body p { margin: 0 0 2.4rem; }
 .case-intro__body p:last-child { margin-bottom: 0; }
 
 .case-intro__standfirst {
+  margin: 0 0 4rem;
   font-size: 2rem;
   line-height: 1.4;
 }
 
+/* The table used to float against the right edge of a 683px drawer, which
+   squeezed the prose beside it to about forty characters a line. It now runs
+   full width as a ruled band between the standfirst and the copy. */
 .case-facts {
-  float: right;
-  /* The drawer is narrow, so the table stays tight — any wider and the text
-     wrapping past it drops to about forty characters a line */
-  width: 22rem;
-  margin: 0.8rem 0 2.4rem 3.2rem;
-  padding-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 var(--grid-gap);
+  margin: 0 0 4rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--rule);
 }
-.case-facts dl { margin: 0; }
-.case-facts dl > div {
+.case-facts > div {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  padding: 1.2rem 0;
+  padding: 1.6rem 0;
   border-bottom: 1px solid var(--rule);
+  min-width: 0;
 }
+/* The odd one out spans both columns so the band closes flush */
+.case-facts > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .case-facts dt {
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--form-muted);
@@ -2921,13 +2924,9 @@ main section + section,
 }
 .case-facts a { text-decoration: underline; text-underline-offset: 0.3em; }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 767px) {
   .case-intro__title { font-size: 4rem; }
-  .case-facts {
-    float: none;
-    width: 100%;
-    margin: 0 0 3.2rem;
-  }
+  .case-facts { grid-template-columns: 1fr; }
 }
 
 /* =============================================================
@@ -2995,7 +2994,7 @@ h2 { margin-bottom: 3.2rem; }
 .panel-meta dt {
   margin-bottom: 0.6rem;
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -3008,11 +3007,9 @@ h2 { margin-bottom: 3.2rem; }
 }
 .panel-meta a { text-decoration: underline; text-underline-offset: 0.3em; }
 
-/* Neue Haas Grotesk Display runs light: its 400 is the "45 Light" cut, and
-   the family's only heavy option is the 700 we do not use. Emphasis lands on
-   that 400, including on elements the browser would otherwise render at its
-   own bold. */
-strong, b, th { font-weight: 400; }
+/* Inline emphasis sits on the same 700 the headings use, so elements the
+   browser renders at its own bold match the rest of the page. */
+strong, b, th { font-weight: 700; }
 
 /* =============================================================
    Services list, testimonial feature, map head, prefooter
@@ -3067,7 +3064,7 @@ strong, b, th { font-weight: 400; }
   font-size: 7.2rem;
   line-height: 1.06;
   letter-spacing: -0.035em;
-  font-weight: 200;
+  font-weight: 700;
   color: rgba(255, 255, 255, 0.25);
   transition: color 0.35s cubic-bezier(0.65, 0.05, 0, 1);
 }
@@ -3132,7 +3129,7 @@ strong, b, th { font-weight: 400; }
   font-size: 4rem;
   line-height: 1.2;
   letter-spacing: -0.03em;
-  font-weight: 200;
+  font-weight: 700;
 }
 .testimonial-slide__who {
   margin: 0;
@@ -3246,25 +3243,35 @@ strong, b, th { font-weight: 400; }
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 2.4rem;
+  gap: 2rem;
   margin: 0 auto 3.2rem;
 }
+/* "Talk to" is far wider than "Tom", so centring the line as a whole left
+   the card sitting right of centre. Giving the two words equal flex share
+   and pushing them against the card centres the card itself. */
+.final-cta__title > span:not(.final-cta__portrait) {
+  flex: 1 1 0;
+  min-width: max-content;
+}
+.final-cta__title > span:first-child { text-align: right; }
+.final-cta__title > span:last-child { text-align: left; }
+
 /* The card interrupts the line rather than sitting beside it, so it runs
    taller than the cap height */
 .final-cta__portrait {
   display: block;
-  width: 11rem;
-  height: 14.5rem;
+  width: 13.2rem;
+  height: 17.4rem;
   border: 2px solid #ffffff;
-  border-radius: 1.2rem;
+  border-radius: 0.5rem;
   overflow: hidden;
   flex: none;
 }
 .final-cta__portrait img { width: 100%; height: 100%; object-fit: cover; }
 
 @media screen and (max-width: 991px) {
-  .final-cta__title { gap: 1.6rem; }
-  .final-cta__portrait { width: 7rem; height: 9.2rem; border-radius: 0.8rem; }
+  .final-cta__title { gap: 1.4rem; }
+  .final-cta__portrait { width: 8.4rem; height: 11rem; border-radius: 0.4rem; }
 }
 
 /* ---------- Step timeline on a light surface ---------- */
@@ -3286,3 +3293,16 @@ strong, b, th { font-weight: 400; }
 .theme-light [data-step-timeline-item][data-current] [data-step-timeline-marker] {
   box-shadow: 0 0 0 0.8rem rgba(0, 5, 9, 0.1);
 }
+
+/* ---------- CTA spacing ---------- */
+/* Paired buttons read as one control group, so they sit close together */
+.actions { gap: 1.2rem; }
+
+/* Give the buttons room from the copy they follow */
+.section-title .actions,
+.section-title-left .actions { margin-top: 3.2rem; }
+
+/* Slides carry a shared 20em cap, which held the drawer's cards at 320px no
+   matter what slidesPerView asked for. Lift it where a group states its own
+   count, so those sliders size from the container instead. */
+[data-swiper-per-view] .swiper-slide { max-width: none; }

@@ -12,6 +12,12 @@ function initSwiperSlider() {
     const nextButton = swiperGroup.querySelector("[data-swiper-next]");
     const pagination = swiperGroup.querySelector(".swiper-pagination");
 
+    // Breakpoints go off the window, not the container, so a slider inside a
+    // drawer gets sized for the full page and the cards come out tiny. Let a
+    // group ask for its own count instead.
+    const perView = parseFloat(swiperGroup.getAttribute("data-swiper-per-view"));
+    const wide = perView || 3.5;
+
     const swiper = new Swiper(swiperSliderWrap, {
       slidesPerView: 1.25,
       speed: 600,
@@ -20,11 +26,11 @@ function initSwiperSlider() {
       breakpoints: {
         // when window width is >= 480px
         480: {
-          slidesPerView: 1.8,
+          slidesPerView: perView ? Math.min(perView, 1.8) : 1.8,
         },
         // when window width is >= 992px
         992: {
-          slidesPerView: 3.5,
+          slidesPerView: wide,
         }
       },
       navigation: {
