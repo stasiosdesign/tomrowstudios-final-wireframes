@@ -57,6 +57,8 @@ function initAfterEnterFunctions(next) {
   if (typeof initServiceList === "function") initServiceList();
   if (typeof initTestimonialSwitcher === "function") initTestimonialSwitcher();
   if (typeof initBasicFormValidation === "function") initBasicFormValidation();
+  if (typeof initParallaxImageSlider === "function") initParallaxImageSlider();
+  if (typeof initImageZoom === "function") initImageZoom();
 
   if (hasLenis) {
     lenis.resize();

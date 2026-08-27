@@ -40,7 +40,7 @@
 <!-- Film grain overlay (outside the Barba container so it persists) -->
 <div class="grain" data-grain-animate="true"></div>
 
-<main data-barba="container" data-barba-namespace="architecture" data-page-name="Architecture">
+<main data-barba="container" data-barba-namespace="architecture" data-page-name="Architecture" class="arch-page">
 
 
 <!-- Navbar -->
@@ -63,224 +63,127 @@
   </nav>
 </header>
 
-<!-- Intro -->
-<section class="section-alt">
-  <div class="section">
-    <div class="container">
-      <div class="two-col two-col-flat">
-        <div>
-          <p class="tagline">Architecture</p>
-          <h2>Architectural projects</h2>
+<!-- One screen, moving sideways. The projects run off the right-hand edge and
+     are reached by dragging, by the arrows, or by scrolling up and down —
+     which the slider reads as left and right. -->
+<section class="arch-stage">
+
+  <div data-parallax-init class="parallax-slider__group arch-stage__group">
+
+    <div class="arch-stage__head">
+      <p class="tagline">Architecture</p>
+      <p class="arch-stage__count"><strong data-parallax-counter>01</strong> / 05</p>
+    </div>
+
+    <div class="arch-stage__slider">
+      <div class="parallax-slider__collection">
+        <div data-parallax-slider data-parallax-infinite="false" data-parallax-snap="false" data-parallax-amount="10" data-parallax-lerp="0.28" class="parallax-slider__list">
+
+          <div class="parallax-slider__item">
+            <a href="project-transport.html" class="parallax-slider__item-link">
+              <div class="parallax-slider__item-inner">
+                <div data-parallax-inner class="parallax-slider__item-visual">
+                  <img src="assets/projects/transport/01.jpg" width="1600" height="902" draggable="false" alt="Trans[port]: Logistics Market" class="parallax-slider__item-img">
+                </div>
+              </div>
+              <div class="parallax-slider__item-label">
+                <div>
+                  <p class="parallax-slider__item-name">Trans[port]: Logistics Market</p>
+                  <p class="parallax-slider__item-meta">01 — MArch 2 — 2023</p>
+                </div>
+                <span class="parallax-slider__item-cta" aria-hidden="true"></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="parallax-slider__item">
+            <a href="project-sets-in-motion.html" class="parallax-slider__item-link">
+              <div class="parallax-slider__item-inner">
+                <div data-parallax-inner class="parallax-slider__item-visual">
+                  <img src="assets/projects/sets-in-motion/01.jpg" width="1600" height="902" draggable="false" alt="Sets in Motion" class="parallax-slider__item-img">
+                </div>
+              </div>
+              <div class="parallax-slider__item-label">
+                <div>
+                  <p class="parallax-slider__item-name">Sets in Motion</p>
+                  <p class="parallax-slider__item-meta">02 — MArch 1 — 2022</p>
+                </div>
+                <span class="parallax-slider__item-cta" aria-hidden="true"></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="parallax-slider__item">
+            <a href="project-irrational-matrix.html" class="parallax-slider__item-link">
+              <div class="parallax-slider__item-inner">
+                <div data-parallax-inner class="parallax-slider__item-visual">
+                  <img src="assets/projects/irrational-matrix/01.jpg" width="1600" height="1600" draggable="false" alt="Irrational Matrix" class="parallax-slider__item-img">
+                </div>
+              </div>
+              <div class="parallax-slider__item-label">
+                <div>
+                  <p class="parallax-slider__item-name">Irrational Matrix</p>
+                  <p class="parallax-slider__item-meta">03 — Dissertation</p>
+                </div>
+                <span class="parallax-slider__item-cta" aria-hidden="true"></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="parallax-slider__item">
+            <a href="project-the-sequel.html" class="parallax-slider__item-link">
+              <div class="parallax-slider__item-inner">
+                <div data-parallax-inner class="parallax-slider__item-visual">
+                  <img src="assets/projects/the-sequel/01.jpg" width="1600" height="451" draggable="false" alt="The Sequel" class="parallax-slider__item-img">
+                </div>
+              </div>
+              <div class="parallax-slider__item-label">
+                <div>
+                  <p class="parallax-slider__item-name">The Sequel</p>
+                  <p class="parallax-slider__item-meta">04 — Digbeth — 2020</p>
+                </div>
+                <span class="parallax-slider__item-cta" aria-hidden="true"></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="parallax-slider__item">
+            <a href="project-the-sequel-post.html" class="parallax-slider__item-link">
+              <div class="parallax-slider__item-inner">
+                <div data-parallax-inner class="parallax-slider__item-visual">
+                  <img src="assets/projects/the-sequel-post/01.jpg" width="1600" height="450" draggable="false" alt="The Sequel: Post-production" class="parallax-slider__item-img">
+                </div>
+              </div>
+              <div class="parallax-slider__item-label">
+                <div>
+                  <p class="parallax-slider__item-name">The Sequel: Post-production</p>
+                  <p class="parallax-slider__item-meta">05 — Digbeth — 2020</p>
+                </div>
+                <span class="parallax-slider__item-cta" aria-hidden="true"></span>
+              </div>
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
+
+    <div class="arch-stage__foot">
+      <h1 class="arch-stage__title">Architectural<br>projects</h1>
+      <div class="arch-arrows">
+        <button type="button" data-parallax-prev class="arch-arrow is--prev is--disabled" aria-label="Previous project"></button>
+        <button type="button" data-parallax-next class="arch-arrow is--next" aria-label="Next project"></button>
+      </div>
+    </div>
+
+    <!-- Progress through the horizontal run, pinned to the bottom edge -->
+    <div data-parallax-progress-wrap class="progress-bar-wrap">
+      <div data-parallax-progress class="progress-bar"></div>
+    </div>
+
   </div>
+
 </section>
-
-<!-- Projects as sticky tabs -->
-<div class="sticky-tab-group">
-  <div class="sticky-tab-group__nav-bg"></div>
-
-  <section class="sticky-tab">
-    <div class="sticky-tab__sticky">
-      <div class="sticky-tab__inner">
-        <div class="container">
-          <div class="sticky-tab__content">
-            <h2 class="sticky-tab__title">Trans[port]: Logistics Market</h2>
-            <p class="sticky-tab__eyebrow">01 — MArch 2 — 2023</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="sticky-tab__body">
-        <div class="feature-split feature-split-center">
-          <div class="feature-body">
-            <p class="tagline">Project</p>
-            <p class="lead">A hybrid design project that collides warehouse logic with retail markets and goods consumption, building a public connection between the city and the port.</p>
-            <div class="actions">
-              <a data-button-011 href="project-transport.html" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">View project</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
-            </div>
-          </div>
-          <a href="project-transport.html"><img class="feature-img" src="assets/projects/transport/01.jpg" loading="lazy" alt=""></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sticky-tab">
-    <div class="sticky-tab__sticky">
-      <div class="sticky-tab__inner">
-        <div class="container">
-          <div class="sticky-tab__content">
-            <h2 class="sticky-tab__title">Sets in Motion</h2>
-            <p class="sticky-tab__eyebrow">02 — MArch 1 — 2022</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="sticky-tab__body">
-        <div class="feature-split feature-split-center">
-          <div class="feature-body">
-            <p class="tagline">Project</p>
-            <p class="lead">An independent filmmaker facility at Alexandra Palace Park, where the architecture and landscape become a backdrop for content.</p>
-            <div class="actions">
-              <a data-button-011 href="project-sets-in-motion.html" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">View project</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
-            </div>
-          </div>
-          <a href="project-sets-in-motion.html"><img class="feature-img" src="assets/projects/sets-in-motion/01.jpg" loading="lazy" alt=""></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sticky-tab">
-    <div class="sticky-tab__sticky">
-      <div class="sticky-tab__inner">
-        <div class="container">
-          <div class="sticky-tab__content">
-            <h2 class="sticky-tab__title">Irrational Matrix</h2>
-            <p class="sticky-tab__eyebrow">03 — Dissertation</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="sticky-tab__body">
-        <div class="feature-split feature-split-center">
-          <div class="feature-body">
-            <p class="tagline">Project</p>
-            <p class="lead">Using Daniel Libeskind's Chamber Works and Micromegas to question the role of drawing in architectural representation.</p>
-            <div class="actions">
-              <a data-button-011 href="project-irrational-matrix.html" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">View project</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
-            </div>
-          </div>
-          <a href="project-irrational-matrix.html"><img class="feature-img" src="assets/projects/irrational-matrix/01.jpg" loading="lazy" alt=""></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sticky-tab">
-    <div class="sticky-tab__sticky">
-      <div class="sticky-tab__inner">
-        <div class="container">
-          <div class="sticky-tab__content">
-            <h2 class="sticky-tab__title">The Sequel</h2>
-            <p class="sticky-tab__eyebrow">04 — 2020</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="sticky-tab__body">
-        <div class="feature-split feature-split-center">
-          <div class="feature-body">
-            <p class="tagline">Project</p>
-            <p class="lead">Fields of movement exploration resolved into a monument to the ex-convict's first twelve months of rehabilitation.</p>
-            <div class="actions">
-              <a data-button-011 href="project-the-sequel.html" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">View project</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
-            </div>
-          </div>
-          <a href="project-the-sequel.html"><img class="feature-img" src="assets/projects/the-sequel/01.jpg" loading="lazy" alt=""></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sticky-tab">
-    <div class="sticky-tab__sticky">
-      <div class="sticky-tab__inner">
-        <div class="container">
-          <div class="sticky-tab__content">
-            <h2 class="sticky-tab__title">The Sequel: Post-production</h2>
-            <p class="sticky-tab__eyebrow">05 — 2020</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="sticky-tab__body">
-        <div class="feature-split feature-split-center">
-          <div class="feature-body">
-            <p class="tagline">Project</p>
-            <p class="lead">A collection of visualisations of the proposed project, built around the contrast between light and dark on concrete.</p>
-            <div class="actions">
-              <a data-button-011 href="project-the-sequel-post.html" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">View project</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
-            </div>
-          </div>
-          <a href="project-the-sequel-post.html"><img class="feature-img" src="assets/projects/the-sequel-post/01.jpg" loading="lazy" alt=""></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<!-- Closing CTA -->
-<section class="section final-cta">
-  <div class="container">
-    <p class="tagline final-cta__eyebrow">Get in touch</p>
-    <h2 class="final-cta__title">
-      <span>Talk to</span>
-      <span class="final-cta__portrait"><img src="assets/photos/portrait-01.jpg" alt="Tom Rowntree"></span>
-      <span>Tom</span>
-    </h2>
-    <p class="lead final-cta__lead">Speaking, partnerships, teaching or a project you are still working out — start the conversation and Tom will come back to you himself.</p>
-    <div class="actions">
-      <a data-button-011 href="#contact" data-panel-open="contact" data-barba-prevent="self" class="button-011"><span class="button-011__bg"></span><span class="button-011__inner"><span data-button-011-text class="button-011__text">Contact Tom</span><span class="button-011__icon"><span class="button-011__icon-element"></span></span></span></a>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<div data-footer-parallax class="footer-wrap">
-  <footer data-footer-parallax-inner class="site-footer">
-    <div class="site-footer__links-row">
-      <div class="site-footer__col">
-        <p class="footer-eyebrow">( Pages )</p>
-        <div class="site-footer__links">
-          <a data-underline-link href="index.html" class="site-footer__a">Home</a>
-          <a data-underline-link href="influence.html" class="site-footer__a">Influence</a>
-          <a data-underline-link href="architecture.html" class="site-footer__a">Architecture</a>
-          <a data-underline-link href="shop.html" class="site-footer__a">Shop</a>
-          <a data-underline-link href="partner.html" class="site-footer__a">Partner</a>
-          <a data-underline-link href="partners-archive.html" class="site-footer__a">Archive</a>
-        </div>
-      </div>
-      <div class="site-footer__col">
-        <p class="footer-eyebrow">( Socials )</p>
-        <div class="site-footer__links">
-          <a data-underline-link href="#" class="site-footer__a">Instagram</a>
-          <a data-underline-link href="#" class="site-footer__a">LinkedIn</a>
-          <a data-underline-link href="#" class="site-footer__a">X/Twitter</a>
-          <a data-underline-link href="#" class="site-footer__a">YouTube</a>
-        </div>
-      </div>
-      <div class="site-footer__col">
-        <p class="footer-eyebrow">( Contact )</p>
-        <div class="site-footer__links">
-          <a data-underline-link href="mailto:hello@tomrowstudios.com" class="site-footer__a">hello@tomrowstudios.com</a>
-          <a data-underline-link href="#contact" data-panel-open="contact" data-barba-prevent="self" class="site-footer__a">Start a project</a>
-        </div>
-      </div>
-    </div>
-    <div class="site-footer__logo-row">
-      <p class="footer-eyebrow">Architecture, content and education for a global audience</p>
-      <p class="site-footer__wordmark">tomrowstudios ©</p>
-      <div class="site-footer__legal">
-        <p class="footer-eyebrow">© 2025 Tomrowstudios. All rights reserved.</p>
-        <div class="site-footer__legal-links">
-          <a data-underline-link href="#" class="footer-eyebrow">Privacy</a>
-          <a data-underline-link href="#" class="footer-eyebrow">Terms of use</a>
-          <a data-underline-link href="#" class="footer-eyebrow">Cookie settings</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <div data-footer-parallax-dark class="footer-wrap__dark"></div>
-</div>
 
 <!-- Contact side panel (slide-out drawer) -->
 <div class="panel" id="contact" data-panel data-panel-state="closed">
@@ -398,6 +301,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Draggable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/InertiaPlugin.min.js"></script>
+<script src="https://unpkg.com/smooothy@0.0.35"></script>
 <script src="intro.js"></script>
 <script src="sidepanel.js"></script>
 <script src="swiper.js"></script>
@@ -410,7 +314,9 @@
 <script src="centeredslider.js"></script>
 <script src="partners.js"></script>
 <script src="formvalidation.js"></script>
+<script src="archslider.js"></script>
 <script src="transitions.js"></script>
+<script src="lightbox.js"></script>
 
 </body>
 </html>

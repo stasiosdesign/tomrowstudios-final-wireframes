@@ -3306,3 +3306,487 @@ strong, b, th { font-weight: 700; }
    matter what slidesPerView asked for. Lift it where a group states its own
    count, so those sliders size from the container instead. */
 [data-swiper-per-view] .swiper-slide { max-width: none; }
+
+
+/* =============================================================
+   Project pages — hero, award labels, masonry, landscape plates
+   ============================================================= */
+
+/* The cover image is gone from the top of a project page: the title carries
+   it now, with the awards it won set immediately underneath and the portfolio
+   download alongside. Straight after this block the drawings begin. */
+.project-hero {
+  padding: 16rem calc(var(--grid-gutter) + var(--grid-pad)) 6.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+.project-hero__inner { max-width: var(--grid-col-3); }
+.project-hero h1 {
+  margin: 0 0 2.4rem;
+  font-size: 7.2rem;
+  line-height: 1.02;
+  letter-spacing: -0.09rem;
+  font-weight: 700;
+}
+.project-hero__lead {
+  max-width: 58rem;
+  margin: 0 0 3.2rem;
+  font-size: 1.8rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Awards as labels rather than a section of their own. The award pills read
+   first; the flat programme/year/school labels sit behind them in the same
+   row so the whole line still scans as one strip of metadata. */
+.award-labels {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 0 0 3.2rem;
+  padding: 0;
+}
+.award-label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  padding: 0.9rem 1.4rem;
+  border: 1px solid var(--rule);
+  border-radius: 10rem;
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.72);
+}
+.award-label__name { color: #ffffff; }
+.award-label__note {
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+}
+/* A win is worth more than a nomination, so let it sit brighter */
+.award-label.is--won {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+}
+.award-label.is--meta {
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.project-hero .actions { margin-top: 0; }
+
+/* ---------- Landscape discipline ----------
+   A plate at full width must not run tall: a tall image at that width just
+   pushes the drawing off the top and bottom of the screen, which reads as an
+   accidental zoom. Capping the height keeps every plate inside roughly one
+   desktop screen — wide spreads are untouched, square and portrait ones
+   simply narrow rather than being cropped. */
+.project-plates img,
+.project-lead__img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 78vh;
+  margin: 0 auto;
+  border-radius: var(--radius);
+}
+
+.project-lead {
+  padding: 0 calc(var(--grid-gutter) + var(--grid-pad));
+  margin: 0 0 8rem;
+}
+
+/* ---------- Masonry grid ----------
+   Column flow, so tiles of differing heights stack without gaps. The heights
+   differ only within the landscape range — 16:9, 3:2, 4:3 — so the section
+   varies without a single tile ever standing up on end. */
+.masonry {
+  columns: 2;
+  column-gap: var(--grid-gap);
+}
+.masonry__item {
+  break-inside: avoid;
+  margin: 0 0 var(--grid-gap);
+  position: relative;
+  aspect-ratio: 3 / 2;
+}
+.masonry__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.masonry__item:nth-child(3n + 1) { aspect-ratio: 16 / 9; }
+/* The widest of the three, not the tallest: the spreads run from 16:9 to
+   nearly 3.5:1, so a tile that stands up would have to crop the drawing hard
+   to fill. Staggering across wide ratios keeps the heights uneven without
+   taking much off the sides. */
+.masonry__item:nth-child(4n + 3) { aspect-ratio: 2 / 1; }
+
+@media screen and (min-width: 1200px) {
+  .masonry { columns: 3; }
+}
+@media screen and (max-width: 767px) {
+  .masonry { columns: 1; }
+  .project-hero { padding-top: 12rem; }
+  .project-hero h1 { font-size: 4rem; }
+  .project-plates img,
+  .project-lead__img { max-height: none; }
+}
+
+/* =============================================================
+   Image zoom overlay
+   ============================================================= */
+
+.is--zoomable { cursor: zoom-in; }
+
+.zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  visibility: hidden;
+  pointer-events: none;
+}
+.zoom.is--open {
+  visibility: visible;
+  pointer-events: auto;
+}
+.zoom__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 5, 9, 0.94);
+  opacity: 0;
+  visibility: hidden;
+  cursor: zoom-out;
+}
+.zoom__figure {
+  position: fixed;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  cursor: zoom-in;
+}
+.zoom__figure.is--magnified { cursor: zoom-out; }
+.zoom__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.zoom__close {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+  width: 4.8rem;
+  height: 4.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;
+  font-size: 2.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.zoom__close:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.5); }
+.zoom__arrow {
+  position: absolute;
+  top: 50%;
+  width: 4.8rem;
+  height: 4.8rem;
+  margin-top: -2.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.zoom__arrow:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.5); }
+.zoom__arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-top: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
+.zoom__arrow.is--prev { left: 2.4rem; }
+.zoom__arrow.is--prev::after { transform: translate(-30%, -50%) rotate(-135deg); }
+.zoom__arrow.is--next { right: 2.4rem; }
+.zoom__arrow.is--next::after { transform: translate(-70%, -50%) rotate(45deg); }
+.zoom.is--single .zoom__arrow,
+.zoom.is--single .zoom__counter { display: none; }
+.zoom__counter {
+  position: absolute;
+  left: 50%;
+  bottom: 2.4rem;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* =============================================================
+   Architecture index — one screen, moving sideways
+   ============================================================= */
+
+/* This page does not scroll down. The stage is exactly the viewport and the
+   projects run off the right-hand edge, so the vertical scrollbar has to go
+   or the browser will fight the slider for the wheel. */
+html:has(.arch-page),
+body:has(.arch-page) {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.arch-page {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.arch-stage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  padding: var(--nav-height) 0 0;
+}
+
+.arch-stage__head {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2.4rem;
+  padding: 3.2rem calc(var(--grid-gutter) + var(--grid-pad)) 0;
+}
+.arch-stage__head .tagline { margin: 0; }
+.arch-stage__count {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.arch-stage__count strong { font-weight: 400; color: #ffffff; }
+
+/* The slider takes whatever is left between the heading strip and the footer
+   row, so the cards grow and shrink with the window instead of overflowing it */
+.arch-stage__slider {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+}
+
+.arch-stage__foot {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.4rem;
+  padding: 0 calc(var(--grid-gutter) + var(--grid-pad)) 4.8rem;
+}
+.arch-stage__title {
+  margin: 0;
+  font-size: 7.2rem;
+  line-height: 0.92;
+  letter-spacing: -0.09rem;
+  font-weight: 700;
+}
+
+.arch-arrows { display: flex; gap: 1.2rem; }
+.arch-arrow {
+  width: 5.6rem;
+  height: 5.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s, opacity 0.25s;
+}
+.arch-arrow:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; }
+/* The run has two ends; a dead arrow says so rather than pretending */
+.arch-arrow.is--disabled { opacity: 0.25; pointer-events: none; }
+.arch-arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  border-top: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
+.arch-arrow.is--prev::after { transform: translate(-30%, -50%) rotate(-135deg); }
+.arch-arrow.is--next::after { transform: translate(-70%, -50%) rotate(45deg); }
+
+/* ---------- Scroll progress bar ----------
+   Pinned to the very bottom edge and drawn in white, it reports position in
+   the horizontal run rather than in a page scroll. Clicking along it jumps. */
+.progress-bar-wrap {
+  z-index: 10;
+  cursor: pointer;
+  width: 100%;
+  height: 1.5rem;
+  transition: background-color 0.2s;
+  position: fixed;
+  inset: auto 0 0;
+  display: flex;
+  align-items: flex-end;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.progress-bar-wrap:hover { background-color: rgba(255, 255, 255, 0.12); }
+.progress-bar {
+  transform-origin: 0%;
+  transform-style: preserve-3d;
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  transform: scale3d(0, 1, 1);
+}
+
+/* ---------- Parallax slider (Smooothy) ---------- */
+.parallax-slider__group,
+.parallax-slider__collection { width: 100%; }
+
+.parallax-slider__list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: grab;
+  /* No inset: the wrapper width is what bounds the run, so padding here would
+     push the last card past the right edge at the end of the scroll */
+}
+.parallax-slider__list:active { cursor: grabbing; }
+
+.parallax-slider__item {
+  flex: none;
+  padding-left: 1em;
+  padding-right: 1em;
+  position: relative;
+}
+
+/* Landscape, and sized off the stage height so the card plus its label
+   always clears the footer row */
+.parallax-slider__item-inner {
+  aspect-ratio: 3 / 2;
+  border-radius: var(--radius);
+  width: min(52vw, 96rem);
+  max-height: 52vh;
+  position: relative;
+  overflow: clip;
+  background: #05080b;
+}
+.parallax-slider__item-img {
+  object-fit: cover;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  width: 160%;
+  max-width: none;
+  height: 100%;
+  position: absolute;
+  left: -30%;
+}
+.parallax-slider__item-visual {
+  will-change: transform;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+}
+
+/* Without a label a card is just a picture. The name, the index and the
+   arrow are what say this opens a page of its own. */
+.parallax-slider__item-link {
+  display: block;
+  text-decoration: none;
+  -webkit-user-drag: none;
+}
+.parallax-slider__item-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin-top: 1.6rem;
+}
+.parallax-slider__item-name {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.parallax-slider__item-meta {
+  margin: 0.4rem 0 0;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+.parallax-slider__item-cta {
+  flex: none;
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  position: relative;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+.parallax-slider__item-cta::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-top: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+  transform: translate(-70%, -50%) rotate(45deg);
+}
+.parallax-slider__item-link:hover .parallax-slider__item-cta {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+.parallax-slider__item-link:hover .parallax-slider__item-cta::after {
+  border-color: #000509;
+}
+
+/* Smooothy never loaded — the track scrolls natively instead */
+.parallax-slider__list.is--fallback {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.parallax-slider__list.is--fallback .parallax-slider__item { scroll-snap-align: center; }
+
+@media screen and (max-width: 991px) {
+  .arch-stage__title { font-size: 4.8rem; }
+  .parallax-slider__item-inner { width: 74vw; }
+}
+@media screen and (max-width: 767px) {
+  .arch-stage__foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    padding-bottom: 4rem;
+  }
+  .arch-stage__title { font-size: 3.6rem; }
+  .parallax-slider__item { padding-left: 0.5em; padding-right: 0.5em; }
+  .parallax-slider__item-inner { width: 84vw; max-height: 40vh; }
+}
