@@ -4366,9 +4366,15 @@ body:has(.arch-page) {
   grid-column: 1 / span 1;
   min-width: 0;
 }
+/* A small plate, not a column-height one. height has to be stated: the file
+   carries width and height attributes, and with only aspect-ratio set the
+   attribute wins and the picture came out 1600px tall — 178vh. */
 .statement__media img {
+  display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 30vh;
+  min-height: 20rem;
+  max-height: 34rem;
   object-fit: cover;
   border-radius: var(--radius);
 }
