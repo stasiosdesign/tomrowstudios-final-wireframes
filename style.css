@@ -173,7 +173,7 @@ a { color: inherit; }
    A block that wants more than bare clearance opts out here rather than
    fighting this rule — it is more specific than a single class, so it would
    otherwise win and pin the block's top padding to the height of the bar. */
-main:not(:has(.willem-header)) .site-nav + *:not(.project-hero) { padding-top: var(--nav-height); }
+main:not(:has(.willem-header)) .site-nav + *:not(.project-hero):not(.page-header) { padding-top: var(--nav-height); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -592,7 +592,7 @@ h3 {
 .rich-split h3 { font-size: 4rem; line-height: 1.1; letter-spacing: -0.04rem; margin: 0; }
 .rich-text { min-width: 0; }
 .rich-text p { margin: 0 0 1.6rem; }
-.panel-wide-img { width: 100%; aspect-ratio: 1280 / 738; object-fit: cover; border-radius: var(--radius); }
+.panel-wide-img { width: 100%; height: auto; aspect-ratio: 1280 / 738; object-fit: cover; border-radius: var(--radius); }
 
 /* ---------- Product cards ---------- */
 .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); align-items: stretch; }
@@ -2587,7 +2587,11 @@ main section + section,
   flex-direction: column;
   justify-content: center;
   gap: 8rem;
-  min-height: 82rem;
+  /* No tall minimum: the hero is now as tall as the square plate inside it
+     plus its padding, which keeps the whole thing inside one screen instead
+     of running past the fold and following you into the catalogue. The top
+     clearance comes from the site-wide nav rule, not from here. */
+  min-height: 0;
   padding: 8rem calc(var(--grid-gutter) + var(--grid-pad));
   background: #000000;
 }
@@ -2613,9 +2617,11 @@ main section + section,
 .shop-hero .actions { margin-top: 4rem; }
 
 .shop-hero__media { min-width: 0; }
+/* Square, and the column it sits in is two of the four, so both edges stay
+   on the grid lines */
 .shop-hero__media img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   object-fit: cover;
   border-radius: var(--radius);
 }
@@ -4564,4 +4570,102 @@ body:has(.arch-page) {
 @media screen and (max-width: 767px) {
   /* The stage is shorter here, and a full-height image on a phone is a wall */
   .img-slider { height: 70vh; }
+}
+
+
+/* =============================================================
+   Course subpages — hero, positioning statement, related courses
+   ============================================================= */
+
+/* The hero was a fixed 90rem tall whatever the screen, with the copy in two
+   halves that did not line up with anything. It is a proportion of the
+   viewport now, and the body sits on the page's four columns: the title
+   across the first two, the course facts in the last two. */
+.page-header {
+  min-height: 78vh;
+  padding: calc(var(--nav-height) + 8rem) calc(var(--grid-gutter) + var(--grid-pad)) 8rem;
+}
+.page-header-body {
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+}
+.page-header-main { grid-column: 1 / span 2; }
+.page-header-body .panel-meta { grid-column: 3 / span 2; }
+
+/* A flat brightness knock-down dulled the whole picture, including the part
+   with nothing on it. A gradient leaves the top of the frame alone and puts
+   the weight where the title and the facts actually sit. */
+.page-header-img { filter: none; }
+.page-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.25) 0%,
+    rgba(10, 10, 10, 0.35) 45%,
+    rgba(10, 10, 10, 0.78) 100%
+  );
+}
+.page-header-body { z-index: 1; }
+
+.page-header h1 { margin-bottom: 1.6rem; }
+.page-header .lead { margin-bottom: 2.4rem; max-width: 44rem; }
+.page-header .tags { margin: 0; }
+
+/* Was 1fr 3fr with a single gap, which put the heading 24px wide of the
+   column line. Four equal columns puts it back on the grid. */
+.rich-split {
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 4.8rem;
+}
+.rich-split h3 { grid-column: 1 / span 1; }
+.rich-split .rich-text { grid-column: 2 / span 3; }
+
+/* ---------- Related courses ---------- */
+/* Label in the first column, the other three courses in the remaining three,
+   using the Shop's own card. No slider: with exactly three there is nothing
+   to page through. */
+.related-courses {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+  align-items: start;
+}
+.related-courses__head {
+  grid-column: 1 / span 1;
+  min-width: 0;
+}
+.related-courses__head h2 { margin-bottom: 1.6rem; }
+.related-courses__head p {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.55);
+}
+.related-courses .product-grid {
+  grid-column: 2 / span 3;
+  grid-template-columns: repeat(3, 1fr);
+  counter-reset: none;
+}
+/* The Shop numbers its catalogue; a related set is not a numbered list */
+.related-courses .product-card::before { content: none; }
+
+@media screen and (max-width: 991px) {
+  .page-header { min-height: 0; padding-top: calc(var(--nav-height) + 5.6rem); }
+  .page-header-body { grid-template-columns: 1fr; gap: 3.2rem; }
+  .page-header-main,
+  .page-header-body .panel-meta { grid-column: 1 / -1; }
+  .rich-split { grid-template-columns: 1fr; gap: 2.4rem; }
+  .rich-split h3,
+  .rich-split .rich-text { grid-column: 1 / -1; }
+  .related-courses { grid-template-columns: 1fr; gap: 4rem; }
+  .related-courses__head,
+  .related-courses .product-grid { grid-column: 1 / -1; }
+  .related-courses .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (max-width: 599px) {
+  .related-courses .product-grid { grid-template-columns: 1fr; }
 }
