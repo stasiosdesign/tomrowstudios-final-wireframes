@@ -305,7 +305,9 @@ h3 {
    follow it, so the two have to read as one block rather than two. */
 .logo-strip { padding-top: 8rem; padding-bottom: 2.4rem; }
 .logo-strip__head { margin-bottom: 0; }
-.logo-strip-title { max-width: 42rem; margin: 0; }
+/* Wide enough to break the headline onto two lines rather than three or one —
+   at 42rem it wrapped three times; this settles on a balanced two-line break */
+.logo-strip-title { max-width: 46rem; margin: 0; }
 .logo-row { display: flex; gap: 2.4rem; justify-content: center; flex-wrap: wrap; }
 .logo-row img { height: 3.6rem; width: auto; }
 
@@ -1776,8 +1778,8 @@ main:has(.willem-header.is--loading) .site-nav {
 .marquee-advanced__item-width img {
   width: auto;
   height: auto;
-  max-width: 78%;
-  max-height: 40%;
+  max-width: 58%;
+  max-height: 28%;
   object-fit: contain;
 }
 
