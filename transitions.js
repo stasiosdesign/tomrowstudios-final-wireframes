@@ -187,10 +187,6 @@ function runPageEnterAnimation(next){
 // -----------------------------------------
 
 barba.hooks.beforeEnter(data => {
-  // Partners page sits on white, so the persistent grid lines need a
-  // light grey instead of the white used everywhere else
-  document.body.classList.toggle("is--partner", data.next.namespace === "partner");
-
   // Position new container on top
   gsap.set(data.next.container, {
     position: "fixed",
