@@ -145,9 +145,9 @@ a { color: inherit; }
   font-weight: 400;
   text-decoration: none;
 }
-.btn-white  { background: #ffffff; border-color: #ffffff; color: #000509; padding: 0.8rem 2rem; }
+.btn-white  { background: #ffffff; border-color: #ffffff; color: #0a0a0a; padding: 0.8rem 2rem; }
 .btn-black  { background: #000000; border-color: #000000; color: #ffffff; }
-.btn-light  { background: rgba(0, 5, 9, 0.05); color: #000509; }
+.btn-light  { background: rgba(10, 10, 10, 0.05); color: #0a0a0a; }
 .btn-ghost  { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
 .btn-link   { background: none; padding: 1rem 0; color: #ffffff; }
 .btn-link img { width: 2.4rem; height: 2.4rem; }
@@ -260,7 +260,7 @@ h3 {
 }
 
 /* ---------- Alternate dark section ---------- */
-.section-alt { background: #000509; }
+.section-alt { background: #0a0a0a; }
 
 
 /* ---------- Lightbox / video still ---------- */
@@ -289,7 +289,7 @@ h3 {
 .timeline p { margin: 0 0 1.6rem; }
 
 /* ---------- Light theme sections ---------- */
-.theme-light { background: #ffffff; color: #000509; }
+.theme-light { background: #ffffff; color: #0a0a0a; }
 .theme-light .section { background: #ffffff; }
 
 .section-title-left { max-width: var(--grid-col-2); margin: 0 0 5.6rem; text-align: left; }
@@ -308,6 +308,16 @@ h3 {
 /* Wide enough to break the headline onto two lines rather than three or one —
    at 42rem it wrapped three times; this settles on a balanced two-line break */
 .logo-strip-title { max-width: 46rem; margin: 0; }
+/* Names what the strip below is, in the same small-label type the rest of
+   the site uses for asides. Sits right on top of the marquee. */
+.logo-strip__note {
+  margin: 2.4rem 0 0;
+  font-size: 1.3rem;
+  font-weight: var(--weight-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.45);
+}
 .logo-row { display: flex; gap: 2.4rem; justify-content: center; flex-wrap: wrap; }
 .logo-row img { height: 3.6rem; width: auto; }
 
@@ -333,7 +343,7 @@ h3 {
   padding: 0.8rem 1.2rem;
   font: inherit;
   color: inherit;
-  background: rgba(0, 5, 9, 0.05);
+  background: rgba(10, 10, 10, 0.05);
   border: 1px solid transparent;
   border-radius: var(--radius);
 }
@@ -473,7 +483,7 @@ h3 {
   /* Transparent on purpose: the wiping sheets paint the background, otherwise
      a white slab flashes before the animation starts. */
   background: transparent;
-  color: #000509;
+  color: #0a0a0a;
   overflow: hidden;
 }
 /* No-JS fallback still needs a solid background */
@@ -481,8 +491,8 @@ h3 {
 /* The three coloured sheets that wipe across before the content appears */
 .panel-bg { position: absolute; inset: 0; z-index: 0; }
 .panel-bg-sheet { position: absolute; inset: 0; background: #ffffff; }
-.panel-bg-sheet.is--first { background: #000509; }
-.panel-bg-sheet.is--second { background: #191e21; }
+.panel-bg-sheet.is--first { background: #0a0a0a; }
+.panel-bg-sheet.is--second { background: #1a1a1a; }
 
 .panel-inner {
   position: relative;
@@ -503,7 +513,7 @@ h3 {
   text-align: center;
   font-size: 2.8rem;
   text-decoration: none;
-  color: #000509;
+  color: #0a0a0a;
   background: #ffffff;
   border: none;
   border-radius: var(--radius);
@@ -530,7 +540,7 @@ h3 {
   justify-content: space-between;
   gap: 2.4rem;
   padding: 3.2rem 3.2rem 2.4rem;
-  border-bottom: 1px solid rgba(0, 5, 9, 0.15);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.15);
 }
 .panel-form-header h2 {
   margin: 0;
@@ -561,7 +571,7 @@ h3 {
   padding: 0.4rem 1rem;
   font-size: 1.4rem;
   font-weight: 700;
-  color: #000509;
+  color: #0a0a0a;
   background: rgba(255, 255, 255, 0.85);
   border-radius: var(--radius);
 }
@@ -590,11 +600,11 @@ h3 {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  background: #191e21;
+  background: #1a1a1a;
   border-radius: var(--radius);
   overflow: hidden;
 }
-.product-img { width: 100%; aspect-ratio: 405 / 270; object-fit: cover; }
+.product-img { width: 100%; height: auto; aspect-ratio: 405 / 270; object-fit: cover; }
 .product-body { display: flex; flex-direction: column; gap: 1.6rem; padding: 2.4rem; flex: 1; }
 .product-info { display: flex; gap: 1.6rem; align-items: center; }
 .product-meta { font-size: 1.4rem; font-weight: 700; }
@@ -871,11 +881,11 @@ main:has(.willem-header.is--loading) {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(0, 5, 9, 0.12) 0%,
-    rgba(0, 5, 9, 0.14) 35%,
-    rgba(0, 5, 9, 0.42) 62%,
-    rgba(0, 5, 9, 0.72) 85%,
-    rgba(0, 5, 9, 0.82) 100%
+    rgba(10, 10, 10, 0.12) 0%,
+    rgba(10, 10, 10, 0.14) 35%,
+    rgba(10, 10, 10, 0.42) 62%,
+    rgba(10, 10, 10, 0.72) 85%,
+    rgba(10, 10, 10, 0.82) 100%
   );
 }
 
@@ -1280,9 +1290,9 @@ main:has(.willem-header.is--loading) {
   border-radius: var(--radius);
   cursor: pointer;
 }
-.theme-light .parallax-slider__arrow { background: rgba(0, 5, 9, 0.06); color: #000509; }
+.theme-light .parallax-slider__arrow { background: rgba(10, 10, 10, 0.06); color: #0a0a0a; }
 .parallax-slider__arrow:hover { background: rgba(255, 255, 255, 0.2); }
-.theme-light .parallax-slider__arrow:hover { background: rgba(0, 5, 9, 0.12); }
+.theme-light .parallax-slider__arrow:hover { background: rgba(10, 10, 10, 0.12); }
 
 @media screen and (max-width: 767px) {
   .parallax-slider__item {
@@ -1507,7 +1517,7 @@ main:has(.willem-header.is--loading) .site-nav {
 }
 
 .sticky-tab {
-  background-color: #000509;
+  background-color: #0a0a0a;
   position: relative;
   overflow: clip;
 }
@@ -1714,7 +1724,7 @@ main:has(.willem-header.is--loading) .site-nav {
 .panel .button-011.is--secondary,
 .site-footer .button-011.is--secondary {
   --button-011-color: #121212;
-  --button-011-color-background: rgba(0, 5, 9, 0.08);
+  --button-011-color-background: rgba(10, 10, 10, 0.08);
   --button-011-color-focus: #121212;
 }
 
@@ -2237,7 +2247,7 @@ body{
   height: 4.8rem;
   border-radius: 100em;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  background: #000509;
+  background: #0a0a0a;
   color: #ffffff;
   font-size: 1.6rem;
   position: relative;
@@ -2251,7 +2261,7 @@ body{
 [data-step-timeline-item][data-status="active"] [data-step-timeline-marker] {
   background: #ffffff;
   border-color: #ffffff;
-  color: #000509;
+  color: #0a0a0a;
 }
 
 /* Marker inside the 'current' step item */
@@ -2332,7 +2342,7 @@ body{
   /* Photographs now, not flat marks, so they have to be cropped to the circle */
   object-fit: cover;
   /* The ring separates the faces where they overlap */
-  border: 2px solid #000509;
+  border: 2px solid #0a0a0a;
 }
 .social-proof__avatars img + img { margin-left: -1.2rem; }
 .social-proof__body { display: flex; flex-direction: column; gap: 0.4rem; }
@@ -2381,9 +2391,11 @@ body{
   justify-content: space-between;
   align-items: flex-start;
   gap: 2.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  /* A flat neutral grey. The card used to be a translucent white over the
+     section tint, which picked the blue out of it and read as navy. */
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
-  background-color: rgba(255, 255, 255, 0.06);
+  background-color: #1f1f1f;
 }
 
 .centered-slider-row:has(.centered-slider-slide.active) .centered-slider-slide:not(.active) {
@@ -2551,7 +2563,7 @@ body{
 /* One hairline colour for the whole site, flipped on light surfaces */
 :root { --rule: rgba(255, 255, 255, 0.1); }
 .theme-light,
-.panel { --rule: rgba(0, 5, 9, 0.12); }
+.panel { --rule: rgba(10, 10, 10, 0.12); }
 
 /* Sections stack as ruled registers rather than floating on whitespace */
 main section + section,
@@ -2567,7 +2579,7 @@ main section + section,
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.55);
 }
-.theme-light .tagline { color: rgba(0, 5, 9, 0.55); }
+.theme-light .tagline { color: rgba(10, 10, 10, 0.55); }
 
 /* ---------- Shop hero ---------- */
 .shop-hero {
@@ -2610,35 +2622,66 @@ main section + section,
 
 
 /* ---------- Product cards ---------- */
-/* A card, not a ruled column: a hairline runs the whole way round so each
-   product reads as its own object against the section behind it. The grid,
-   the order and the contents are unchanged — only the frame is. */
-.product-grid { counter-reset: product; }
+/* Four products, one to each column of the page grid. The gap is the grid gap
+   and the section already carries the gutter, so a card lands exactly inside
+   a column of the overlay rather than near it. White card, black text — the
+   catalogue is the one place on the page that should read as printed stock. */
+.product-grid {
+  counter-reset: product;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+}
 
 .product-card {
-  background: none;
-  border: 1px solid var(--rule);
+  background: #ffffff;
+  color: #0a0a0a;
+  border: 1px solid rgba(10, 10, 10, 0.1);
   border-radius: var(--radius);
   padding: 2rem;
-  gap: 2rem;
+  gap: 1.6rem;
   counter-increment: product;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .product-card:hover {
-  border-color: rgba(255, 255, 255, 0.28);
-  background-color: rgba(255, 255, 255, 0.02);
+  transform: translateY(-0.4rem);
+  box-shadow: 0 1.6rem 4rem rgba(0, 0, 0, 0.35);
 }
 .product-card::before {
   content: counter(product, decimal-leading-zero);
   font-size: 1.3rem;
   font-weight: var(--weight-label);
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(10, 10, 10, 0.4);
 }
 .product-img { border-radius: calc(var(--radius) - 1px); }
-.product-body { padding: 0; }
+.product-body { padding: 0; gap: 1.2rem; }
 /* Descriptions run to different lengths, so drop the CTAs to a common line */
 .product-body .button-011 { margin-top: auto; align-self: flex-start; }
+
+/* On white, the dark tag and the meta line have to flip out of the
+   white-on-dark defaults they inherit from the rest of the page */
+.product-card .tag-dark {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+.product-card .product-meta { color: rgba(10, 10, 10, 0.55); }
+.product-card p { color: rgba(10, 10, 10, 0.68); font-size: 1.5rem; line-height: 1.45; }
+.product-card h5 { font-size: 2rem; }
+/* The button component is white-on-dark by default; inside a white card it
+   has to be the other way round */
+.product-card .button-011 {
+  --button-011-color: #ffffff;
+  --button-011-color-background: #0a0a0a;
+  --button-011-color-focus: #0a0a0a;
+}
+
+@media screen and (max-width: 1199px) {
+  /* Four columns of card at this width leaves no room for the copy */
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media screen and (max-width: 599px) {
+  .product-grid { grid-template-columns: 1fr; }
+}
 
 @media screen and (max-width: 991px) {
   .shop-hero {
@@ -2674,9 +2717,9 @@ main section + section,
 .panel {
   --form-text: #131313;
   --form-muted: rgba(19, 19, 19, 0.45);
-  --form-field-bg: rgba(0, 5, 9, 0.05);
-  --form-field-border: rgba(0, 5, 9, 0.12);
-  --form-field-border-focus: rgba(0, 5, 9, 0.4);
+  --form-field-bg: rgba(10, 10, 10, 0.05);
+  --form-field-border: rgba(10, 10, 10, 0.12);
+  --form-field-border-focus: rgba(10, 10, 10, 0.4);
   --form-success: #0b8f49;
   --form-error: #d1462a;
 }
@@ -2913,7 +2956,7 @@ main section + section,
 /* ---------- Closing CTA ---------- */
 .final-cta {
   border-top: 1px solid var(--rule);
-  background: #000509;
+  background: #0a0a0a;
   text-align: center;
 }
 .final-cta__title {
@@ -2962,11 +3005,11 @@ main section + section,
    page like a printed spread and pulls the whole band forward */
 .map-spread.theme-light {
   background: #ffffff;
-  color: #000509;
+  color: #0a0a0a;
   padding-bottom: 10rem;
 }
 .map-spread.theme-light .book-feature__intro h2,
-.map-spread.theme-light .lead { color: #000509; }
+.map-spread.theme-light .lead { color: #0a0a0a; }
 
 .book-feature__body .lead { margin-bottom: 4rem; }
 
@@ -3185,8 +3228,8 @@ strong, b, th { font-weight: 700; }
 }
 .service-list__item.is--active { color: #ffffff; }
 
-.theme-light .service-list__item { color: rgba(0, 5, 9, 0.22); }
-.theme-light .service-list__item.is--active { color: #000509; }
+.theme-light .service-list__item { color: rgba(10, 10, 10, 0.22); }
+.theme-light .service-list__item.is--active { color: #0a0a0a; }
 
 /* The description holds the middle of the screen the way the title does, so
    the reader can watch it change without chasing it up the page */
@@ -3201,7 +3244,7 @@ strong, b, th { font-weight: 700; }
   color: rgba(255, 255, 255, 0.6);
   transition: opacity 0.25s ease;
 }
-.theme-light .service-list__detail-text { color: rgba(0, 5, 9, 0.6); }
+.theme-light .service-list__detail-text { color: rgba(10, 10, 10, 0.6); }
 .service-list__detail-text.is--swapping { opacity: 0; }
 
 /* ---------- Testimonial feature ---------- */
@@ -3209,7 +3252,7 @@ strong, b, th { font-weight: 700; }
    full-bleed frame sitting inside it — reset the colour and the tokens, or
    the quote renders near-black over the photograph */
 .testimonial-feature {
-  background: #000509;
+  background: #0a0a0a;
   color: #ffffff;
   --rule: rgba(255, 255, 255, 0.1);
   --form-muted: rgba(255, 255, 255, 0.5);
@@ -3243,7 +3286,7 @@ strong, b, th { font-weight: 700; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 5, 9, 0.88) 0%, rgba(0, 5, 9, 0.6) 45%, rgba(0, 5, 9, 0.25) 100%);
+  background: linear-gradient(90deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.6) 45%, rgba(10, 10, 10, 0.25) 100%);
 }
 .testimonial-slide__body {
   position: relative;
@@ -3364,7 +3407,7 @@ strong, b, th { font-weight: 700; }
   }
   .testimonial-slide blockquote { font-size: 2.8rem; }
   .testimonial-slide::after {
-    background: linear-gradient(180deg, rgba(0, 5, 9, 0.5) 0%, rgba(0, 5, 9, 0.9) 60%);
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.5) 0%, rgba(10, 10, 10, 0.9) 60%);
   }
   .testimonial-chips {
     position: static;
@@ -3417,20 +3460,20 @@ strong, b, th { font-weight: 700; }
 /* The component was drawn for the dark Influence page: a white line, a white
    fill and a white active marker all vanish on the Partners page, so invert
    them wherever the timeline sits inside .theme-light */
-.theme-light .step-timeline__line { background: rgba(0, 5, 9, 0.15); }
-.theme-light .step-timeline__fill { background: #000509; }
+.theme-light .step-timeline__line { background: rgba(10, 10, 10, 0.15); }
+.theme-light .step-timeline__fill { background: #0a0a0a; }
 .theme-light .step-timeline__marker {
   background: #ffffff;
-  border-color: rgba(0, 5, 9, 0.2);
-  color: #000509;
+  border-color: rgba(10, 10, 10, 0.2);
+  color: #0a0a0a;
 }
 .theme-light [data-step-timeline-item][data-status="active"] [data-step-timeline-marker] {
-  background: #000509;
-  border-color: #000509;
+  background: #0a0a0a;
+  border-color: #0a0a0a;
   color: #ffffff;
 }
 .theme-light [data-step-timeline-item][data-current] [data-step-timeline-marker] {
-  box-shadow: 0 0 0 0.8rem rgba(0, 5, 9, 0.1);
+  box-shadow: 0 0 0 0.8rem rgba(10, 10, 10, 0.1);
 }
 
 /* ---------- CTA spacing ---------- */
@@ -4024,7 +4067,7 @@ body:has(.arch-page) {
   border-color: #ffffff;
 }
 .parallax-slider__item-link:hover .parallax-slider__item-cta::after {
-  border-color: #000509;
+  border-color: #0a0a0a;
 }
 
 /* Smooothy never loaded — the track scrolls natively instead */
@@ -4070,7 +4113,7 @@ body:has(.arch-page) {
   margin: 0 0 0 auto;
   font-size: 1.6rem;
   line-height: 1.45;
-  color: rgba(0, 5, 9, 0.55);
+  color: rgba(10, 10, 10, 0.55);
   text-align: right;
 }
 
@@ -4085,13 +4128,13 @@ body:has(.arch-page) {
 
 .results-item {
   min-width: 0;
-  border-top: 1px solid rgba(0, 5, 9, 0.14);
+  border-top: 1px solid rgba(10, 10, 10, 0.14);
   padding-top: 2.4rem;
 }
 /* The rule between cells is the column line, drawn the same way the product
    tiles draw theirs */
 .results-item + .results-item {
-  border-left: 1px solid rgba(0, 5, 9, 0.14);
+  border-left: 1px solid rgba(10, 10, 10, 0.14);
   margin-left: calc(var(--grid-pad) * -1);
   padding-left: var(--grid-pad);
 }
@@ -4109,7 +4152,7 @@ body:has(.arch-page) {
   max-width: 22rem;
   font-size: 1.5rem;
   line-height: 1.35;
-  color: rgba(0, 5, 9, 0.6);
+  color: rgba(10, 10, 10, 0.6);
 }
 
 @media screen and (max-width: 991px) {
@@ -4119,7 +4162,7 @@ body:has(.arch-page) {
   .results-note { margin: 2.4rem 0 0; text-align: left; max-width: none; }
   .results-section .two-col { align-items: flex-start; }
   /* Only the second of each pair keeps a left rule */
-  .results-item:nth-child(odd) + .results-item { border-left: 1px solid rgba(0, 5, 9, 0.14); }
+  .results-item:nth-child(odd) + .results-item { border-left: 1px solid rgba(10, 10, 10, 0.14); }
   .results-item:nth-child(odd) {
     border-left: 0;
     margin-left: 0;
@@ -4256,4 +4299,263 @@ body:has(.arch-page) {
   .scroll-next__h { font-size: 4rem; }
   .scroll-next__progres { width: 20rem; }
   .scroll-next__sub { font-size: 1.3rem; }
+}
+
+
+/* =============================================================
+   Page hero titles — Influence and Partners
+   ============================================================= */
+
+/* These two pages open on their title with nothing above it, so the heading
+   is doing the work a hero image does elsewhere and the shared h2 size left
+   it undersized for the job. Architecture, Shop and the home page keep their
+   own hero scales — this class is only on the two that needed lifting. */
+.page-hero-title {
+  font-size: 8rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 991px) {
+  .page-hero-title { font-size: 5.6rem; }
+}
+@media screen and (max-width: 479px) {
+  .page-hero-title { font-size: 4.4rem; }
+}
+
+
+/* =============================================================
+   Statement band — Partners
+   ============================================================= */
+
+/* The headline holds the top of the grid by itself, then the row underneath
+   splits four columns: a portrait in the first, the copy in the last two.
+   The empty second column is the point — it is what stops the block reading
+   as a caption sitting next to a picture. */
+.statement {
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+}
+.statement__title {
+  margin: 0 0 10rem;
+  max-width: 16ch;
+  font-size: 9.6rem;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+/* One accent, the red the transition panels already use, set on the baseline
+   the way a full stop would be */
+.statement__dot {
+  display: inline-block;
+  width: 0.14em;
+  height: 0.14em;
+  margin-left: 0.06em;
+  border-radius: 50%;
+  background: #f20505;
+  vertical-align: baseline;
+}
+
+.statement__row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+  align-items: end;
+}
+.statement__media {
+  grid-column: 1 / span 1;
+  min-width: 0;
+}
+.statement__media img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.statement__body {
+  grid-column: 3 / span 2;
+  min-width: 0;
+}
+.statement__lead {
+  margin: 0 0 3.2rem;
+  max-width: 42rem;
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 991px) {
+  .statement { padding-top: 8rem; padding-bottom: 8rem; }
+  .statement__title { font-size: 5.6rem; margin-bottom: 5.6rem; max-width: none; }
+  .statement__row { grid-template-columns: repeat(2, 1fr); align-items: start; }
+  .statement__media { grid-column: 1 / span 1; }
+  .statement__body { grid-column: 2 / span 1; }
+  .statement__lead { font-size: 1.8rem; }
+}
+
+@media screen and (max-width: 767px) {
+  .statement__title { font-size: 4rem; }
+  .statement__row { grid-template-columns: 1fr; gap: 3.2rem; }
+  .statement__media,
+  .statement__body { grid-column: 1 / span 1; }
+  .statement__media { max-width: 24rem; }
+  .statement__lead { max-width: none; }
+}
+
+/* =============================================================
+   Closing CTA — set on the grid rather than centred
+   ============================================================= */
+
+/* Was a centred stack with the portrait wedged into the middle of the line,
+   which left it floating. It sits on the page's four columns now: label and
+   title across the left three, the portrait in the fourth, and the standfirst
+   and the button on a ruled row beneath. */
+.final-cta {
+  border-top: 1px solid var(--rule);
+  background: #0a0a0a;
+  text-align: left;
+}
+.final-cta__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+  align-items: end;
+}
+.final-cta__eyebrow {
+  grid-column: 1 / -1;
+  text-align: left;
+  margin: 0 0 3.2rem;
+}
+.final-cta__title {
+  grid-column: 1 / span 3;
+  display: block;
+  margin: 0;
+  font-size: 9.6rem;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+.final-cta__portrait {
+  grid-column: 4 / span 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  border: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  justify-self: end;
+  max-width: 22rem;
+}
+.final-cta__portrait img { width: 100%; height: 100%; object-fit: cover; }
+
+.final-cta__foot {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+  align-items: end;
+  margin-top: 6.4rem;
+  padding-top: 3.2rem;
+  border-top: 1px solid var(--rule);
+}
+.final-cta__lead {
+  grid-column: 1 / span 2;
+  max-width: 44rem;
+  margin: 0;
+}
+.final-cta .actions {
+  grid-column: 4 / span 1;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .final-cta__title { font-size: 5.6rem; grid-column: 1 / span 3; }
+  .final-cta__portrait { max-width: none; }
+  .final-cta__foot { grid-template-columns: 1fr; gap: 2.4rem; }
+  .final-cta__lead { grid-column: 1 / -1; max-width: none; }
+  .final-cta .actions { grid-column: 1 / -1; justify-content: flex-start; }
+}
+
+@media screen and (max-width: 767px) {
+  .final-cta__inner { grid-template-columns: 1fr; }
+  .final-cta__title { font-size: 4rem; grid-column: 1 / -1; }
+  .final-cta__portrait { grid-column: 1 / -1; justify-self: start; max-width: 18rem; }
+}
+
+
+/* =============================================================
+   FAQ — title on the left of the grid, questions on the right
+   ============================================================= */
+
+/* Was a centred title stacked over a centred 76.8rem column, which ignored
+   the page grid entirely. The title now holds the first column and the
+   accordions run across the remaining three. */
+.faq-layout {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+  align-items: start;
+}
+.faq-layout__head {
+  grid-column: 1 / span 1;
+  min-width: 0;
+  position: sticky;
+  top: calc(var(--nav-height) + 4rem);
+}
+.faq-layout__head h2 { margin-bottom: 1.6rem; }
+.faq-layout__note {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.faq-layout .faq {
+  grid-column: 2 / span 3;
+  max-width: none;
+  margin: 0;
+  min-width: 0;
+}
+
+/* The footer belongs to the question column, not to the page */
+.faq-layout .faq-footer {
+  max-width: none;
+  margin: 5.6rem 0 0;
+  text-align: left;
+}
+
+@media screen and (max-width: 991px) {
+  .faq-layout { grid-template-columns: 1fr; gap: 4rem; }
+  .faq-layout__head,
+  .faq-layout .faq { grid-column: 1 / -1; }
+  /* No column beside it to stick to */
+  .faq-layout__head { position: static; }
+}
+
+
+/* =============================================================
+   Full bleed — images that are meant to fill their section
+   ============================================================= */
+
+/* The slideshow stage is a full viewport in height and was still sitting
+   inside the page gutters, so it read as a large picture on the grid rather
+   than as the frame it is. Cancelling the section's own inset takes it edge
+   to edge without a 100vw rule, which would have counted the scrollbar.
+   The thumbnail row is centred and absolutely positioned, so it is unaffected.
+   Only this one qualifies: every other wide image on the site sits inside a
+   text block or a card, where the gutter is doing its job. */
+.img-slider {
+  margin-left: calc((var(--grid-gutter) + var(--grid-pad)) * -1);
+  margin-right: calc((var(--grid-gutter) + var(--grid-pad)) * -1);
+  /* auto, not 100% — a percentage would resolve against the container and
+     the negative margins would only shift the box rather than widen it */
+  width: auto;
+  border-radius: 0;
+}
+.img-slider__list { border-radius: 0; }
+
+@media screen and (max-width: 767px) {
+  /* The stage is shorter here, and a full-height image on a phone is a wall */
+  .img-slider { height: 70vh; }
 }
