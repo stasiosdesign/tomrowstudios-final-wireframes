@@ -419,6 +419,15 @@ h3 {
   border-right-style: none;
 }
 
+/* Partners page sits on a white surface, so the persistent grid lines need a
+   light neutral grey here instead of the white used everywhere else */
+body.is--partner .transition__lines {
+  opacity: 1;
+}
+body.is--partner .transition__line {
+  border-right-color: #e2e2e2;
+}
+
 /* Name of the page being transitioned to, centred over the panels */
 .transition__label {
   position: absolute;
