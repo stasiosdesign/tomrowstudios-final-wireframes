@@ -4110,9 +4110,11 @@ body:has(.arch-page) {
    Results band — what the work returned
    ============================================================= */
 
-/* Ruled cells rather than boxes, on the page's own four columns. The figure
-   is the only thing meant to register at a glance, so it is set at headline
-   scale and the line under it stays at label size. */
+/* Four cards, one to each column of the page grid. The gap is the grid gap
+   and the section carries the gutter, so a card lands exactly inside a
+   column of the overlay. Built on the same idea as the Shop card: a light
+   plate on the page, a small label strip at the top, the thing that matters
+   in the middle, and a quiet footer under a rule. */
 .results-section .two-col { align-items: flex-end; }
 .results-note {
   max-width: 32rem;
@@ -4132,62 +4134,91 @@ body:has(.arch-page) {
   padding: 0;
 }
 
-.results-item {
+.results-card {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
-  border-top: 1px solid rgba(10, 10, 10, 0.14);
-  padding-top: 2.4rem;
+  background: #f2f2f2;
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-/* The rule between cells is the column line, drawn the same way the product
-   tiles draw theirs */
-.results-item + .results-item {
-  border-left: 1px solid rgba(10, 10, 10, 0.14);
-  margin-left: calc(var(--grid-pad) * -1);
-  padding-left: var(--grid-pad);
+.results-card:hover {
+  transform: translateY(-0.4rem);
+  box-shadow: 0 1.6rem 4rem rgba(0, 0, 0, 0.12);
 }
 
-.results-item__value {
-  margin: 0 0 1.6rem;
-  font-size: 8.8rem;
-  line-height: 0.92;
-  letter-spacing: -0.06em;
+.results-card__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 4.8rem;
+}
+.results-card__index,
+.results-card__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  font-size: 1.1rem;
+  font-weight: var(--weight-ui);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.results-card__index {
+  background: none;
+  padding-left: 0;
+  color: rgba(10, 10, 10, 0.45);
+}
+.results-card__tag {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+/* The figure is the only thing meant to register at a glance */
+.results-card__body { margin-bottom: 3.2rem; }
+.results-card__value {
+  margin: 0 0 1.2rem;
+  font-size: 6.4rem;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
   font-weight: 700;
+  color: #0a0a0a;
 }
-
-.results-item__label {
+.results-card__label {
   margin: 0;
-  max-width: 22rem;
   font-size: 1.5rem;
   line-height: 1.35;
   color: rgba(10, 10, 10, 0.6);
 }
 
-@media screen and (max-width: 991px) {
-  /* Two across keeps the figures big rather than shrinking four into a row */
-  .results-grid { grid-template-columns: repeat(2, 1fr); margin-top: 5.6rem; row-gap: 4rem; }
-  .results-item__value { font-size: 6.4rem; }
-  .results-note { margin: 2.4rem 0 0; text-align: left; max-width: none; }
-  .results-section .two-col { align-items: flex-start; }
-  /* Only the second of each pair keeps a left rule */
-  .results-item:nth-child(odd) + .results-item { border-left: 1px solid rgba(10, 10, 10, 0.14); }
-  .results-item:nth-child(odd) {
-    border-left: 0;
-    margin-left: 0;
-    padding-left: 0;
-  }
+/* Pushed to the bottom so the rule sits on one line across all four cards
+   however long the label above it runs */
+.results-card__foot {
+  margin-top: auto;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(10, 10, 10, 0.12);
+  font-size: 1.2rem;
+  font-weight: var(--weight-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.45);
 }
 
-@media screen and (max-width: 479px) {
-  .results-grid { grid-template-columns: 1fr; row-gap: 3.2rem; }
-  .results-item__value { font-size: 7.2rem; }
-  /* Matches the two-column rule's specificity, or the vertical rule it sets
-     survives into the single-column stack and draws an L on every other cell */
-  .results-item + .results-item,
-  .results-item:nth-child(odd) + .results-item {
-    border-left: 0;
-    margin-left: 0;
-    padding-left: 0;
-  }
-  .results-item__label { max-width: none; }
+@media screen and (max-width: 991px) {
+  /* Two across keeps the figures big rather than shrinking four into a row */
+  .results-grid { grid-template-columns: repeat(2, 1fr); margin-top: 5.6rem; }
+  .results-note { margin: 2.4rem 0 0; text-align: left; max-width: none; }
+  .results-section .two-col { align-items: flex-start; }
+  .results-card__top { margin-bottom: 3.2rem; }
+}
+
+@media screen and (max-width: 599px) {
+  .results-grid { grid-template-columns: 1fr; }
+  .results-card__value { font-size: 7.2rem; }
 }
 
 /* =============================================================
@@ -4668,4 +4699,56 @@ body:has(.arch-page) {
 
 @media screen and (max-width: 599px) {
   .related-courses .product-grid { grid-template-columns: 1fr; }
+}
+
+
+/* =============================================================
+   Case study slides — name and index over the picture
+   ============================================================= */
+
+/* A scrim rather than a flat tint: the top of the frame keeps its detail and
+   the bottom carries enough weight for the name to read on any photograph. */
+.slide-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.35) 0%,
+    rgba(10, 10, 10, 0) 32%,
+    rgba(10, 10, 10, 0) 52%,
+    rgba(10, 10, 10, 0.72) 100%
+  );
+}
+
+.slide-card__name {
+  position: absolute;
+  left: 1.6rem;
+  right: 1.6rem;
+  bottom: 1.4rem;
+  z-index: 1;
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: var(--weight-ui);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* An index, not a headline — small enough to read as pagination */
+.slide-card__index {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.6rem;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1.2rem;
+  font-weight: var(--weight-label);
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .slide-card__name { font-size: 1.6rem; left: 1.2rem; right: 1.2rem; bottom: 1.2rem; }
+  .slide-card__index { top: 1.2rem; right: 1.2rem; }
 }
