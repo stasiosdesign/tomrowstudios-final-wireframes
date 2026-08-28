@@ -854,6 +854,32 @@ main:has(.willem-header.is--loading) {
   overflow: hidden;
 }
 
+/* The hero copy is white and the photograph behind it is bright, so the
+   headline and the standfirst were washing out. A wash over the picture,
+   barely there at the top and weighted to the bottom where the title, the
+   buttons and the intro paragraph sit. Scoped to the settled hero, which is
+   the state that shows the photograph — during the loading animation the
+   backdrop is flat grey with dark letters on it, and a wash there would only
+   dull the intro. */
+.willem-header.is--settled::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 5, 9, 0.12) 0%,
+    rgba(0, 5, 9, 0.14) 35%,
+    rgba(0, 5, 9, 0.42) 62%,
+    rgba(0, 5, 9, 0.72) 85%,
+    rgba(0, 5, 9, 0.82) 100%
+  );
+}
+
+/* Above the wash; the loader beneath it keeps its own lighter treatment */
+.willem-header__content { z-index: 2; }
+
 /* Loading: Hidden */
 .willem-header.is--loading.is--hidden {
   display: none;
