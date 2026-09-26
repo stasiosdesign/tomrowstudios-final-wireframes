@@ -169,6 +169,17 @@ button.tomrow-cta--arrow > span {
   max-width: 51px !important;
 }
 
+/* A document's scroll area draws no scrollbar of its own, so it never takes
+   width from the form: components/OverlayScrollbar.tsx draws one over the
+   edge instead. Scrolling itself is untouched. */
+[data-tomrow-overlay-scroll] {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* The document form uses the whole pane: Sanity's reading-width container
    is let go, with a little side room */
 [data-tomrow-document] [data-ui='Container'] {

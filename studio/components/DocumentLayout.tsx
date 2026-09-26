@@ -1,7 +1,9 @@
 import {Flex} from '@sanity/ui'
+import {useRef} from 'react'
 import type {DocumentLayoutProps} from 'sanity'
 import {styled} from 'styled-components'
 import {isPageType} from '../lib/site'
+import {OverlayScrollbar} from './OverlayScrollbar'
 import {useInVisualEditor} from './PreviewControls'
 import {PublishControls} from './PublishControls'
 
@@ -24,12 +26,18 @@ import {PublishControls} from './PublishControls'
      label row goes, so the form's title names the document once.
 
    Everything is matched by Sanity's test IDs, its icons' names or this
-   Studio's own markers, never by text. */
+   Studio's own markers, never by text.
+
+   The form's scroll area keeps its full width whether or not it can scroll:
+   its scrollbar is drawn over the edge (OverlayScrollbar), so opening a
+   section that makes the form taller moves nothing sideways. */
 export function DocumentLayout(props: DocumentLayoutProps) {
   // A document opens in Content (the structure tool) or the Visual editor (presentation)
   const tool = useInVisualEditor() ? 'presentation' : 'structure'
+  const rootRef = useRef<HTMLDivElement | null>(null)
   return (
     <Root
+      ref={rootRef}
       direction="column"
       height="fill"
       data-tomrow-document
@@ -40,6 +48,7 @@ export function DocumentLayout(props: DocumentLayoutProps) {
       <Flex direction="column" flex={1} style={{minHeight: 0}}>
         {props.renderDefault(props)}
       </Flex>
+      <OverlayScrollbar containerRef={rootRef} selector="[data-testid='document-panel-scroller']" />
     </Root>
   )
 }
@@ -49,8 +58,14 @@ export function DocumentLayout(props: DocumentLayoutProps) {
    and the row's full height (stretched, not 100%: on a phone the row's height
    is not fixed, and 100% would leave the document pane 0px tall) */
 const Root = styled(Flex)`
+  position: relative;
   flex: 1 1 0;
   min-width: 0;
+  /* Nothing inside may spill past the pane: Sanity's row of panes scrolls,
+     and a fraction of a pixel too tall (the header's fractional heights, the
+     scrollbar's track) gave it a scrollbar that shifted the whole interface
+     left whenever a section opened. clip, not hidden: no new scroll area. */
+  overflow: clip;
   height: auto;
   align-self: stretch;
 
